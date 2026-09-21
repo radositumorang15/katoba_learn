@@ -37,6 +37,12 @@ import id.kotoba.app.view.screens.RoadmapScreen
 import id.kotoba.app.view.screens.SplashScreen
 import id.kotoba.app.view.theme.KotobaTheme
 
+import id.kotoba.app.controller.AiConversationController
+import id.kotoba.app.controller.GlossaryController
+import id.kotoba.app.model.repository.GeminiRepository
+import id.kotoba.app.view.screens.AiConversationScreen
+import id.kotoba.app.view.screens.GlossaryScreen
+
 @Composable
 fun App() {
     KotobaTheme {
@@ -45,6 +51,7 @@ fun App() {
         val authRepository = remember { AuthRepository() }
         val srsRepository = remember { SrsRepository() }
         val goalsRepository = remember { GoalsRepository() }
+        val geminiRepository = remember { GeminiRepository() }
 
         // Audio TTS Engine
         val ttsEngine = rememberAudioTtsEngine()
@@ -70,6 +77,9 @@ fun App() {
         }
         val goalQuizController = remember(goalsRepository, progressRepository, authRepository, navController) {
             GoalQuizController(goalsRepository, progressRepository, authRepository, navController)
+        }
+        val glossaryController = remember(geminiRepository, navController) {
+            GlossaryController(geminiRepository, navController)
         }
 
         when (val screen = currentScreen) {
@@ -117,11 +127,24 @@ fun App() {
                 ReviewSessionScreen(controller = reviewSessionController)
             }
 
+            is Screen.AiConversation -> {
+                val aiConversationController = remember(geminiRepository, srsRepository, navController, ttsEngine) {
+                    AiConversationController(
+                        geminiRepo = geminiRepository,
+                        srsRepo = srsRepository,
+                        navController = navController,
+                        ttsEngine = ttsEngine
+                    )
+                }
+                AiConversationScreen(controller = aiConversationController)
+            }
+
             else -> {
                 // Main Application with Bottom Navigation
                 val showBottomBar = screen is Screen.Home ||
                         screen is Screen.Roadmap ||
-                        screen is Screen.Profile
+                        screen is Screen.Profile ||
+                        screen is Screen.Glossary
 
                 Scaffold(
                     bottomBar = {
@@ -151,7 +174,8 @@ fun App() {
                                         levelId = screen.levelId,
                                         ttsEngine = ttsEngine,
                                         srsRepo = srsRepository,
-                                        authRepo = authRepository
+                                        authRepo = authRepository,
+                                        geminiRepo = geminiRepository
                                     )
                                 }
                                 LearningScreen(controller = learningController)
@@ -164,7 +188,8 @@ fun App() {
                                         progressRepo = progressRepository,
                                         authRepo = authRepository,
                                         navController = navController,
-                                        ttsEngine = ttsEngine
+                                        ttsEngine = ttsEngine,
+                                        geminiRepo = geminiRepository
                                     )
                                 }
                                 QuizScreen(controller = quizController)
@@ -172,6 +197,10 @@ fun App() {
 
                             is Screen.Roadmap -> {
                                 RoadmapScreen(controller = roadmapController)
+                            }
+
+                            is Screen.Glossary -> {
+                                GlossaryScreen(controller = glossaryController)
                             }
 
                             is Screen.Profile -> {

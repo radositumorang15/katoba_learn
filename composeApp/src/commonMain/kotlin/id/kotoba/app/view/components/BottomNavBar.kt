@@ -67,6 +67,12 @@ fun BottomNavBar(
                 onClick = { onTabSelected(BottomTab.LEARN) }
             )
             NavItem(
+                icon = "🤖",
+                title = "Sensei",
+                isSelected = selectedTab == BottomTab.GLOSSARY,
+                onClick = { onTabSelected(BottomTab.GLOSSARY) }
+            )
+            NavItem(
                 icon = "👤",
                 title = "Profil",
                 isSelected = selectedTab == BottomTab.PROFILE,
@@ -92,7 +98,7 @@ private fun NavItem(
         modifier = Modifier
             .clip(CircleShape)
             .clickable { onClick() }
-            .padding(horizontal = 16.dp, vertical = 6.dp),
+            .padding(horizontal = 8.dp, vertical = 4.dp),
         verticalArrangement = Arrangement.Center
     ) {
         Box(

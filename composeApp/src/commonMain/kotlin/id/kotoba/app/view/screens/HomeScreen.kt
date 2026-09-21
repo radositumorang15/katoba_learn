@@ -79,6 +79,9 @@ fun HomeScreen(
                     streakDays = user?.currentStreak ?: 4,
                     onStartClick = {
                         activeLevel?.let { controller.startLearning(it.id) }
+                    },
+                    onChatClick = {
+                        controller.startAiChat()
                     }
                 )
             }

@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,6 +40,9 @@ import id.kotoba.app.view.theme.SurfaceCard
 import id.kotoba.app.view.theme.TextPrimary
 import id.kotoba.app.view.theme.TextSecondary
 
+import id.kotoba.app.model.repository.DynamicSentenceExample
+import androidx.compose.material3.CircularProgressIndicator
+
 @Composable
 fun FlipFlashcard(
     kana: KanaItem,
@@ -46,7 +50,11 @@ fun FlipFlashcard(
     onFlip: () -> Unit,
     onPlayAudio: () -> Unit,
     modifier: Modifier = Modifier,
-    furiganaEnabled: Boolean = true
+    furiganaEnabled: Boolean = true,
+    aiExample: DynamicSentenceExample? = null,
+    isLoadingAiExample: Boolean = false,
+    onGenerateAiExample: () -> Unit = {},
+    onPlayAiExampleAudio: (String) -> Unit = {}
 ) {
     val rotation by animateFloatAsState(
         targetValue = if (isFlipped) 180f else 0f,
@@ -56,7 +64,7 @@ fun FlipFlashcard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(340.dp)
+            .height(380.dp)
             .graphicsLayer {
                 rotationY = rotation
                 cameraDistance = 14f * density
@@ -65,7 +73,7 @@ fun FlipFlashcard(
             .background(SurfaceCard)
             .border(2.dp, BorderOutline, ShapeHeroLarge)
             .clickable { onFlip() }
-            .padding(24.dp)
+            .padding(20.dp)
     ) {
         if (rotation <= 90f) {
             // Front Face (Kana character)
@@ -75,7 +83,7 @@ fun FlipFlashcard(
                 furiganaEnabled = furiganaEnabled
             )
         } else {
-            // Back Face (Romaji & Anime context)
+            // Back Face (Romaji & Anime context & AI Example)
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -83,7 +91,11 @@ fun FlipFlashcard(
             ) {
                 CardBackFace(
                     kana = kana,
-                    onPlayAudio = onPlayAudio
+                    onPlayAudio = onPlayAudio,
+                    aiExample = aiExample,
+                    isLoadingAiExample = isLoadingAiExample,
+                    onGenerateAiExample = onGenerateAiExample,
+                    onPlayAiExampleAudio = onPlayAiExampleAudio
                 )
             }
         }
@@ -185,7 +197,11 @@ private fun CardFrontFace(
 @Composable
 private fun CardBackFace(
     kana: KanaItem,
-    onPlayAudio: () -> Unit
+    onPlayAudio: () -> Unit,
+    aiExample: DynamicSentenceExample? = null,
+    isLoadingAiExample: Boolean = false,
+    onGenerateAiExample: () -> Unit = {},
+    onPlayAiExampleAudio: (String) -> Unit = {}
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -208,7 +224,7 @@ private fun CardBackFace(
             // Audio button
             Box(
                 modifier = Modifier
-                    .size(42.dp)
+                    .size(38.dp)
                     .clip(CircleShape)
                     .background(SoftPurple)
                     .clickable { onPlayAudio() },
@@ -216,42 +232,136 @@ private fun CardBackFace(
             ) {
                 Text(
                     text = "🔊",
-                    fontSize = 18.sp
+                    fontSize = 16.sp
                 )
             }
         }
 
-        // Center: Romaji & Meaning
+        // Center: Romaji & Meaning & AI Example
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(horizontal = 12.dp)
+            modifier = Modifier.padding(horizontal = 8.dp)
         ) {
             Text(
                 text = kana.romaji,
-                fontSize = 44.sp,
+                fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,
                 color = PrimaryGreen
             )
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(6.dp))
             Box(
                 modifier = Modifier
                     .clip(ShapeHeroLarge)
                     .background(PrimarySurface)
-                    .padding(horizontal = 16.dp, vertical = 10.dp)
+                    .padding(horizontal = 14.dp, vertical = 6.dp)
             ) {
                 Text(
                     text = "🎬 ${kana.animeContext}",
-                    fontSize = 14.sp,
+                    fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = TextPrimary
                 )
             }
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = kana.meaning,
-                fontSize = 13.sp,
+                fontSize = 12.sp,
                 color = TextSecondary
             )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Dynamic Gemini AI Example Block
+            if (aiExample != null) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
+                        .background(Color(0xFFF0FDF4))
+                        .border(1.dp, Color(0xFFBBF7D0), androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
+                        .padding(10.dp)
+                ) {
+                    Column {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "✨ Kalimat AI (Gemini)",
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = PrimaryGreen
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .size(24.dp)
+                                    .clip(CircleShape)
+                                    .background(Color.White)
+                                    .clickable { onPlayAiExampleAudio(aiExample.japanese) },
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(text = "🔊", fontSize = 11.sp)
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = aiExample.japanese,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextPrimary
+                        )
+                        Text(
+                            text = aiExample.romaji,
+                            fontSize = 11.sp,
+                            fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
+                            color = PrimaryGreen
+                        )
+                        Text(
+                            text = aiExample.indonesian,
+                            fontSize = 11.sp,
+                            color = TextSecondary
+                        )
+                    }
+                }
+            } else if (isLoadingAiExample) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .clip(ShapeBadgePill)
+                        .background(Color(0xFFFEF3C7))
+                        .padding(horizontal = 12.dp, vertical = 6.dp)
+                ) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(12.dp),
+                        color = Color(0xFFD97706),
+                        strokeWidth = 2.dp
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "Gemini sedang membuat contoh...",
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xFF92400E)
+                    )
+                }
+            } else {
+                Box(
+                    modifier = Modifier
+                        .clip(ShapeBadgePill)
+                        .background(PrimarySurface)
+                        .border(1.dp, PrimaryGreen.copy(alpha = 0.5f), ShapeBadgePill)
+                        .clickable { onGenerateAiExample() }
+                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                ) {
+                    Text(
+                        text = "✨ Contoh Lain (Gemini AI)",
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = PrimaryGreen
+                    )
+                }
+            }
         }
 
         // Bottom flip back hint
@@ -259,11 +369,11 @@ private fun CardBackFace(
             modifier = Modifier
                 .clip(ShapeBadgePill)
                 .background(Color(0xFFF1F5F9))
-                .padding(horizontal = 16.dp, vertical = 6.dp)
+                .padding(horizontal = 16.dp, vertical = 4.dp)
         ) {
             Text(
                 text = "🔄 Ketuk kartu untuk kembali ke huruf",
-                fontSize = 12.sp,
+                fontSize = 11.sp,
                 fontWeight = FontWeight.Medium,
                 color = TextSecondary
             )

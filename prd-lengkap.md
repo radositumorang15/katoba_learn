@@ -111,6 +111,23 @@ Ditempatkan **setelah Sign Up**, sebelum user pertama kali menyentuh Home Screen
    * **Result:** Menampilkan skor. Jika > 80%, status `is_unlocked` untuk level berikutnya di-*update* ke Room DB dan di-sinkronkan ke Supabase (PostgREST).
 4. **Sesi Review Harian (Kotak Ulangan)** *(baru)*: Alur terpisah dari Learning Screen linear — mengambil item lintas-level yang jatuh tempo, dikemas seperti kuis cepat, hasilnya memperbarui jadwal SRS masing-masing item.
 
+### FASE 4: Eksplorasi Glosarium & Fitur AI Interaktif *(baru)*
+1. **AI Conversation Partner ("Ngobrol Bebas"):**
+   * **Lokasi & Akses:** Tab/menu baru di dalam Fase D (Level 10-12 Percakapan), dapat diakses langsung setelah user membuka level percakapan pertama.
+   * **Pilihan Mode:** User memiliki 2 pilihan: "Latihan Dialog" (skenario terarah/statis) atau "Ngobrol Bebas dengan AI" (interaktif, ditenagai Gemini).
+   * **Alur Teknis:** Request dikirim ke Gemini REST API dengan menyertakan daftar kosakata & kanji yang sudah dikuasai (status `MASTERED`/`REVIEWING` di SRS) sebagai konteks pembatas level bahasa.
+   * **State Offline:** Saat koneksi terputus, opsi ini menampilkan badge *disabled* dengan pesan "Butuh koneksi internet", sementara latihan dialog reguler tetap berfungsi.
+2. **Contoh Kalimat Dinamis (Flashcard Upgrade):**
+   * **Lokasi:** Sisi belakang kartu flashcard (Learning Screen), di bawah arti kata/romaji.
+   * **Interaksi:** Tombol kecil "✨ Contoh Lain". Satu kali tap memanggil Gemini untuk menghasilkan 1 kalimat pendek baru yang relevan dengan minat pengguna (misal konteks anime atau situasi nyata).
+   * **Caching:** Hasil kalimat baru disimpan di cache lokal/database agar tidak memanggil API berulang untuk item yang sama.
+3. **Tanya AI Sensei (Glosarium & Quiz Assistant):**
+   * **Lokasi:** Menu Glosarium baru serta tombol bantuan mengambang "?" pada Quiz Screen saat pengguna menjawab salah.
+   * **Interaksi:** Pengguna dapat menanyakan penjelasan tata bahasa ("Kenapa pakai wa bukan ga di sini?") dan mendapatkan jawaban ringkas, terarah, dan ramah pemula.
+4. **Evaluasi Ucap & Shadowing:**
+   * **Lokasi:** Modul Percakapan Level 10-12.
+   * **Alur:** Setelah memutar audio native, pengguna menekan tombol mikrofon untuk merekam pelafalan, kemudian Gemini memberikan umpan balik kualitatif mengenai artikulasi dan kejelasan vokal/konsonan.
+
 ---
 
 ## 5. Rincian Fitur Utama
@@ -149,6 +166,18 @@ Ditempatkan **setelah Sign Up**, sebelum user pertama kali menyentuh Home Screen
 
 ### 5.8 Gamifikasi Dasar
 * **Fitur:** *Streak* harian, perolehan XP (Experience Points) setiap menyelesaikan kuis atau sesi review, dan efek konfeti (*confetti animation*) saat naik level.
+
+### 5.9 Integrasi Gemini API (Generative AI Layer) *(baru)*
+Fitur AI Generatif terintegrasi secara kontekstual di lapisan aplikasi untuk mempercepat pemahaman bahasa tanpa merusak prinsip *offline-first*:
+1. **AI Conversation Partner ("Ngobrol Bebas")**: Mode chat interaktif dua arah di Level 10-12 (Fase D) di mana Gemini berperan sebagai penutur asli yang sabar, menyesuaikan tingkat kesulitan percakapan berdasarkan daftar kata yang sudah berstatus `MASTERED`/`REVIEWING` di SRS user.
+2. **Generator Contoh Kalimat Dinamis**: Tombol "✨ Contoh Lain" di sisi belakang flashcard (Learning Screen) yang memanggil Gemini untuk membuat kalimat baru sesuai konteks anime/minat user, lalu di-cache agar efisien.
+3. **Kanji Mnemonic / Radical Story Generator**: Generator analogi visual dan cerita ingatan berbasis radikal kanji untuk modul kanji (Fase C).
+4. **Feedback Shadowing & Evaluasi Pengucapan**: Langkah pelengkap di modul dialog Level 10-12 untuk memberikan saran kualitatif atas rekaman audio pengguna.
+5. **AI Sensei Assistant (Tanya Tata Bahasa & Glosarium)**: Asisten cerdas di menu Glosarium dan Quiz Screen untuk menjawab pertanyaan spesifik ("Kenapa pakai wa bukan ga di kalimat ini?").
+6. **Arsitektur & Guardrail AI**:
+   * *Offline Fallback*: Komponen Gemini otomatis menampilkan penanda "Perlu Koneksi Internet" jika offline, sementara fungsi flashcard, TTS, dan SRS tetap berjalan 100% offline.
+   * *Guardrail Usia 13+*: Prompt sistem membatasi respons pada materi edukatif aman, sopan, dan terfokus pada bahasa Jepang N5.
+   * *Caching Lapisan Lokal/Cloud*: Respons contoh kalimat dan mnemonic disimpan secara lokal agar tidak memicu panggilan berulang.
 
 ---
 

@@ -10,13 +10,22 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+import id.kotoba.app.model.repository.DynamicSentenceExample
+import id.kotoba.app.model.repository.GeminiRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+
 class LearningController(
     private val progressRepo: ProgressRepository,
     private val navController: NavigationController,
     val levelId: String,
     private val ttsEngine: AudioTtsEngine? = null,
     private val srsRepo: SrsRepository? = null,
-    private val authRepo: AuthRepository? = null
+    private val authRepo: AuthRepository? = null,
+    private val geminiRepo: GeminiRepository = GeminiRepository(),
+    private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 ) {
     val level: Level? = progressRepo.getLevelById(levelId)
     val kanaList: List<KanaItem> = level?.kanaList ?: emptyList()
@@ -26,6 +35,13 @@ class LearningController(
 
     private val _isFlipped = MutableStateFlow(false)
     val isFlipped: StateFlow<Boolean> = _isFlipped.asStateFlow()
+
+    // Dynamic Gemini AI example state
+    private val _currentAiExample = MutableStateFlow<DynamicSentenceExample?>(null)
+    val currentAiExample: StateFlow<DynamicSentenceExample?> = _currentAiExample.asStateFlow()
+
+    private val _isLoadingAiExample = MutableStateFlow(false)
+    val isLoadingAiExample: StateFlow<Boolean> = _isLoadingAiExample.asStateFlow()
 
     // Furigana toggle state
     private val _furiganaEnabled = MutableStateFlow(true)
@@ -56,6 +72,7 @@ class LearningController(
         if (_currentIndex.value < kanaList.size - 1) {
             _currentIndex.value += 1
             _isFlipped.value = false
+            _currentAiExample.value = null
             playCurrentAudio()
         }
     }
@@ -64,6 +81,7 @@ class LearningController(
         if (_currentIndex.value > 0) {
             _currentIndex.value -= 1
             _isFlipped.value = false
+            _currentAiExample.value = null
             playCurrentAudio()
         }
     }
@@ -72,8 +90,36 @@ class LearningController(
         if (index in kanaList.indices) {
             _currentIndex.value = index
             _isFlipped.value = false
+            _currentAiExample.value = null
             playCurrentAudio()
         }
+    }
+
+    fun generateAiExample() {
+        val kana = currentKana ?: return
+        if (_isLoadingAiExample.value) return
+
+        _isLoadingAiExample.value = true
+        scope.launch {
+            val result = geminiRepo.generateExampleSentence(
+                word = kana.character,
+                meaning = kana.meaning
+            )
+            result.onSuccess { example ->
+                _currentAiExample.value = example
+                _isLoadingAiExample.value = false
+            }.onFailure {
+                _isLoadingAiExample.value = false
+            }
+        }
+    }
+
+    fun playAiExampleAudio(text: String) {
+        ttsEngine?.speak(text, "ja")
+    }
+
+    fun goToAiConversation() {
+        navController.navigateTo(Screen.AiConversation)
     }
 
     fun markMastered() {

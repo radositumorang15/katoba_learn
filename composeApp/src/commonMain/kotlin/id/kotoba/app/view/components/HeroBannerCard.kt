@@ -30,7 +30,8 @@ import id.kotoba.app.view.theme.ShapeHeroLarge
 fun HeroBannerCard(
     currentLevelTitle: String = "Level 1: Hiragana Inti",
     streakDays: Int = 4,
-    onStartClick: () -> Unit = {}
+    onStartClick: () -> Unit = {},
+    onChatClick: () -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -85,21 +86,39 @@ fun HeroBannerCard(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // CTA Button (white with green text)
-                Box(
-                    modifier = Modifier
-                        .clip(ShapeBadgePill)
-                        .background(Color.White)
-                        .clickable { onStartClick() }
-                        .padding(horizontal = 20.dp, vertical = 10.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "Lanjutkan Belajar  ➔",
-                        color = PrimaryGreen,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                // Action Buttons: Lanjutkan Belajar & Ngobrol AI
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Box(
+                        modifier = Modifier
+                            .clip(ShapeBadgePill)
+                            .background(Color.White)
+                            .clickable { onStartClick() }
+                            .padding(horizontal = 16.dp, vertical = 9.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Belajar ➔",
+                            color = PrimaryGreen,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .clip(ShapeBadgePill)
+                            .background(Color.White.copy(alpha = 0.25f))
+                            .clickable { onChatClick() }
+                            .padding(horizontal = 14.dp, vertical = 9.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "💬 AI Chat",
+                            color = Color.White,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
             }
 
@@ -110,7 +129,8 @@ fun HeroBannerCard(
                 modifier = Modifier
                     .size(80.dp)
                     .clip(CircleShape)
-                    .background(Color.White.copy(alpha = 0.18f)),
+                    .background(Color.White.copy(alpha = 0.18f))
+                    .clickable { onChatClick() },
                 contentAlignment = Alignment.Center
             ) {
                 Text(

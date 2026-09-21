@@ -15,12 +15,15 @@ sealed class Screen {
     data class Quiz(val levelId: String) : Screen()
     data object Roadmap : Screen()
     data object Profile : Screen()
+    data object AiConversation : Screen()
+    data object Glossary : Screen()
 }
 
 enum class BottomTab {
     HOME,
     ROADMAP,
     LEARN,
+    GLOSSARY,
     PROFILE
 }
 
@@ -46,6 +49,7 @@ class NavigationController {
             is Screen.Home -> _selectedTab.value = BottomTab.HOME
             is Screen.Roadmap -> _selectedTab.value = BottomTab.ROADMAP
             is Screen.Learning -> _selectedTab.value = BottomTab.LEARN
+            is Screen.Glossary -> _selectedTab.value = BottomTab.GLOSSARY
             is Screen.Profile -> _selectedTab.value = BottomTab.PROFILE
             else -> {}
         }
@@ -57,6 +61,7 @@ class NavigationController {
             BottomTab.HOME -> navigateTo(Screen.Home)
             BottomTab.ROADMAP -> navigateTo(Screen.Roadmap)
             BottomTab.LEARN -> navigateTo(Screen.Learning("lvl_1"))
+            BottomTab.GLOSSARY -> navigateTo(Screen.Glossary)
             BottomTab.PROFILE -> navigateTo(Screen.Profile)
         }
     }

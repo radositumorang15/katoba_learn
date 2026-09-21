@@ -43,6 +43,9 @@ import id.kotoba.app.view.theme.SoftYellow
 import id.kotoba.app.view.theme.TextPrimary
 import id.kotoba.app.view.theme.TextSecondary
 
+import id.kotoba.app.view.theme.DeepPurple
+import id.kotoba.app.view.theme.SoftPurple
+
 @Composable
 fun LearningScreen(
     controller: LearningController
@@ -52,6 +55,8 @@ fun LearningScreen(
     val masteredIds by controller.masteredKanaIds.collectAsState()
     val furiganaEnabled by controller.furiganaEnabled.collectAsState()
     val showCoachMark by controller.showCoachMark.collectAsState()
+    val aiExample by controller.currentAiExample.collectAsState()
+    val isLoadingAiExample by controller.isLoadingAiExample.collectAsState()
     val currentKana = controller.currentKana
     val kanaList = controller.kanaList
 
@@ -100,13 +105,30 @@ fun LearningScreen(
                 }
 
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    // AI Conversation Partner Button (Fase D / General AI)
+                    Box(
+                        modifier = Modifier
+                            .clip(ShapeBadgePill)
+                            .background(SoftPurple)
+                            .clickable { controller.goToAiConversation() }
+                            .padding(horizontal = 9.dp, vertical = 6.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "💬 AI",
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = DeepPurple
+                        )
+                    }
+
                     // Furigana Toggle Pill
                     Box(
                         modifier = Modifier
                             .clip(ShapeBadgePill)
                             .background(if (furiganaEnabled) PrimarySurface else Color(0xFFF1F5F9))
                             .clickable { controller.toggleFurigana() }
-                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                            .padding(horizontal = 9.dp, vertical = 6.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
@@ -123,7 +145,7 @@ fun LearningScreen(
                             .clip(ShapeBadgePill)
                             .background(SoftYellow)
                             .clickable { controller.goToQuiz() }
-                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                            .padding(horizontal = 9.dp, vertical = 6.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
@@ -243,7 +265,11 @@ fun LearningScreen(
                     isFlipped = isFlipped,
                     onFlip = { controller.flipCard() },
                     onPlayAudio = { controller.playCurrentAudio() },
-                    furiganaEnabled = furiganaEnabled
+                    furiganaEnabled = furiganaEnabled,
+                    aiExample = aiExample,
+                    isLoadingAiExample = isLoadingAiExample,
+                    onGenerateAiExample = { controller.generateAiExample() },
+                    onPlayAiExampleAudio = { controller.playAiExampleAudio(it) }
                 )
             }
         }

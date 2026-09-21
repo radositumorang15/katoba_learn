@@ -10,6 +10,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
+import id.kotoba.app.model.repository.GeminiRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+
 data class QuizResult(
     val totalQuestions: Int,
     val correctCount: Int,
@@ -24,7 +30,9 @@ class QuizController(
     private val progressRepo: ProgressRepository,
     private val authRepo: AuthRepository,
     private val navController: NavigationController,
-    private val ttsEngine: AudioTtsEngine? = null
+    private val ttsEngine: AudioTtsEngine? = null,
+    private val geminiRepo: GeminiRepository = GeminiRepository(),
+    private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 ) {
     val level: Level? = progressRepo.getLevelById(levelId)
     val questions: List<QuizQuestion> = KanaRepository.quizBank[levelId]
@@ -38,6 +46,12 @@ class QuizController(
 
     private val _isAnswerSubmitted = MutableStateFlow(false)
     val isAnswerSubmitted: StateFlow<Boolean> = _isAnswerSubmitted.asStateFlow()
+
+    private val _aiExplanation = MutableStateFlow<String?>(null)
+    val aiExplanation: StateFlow<String?> = _aiExplanation.asStateFlow()
+
+    private val _isLoadingAiExplanation = MutableStateFlow(false)
+    val isLoadingAiExplanation: StateFlow<Boolean> = _isLoadingAiExplanation.asStateFlow()
 
     private val _correctCount = MutableStateFlow(0)
     val correctCount: StateFlow<Int> = _correctCount.asStateFlow()
@@ -81,10 +95,37 @@ class QuizController(
             _currentIndex.value += 1
             _selectedOptionIndex.value = null
             _isAnswerSubmitted.value = false
+            _aiExplanation.value = null
+            _isLoadingAiExplanation.value = false
             playQuestionAudio()
         } else {
             finishQuiz()
         }
+    }
+
+    fun askSenseiAboutCurrentQuestion() {
+        val q = currentQuestion ?: return
+        if (_isLoadingAiExplanation.value) return
+
+        _isLoadingAiExplanation.value = true
+        _aiExplanation.value = null
+
+        scope.launch {
+            val context = "Soal: ${q.questionText} | Karakter: ${q.visualCharacter} | Jawaban Benar: ${q.options.getOrNull(q.correctOptionIndex)} | Pembahasan Default: ${q.explanation}"
+            val prompt = "Kenapa jawabannya demikian? Tolong jelaskan secara ramah, singkat, dan mudah dipahami siswa pemula yang sedang mengerjakan kuis ini."
+            val result = geminiRepo.explainGrammar(prompt, context)
+            result.onSuccess { text ->
+                _aiExplanation.value = text
+                _isLoadingAiExplanation.value = false
+            }.onFailure { err ->
+                _aiExplanation.value = "⚠️ Tidak dapat memuat penjelasan: ${err.message ?: "Perlu koneksi internet"}"
+                _isLoadingAiExplanation.value = false
+            }
+        }
+    }
+
+    fun dismissAiExplanation() {
+        _aiExplanation.value = null
     }
 
     private fun finishQuiz() {
@@ -122,6 +163,8 @@ class QuizController(
         _isQuizCompleted.value = false
         _quizResult.value = null
         _showConfetti.value = false
+        _aiExplanation.value = null
+        _isLoadingAiExplanation.value = false
         playQuestionAudio()
     }
 

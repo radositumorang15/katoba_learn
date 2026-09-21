@@ -300,6 +300,91 @@ fun QuizScreen(
                                 fontWeight = FontWeight.SemiBold,
                                 color = PrimaryGreen
                             )
+
+                            Spacer(modifier = Modifier.height(10.dp))
+
+                            val aiExplanation by controller.aiExplanation.collectAsState()
+                            val isLoadingAiExplanation by controller.isLoadingAiExplanation.collectAsState()
+
+                            if (aiExplanation != null) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                                        .background(Color(0xFFF0FDF4))
+                                        .border(1.dp, Color(0xFFBBF7D0), androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                                        .padding(10.dp)
+                                ) {
+                                    Column {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.SpaceBetween,
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Text(
+                                                text = "🤖 Penjelasan Gemini Sensei:",
+                                                fontSize = 11.sp,
+                                                fontWeight = FontWeight.Bold,
+                                                color = PrimaryGreen
+                                            )
+                                            Box(
+                                                modifier = Modifier
+                                                    .size(22.dp)
+                                                    .clip(CircleShape)
+                                                    .background(Color.White)
+                                                    .clickable { controller.dismissAiExplanation() },
+                                                contentAlignment = Alignment.Center
+                                            ) {
+                                                Text(text = "✕", fontSize = 11.sp, color = TextSecondary)
+                                            }
+                                        }
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        Text(
+                                            text = aiExplanation ?: "",
+                                            fontSize = 12.sp,
+                                            color = TextPrimary,
+                                            lineHeight = 17.sp
+                                        )
+                                    }
+                                }
+                            } else if (isLoadingAiExplanation) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .clip(id.kotoba.app.view.theme.ShapeBadgePill)
+                                        .background(Color(0xFFFEF3C7))
+                                        .padding(horizontal = 12.dp, vertical = 6.dp)
+                                ) {
+                                    androidx.compose.material3.CircularProgressIndicator(
+                                        modifier = Modifier.size(12.dp),
+                                        color = Color(0xFFD97706),
+                                        strokeWidth = 2.dp
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text(
+                                        text = "Sensei sedang menganalisis...",
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        color = Color(0xFF92400E)
+                                    )
+                                }
+                            } else {
+                                Box(
+                                    modifier = Modifier
+                                        .clip(id.kotoba.app.view.theme.ShapeBadgePill)
+                                        .background(PrimarySurface)
+                                        .border(1.dp, PrimaryGreen.copy(alpha = 0.5f), id.kotoba.app.view.theme.ShapeBadgePill)
+                                        .clickable { controller.askSenseiAboutCurrentQuestion() }
+                                        .padding(horizontal = 12.dp, vertical = 6.dp)
+                                ) {
+                                    Text(
+                                        text = "🤖 Tanya Sensei: Kenapa jawaban ini?",
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = PrimaryGreen
+                                    )
+                                }
+                            }
                         }
                     }
                 }

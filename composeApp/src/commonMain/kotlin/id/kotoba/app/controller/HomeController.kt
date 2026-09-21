@@ -46,7 +46,7 @@ class HomeController(
         when (menu) {
             ActionMenu.ALL_CLASSES -> navController.navigateTo(Screen.Roadmap)
             ActionMenu.MY_COURSES -> navController.navigateTo(Screen.Learning("lvl_1"))
-            ActionMenu.MY_SHELF -> _selectedMenuNotice.value = "Fitur My Shelf: Koleksi buku kana dan catatan anime tersimpan!"
+            ActionMenu.MY_SHELF -> navController.navigateTo(Screen.Glossary)
             ActionMenu.MY_PROGRESS -> navController.navigateTo(Screen.Profile)
         }
     }
@@ -57,6 +57,10 @@ class HomeController(
 
     fun startDailyReview() {
         navController.navigateTo(Screen.ReviewSession)
+    }
+
+    fun startAiChat() {
+        navController.navigateTo(Screen.AiConversation)
     }
 
     fun startLearning(levelId: String) {
