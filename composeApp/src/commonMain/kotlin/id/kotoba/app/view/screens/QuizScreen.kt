@@ -10,12 +10,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -67,7 +69,8 @@ fun QuizScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White),
+        contentAlignment = Alignment.TopCenter
     ) {
         if (showConfetti) {
             ConfettiView()
@@ -79,13 +82,19 @@ fun QuizScreen(
                 result = result!!,
                 onRestart = { controller.restartQuiz() },
                 onContinue = { controller.continueToNextLevel() },
-                onBack = { controller.goBack() }
+                onBack = { controller.goBack() },
+                modifier = Modifier
+                    .widthIn(max = 680.dp)
+                    .fillMaxWidth()
+                    .fillMaxHeight()
             )
         } else if (question != null) {
             // Active Quiz Flow
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .widthIn(max = 680.dp)
+                    .fillMaxWidth()
+                    .fillMaxHeight()
                     .verticalScroll(rememberScrollState())
                     .padding(20.dp),
                 verticalArrangement = Arrangement.SpaceBetween
@@ -426,11 +435,13 @@ private fun QuizResultView(
     result: id.kotoba.app.controller.QuizResult,
     onRestart: () -> Unit,
     onContinue: () -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween

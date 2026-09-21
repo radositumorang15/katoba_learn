@@ -30,6 +30,8 @@ import id.kotoba.app.view.theme.PrimaryGreen
 import id.kotoba.app.view.theme.PrimarySurface
 import id.kotoba.app.view.theme.TextSecondary
 
+import androidx.compose.foundation.layout.widthIn
+
 @Composable
 fun BottomNavBar(
     selectedTab: BottomTab,
@@ -40,11 +42,14 @@ fun BottomNavBar(
         modifier = modifier
             .fillMaxWidth()
             .background(Color.White)
-            .border(width = 1.dp, color = BorderOutline)
-            .padding(vertical = 10.dp, horizontal = 16.dp)
+            .border(width = 1.dp, color = BorderOutline),
+        contentAlignment = Alignment.Center
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .widthIn(max = 760.dp)
+                .fillMaxWidth()
+                .padding(vertical = 10.dp, horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically
         ) {

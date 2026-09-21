@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -64,7 +65,7 @@ fun FlipFlashcard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(380.dp)
+            .heightIn(min = 390.dp, max = 480.dp)
             .graphicsLayer {
                 rotationY = rotation
                 cameraDistance = 14f * density
@@ -123,7 +124,8 @@ private fun CardFrontFace(
                 modifier = Modifier
                     .clip(ShapeBadgePill)
                     .background(PrimarySurface)
-                    .padding(horizontal = 12.dp, vertical = 4.dp)
+                    .border(1.dp, PrimaryGreen.copy(alpha = 0.25f), ShapeBadgePill)
+                    .padding(horizontal = 12.dp, vertical = 5.dp)
             ) {
                 Text(
                     text = kana.type.name.replace("_", " "),
@@ -159,16 +161,16 @@ private fun CardFrontFace(
                     color = PrimaryGreen,
                     letterSpacing = 2.sp
                 )
-                Spacer(modifier = Modifier.height(2.dp))
+                Spacer(modifier = Modifier.height(4.dp))
             }
             Text(
                 text = kana.character,
-                fontSize = if (!kana.furigana.isNullOrBlank()) 70.sp else 84.sp,
+                fontSize = if (!kana.furigana.isNullOrBlank()) 68.sp else 80.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary
             )
             if (kana.mnemonic.isNotBlank()) {
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     text = "💡 ${kana.mnemonic}",
                     fontSize = 13.sp,
@@ -244,15 +246,16 @@ private fun CardBackFace(
         ) {
             Text(
                 text = kana.romaji,
-                fontSize = 36.sp,
+                fontSize = 34.sp,
                 fontWeight = FontWeight.Bold,
                 color = PrimaryGreen
             )
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Box(
                 modifier = Modifier
-                    .clip(ShapeHeroLarge)
+                    .clip(ShapeBadgePill)
                     .background(PrimarySurface)
+                    .border(1.dp, PrimaryGreen.copy(alpha = 0.2f), ShapeBadgePill)
                     .padding(horizontal = 14.dp, vertical = 6.dp)
             ) {
                 Text(
@@ -262,24 +265,24 @@ private fun CardBackFace(
                     color = TextPrimary
                 )
             }
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = kana.meaning,
-                fontSize = 12.sp,
+                fontSize = 13.sp,
                 color = TextSecondary
             )
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             // Dynamic Gemini AI Example Block
             if (aiExample != null) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
+                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
                         .background(Color(0xFFF0FDF4))
-                        .border(1.dp, Color(0xFFBBF7D0), androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
-                        .padding(10.dp)
+                        .border(1.dp, Color(0xFFBBF7D0), androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
+                        .padding(12.dp)
                 ) {
                     Column {
                         Row(
@@ -287,36 +290,54 @@ private fun CardBackFace(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "✨ Kalimat AI (Gemini)",
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = PrimaryGreen
-                            )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Box(
+                                    modifier = Modifier
+                                        .clip(ShapeBadgePill)
+                                        .background(Color.White)
+                                        .padding(horizontal = 8.dp, vertical = 2.dp)
+                                ) {
+                                    Text(
+                                        text = "✨ Gemini AI",
+                                        fontSize = 10.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = PrimaryGreen
+                                    )
+                                }
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    text = "Contoh Kalimat",
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = PrimaryGreen
+                                )
+                            }
                             Box(
                                 modifier = Modifier
-                                    .size(24.dp)
+                                    .size(26.dp)
                                     .clip(CircleShape)
-                                    .background(Color.White)
+                                    .background(SoftPurple)
                                     .clickable { onPlayAiExampleAudio(aiExample.japanese) },
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text(text = "🔊", fontSize = 11.sp)
+                                Text(text = "🔊", fontSize = 12.sp)
                             }
                         }
-                        Spacer(modifier = Modifier.height(2.dp))
+                        Spacer(modifier = Modifier.height(6.dp))
                         Text(
                             text = aiExample.japanese,
-                            fontSize = 13.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             color = TextPrimary
                         )
+                        Spacer(modifier = Modifier.height(2.dp))
                         Text(
                             text = aiExample.romaji,
-                            fontSize = 11.sp,
+                            fontSize = 12.sp,
                             fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
                             color = PrimaryGreen
                         )
+                        Spacer(modifier = Modifier.height(2.dp))
                         Text(
                             text = aiExample.indonesian,
                             fontSize = 11.sp,
@@ -330,14 +351,14 @@ private fun CardBackFace(
                     modifier = Modifier
                         .clip(ShapeBadgePill)
                         .background(Color(0xFFFEF3C7))
-                        .padding(horizontal = 12.dp, vertical = 6.dp)
+                        .padding(horizontal = 14.dp, vertical = 8.dp)
                 ) {
                     CircularProgressIndicator(
-                        modifier = Modifier.size(12.dp),
+                        modifier = Modifier.size(14.dp),
                         color = Color(0xFFD97706),
                         strokeWidth = 2.dp
                     )
-                    Spacer(modifier = Modifier.width(6.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "Gemini sedang membuat contoh...",
                         fontSize = 11.sp,
@@ -350,12 +371,12 @@ private fun CardBackFace(
                     modifier = Modifier
                         .clip(ShapeBadgePill)
                         .background(PrimarySurface)
-                        .border(1.dp, PrimaryGreen.copy(alpha = 0.5f), ShapeBadgePill)
+                        .border(1.5.dp, PrimaryGreen.copy(alpha = 0.35f), ShapeBadgePill)
                         .clickable { onGenerateAiExample() }
-                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                        .padding(horizontal = 16.dp, vertical = 7.dp)
                 ) {
                     Text(
-                        text = "✨ Contoh Lain (Gemini AI)",
+                        text = "✨ Buat Contoh Kalimat (Gemini AI)",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         color = PrimaryGreen
@@ -369,7 +390,7 @@ private fun CardBackFace(
             modifier = Modifier
                 .clip(ShapeBadgePill)
                 .background(Color(0xFFF1F5F9))
-                .padding(horizontal = 16.dp, vertical = 4.dp)
+                .padding(horizontal = 16.dp, vertical = 6.dp)
         ) {
             Text(
                 text = "🔄 Ketuk kartu untuk kembali ke huruf",

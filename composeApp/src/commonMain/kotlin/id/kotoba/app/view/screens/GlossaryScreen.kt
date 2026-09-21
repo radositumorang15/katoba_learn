@@ -14,12 +14,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -79,366 +81,381 @@ fun GlossaryScreen(
         "Beda です dan だ?"
     )
 
-    LazyColumn(
+    Box(
         modifier = modifier
             .fillMaxSize()
             .background(Color(0xFFF8FAFC)),
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        contentAlignment = Alignment.TopCenter
     ) {
-        // Top Header
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+        LazyColumn(
+            modifier = Modifier
+                .widthIn(max = 760.dp)
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            contentPadding = PaddingValues(horizontal = 20.dp, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            // Top Header
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(Color.White)
+                            .border(1.dp, BorderOutline, CircleShape)
+                            .clickable { controller.goBack() },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "←", fontSize = 18.sp, color = TextPrimary)
+                    }
+
+                    Spacer(modifier = Modifier.width(14.dp))
+
+                    Column {
+                        Text(
+                            text = "📖 Glosarium Tata Bahasa N5",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextPrimary
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = "Referensi partikel & tanya jawab Gemini Sensei",
+                            fontSize = 12.sp,
+                            color = TextSecondary
+                        )
+                    }
+                }
+            }
+
+            // Gemini AI Sensei Question Box (PRD Fase 4 & 5.9)
+            item {
                 Box(
                     modifier = Modifier
-                        .size(38.dp)
-                        .clip(CircleShape)
+                        .fillMaxWidth()
+                        .clip(ShapeHeroLarge)
                         .background(Color.White)
-                        .border(1.dp, BorderOutline, CircleShape)
-                        .clickable { controller.goBack() },
-                    contentAlignment = Alignment.Center
+                        .border(1.dp, PrimaryGreen.copy(alpha = 0.25f), ShapeHeroLarge)
+                        .padding(18.dp)
                 ) {
-                    Text(text = "←", fontSize = 18.sp, color = TextPrimary)
+                    Column {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Box(
+                                modifier = Modifier
+                                    .size(38.dp)
+                                    .clip(CircleShape)
+                                    .background(PastelGreen)
+                                    .border(1.dp, PrimaryGreen.copy(alpha = 0.2f), CircleShape),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(text = "🤖", fontSize = 18.sp)
+                            }
+                            Spacer(modifier = Modifier.width(12.dp))
+                            Column {
+                                Text(
+                                    text = "Tanya Sensei (Gemini AI)",
+                                    fontSize = 15.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = PrimaryGreen
+                                )
+                                Text(
+                                    text = "Bingung partikel atau pola kalimat? Tanyakan ke Sensei!",
+                                    fontSize = 12.sp,
+                                    color = TextSecondary
+                                )
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(14.dp))
+
+                        // Quick suggestion pills
+                        LazyRow(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            items(quickQuestions) { q ->
+                                Box(
+                                    modifier = Modifier
+                                        .clip(ShapeBadgePill)
+                                        .background(SoftPurple)
+                                        .border(1.dp, Color(0xFFC7D2FE), ShapeBadgePill)
+                                        .clickable {
+                                            controller.updateAiQuestion(q)
+                                            controller.askSensei(q)
+                                        }
+                                        .padding(horizontal = 12.dp, vertical = 6.dp)
+                                ) {
+                                    Text(
+                                        text = q,
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color(0xFF4338CA)
+                                    )
+                                }
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        // Input & Button
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            OutlinedTextField(
+                                value = aiQuestion,
+                                onValueChange = { controller.updateAiQuestion(it) },
+                                placeholder = {
+                                    Text(
+                                        text = "Tulis pertanyaanmu...",
+                                        fontSize = 13.sp,
+                                        color = TextSecondary
+                                    )
+                                },
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .height(52.dp),
+                                shape = RoundedCornerShape(26.dp),
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = PrimaryGreen,
+                                    unfocusedBorderColor = BorderOutline,
+                                    focusedContainerColor = Color(0xFFF8FAFC),
+                                    unfocusedContainerColor = Color(0xFFF8FAFC)
+                                ),
+                                singleLine = true
+                            )
+
+                            Spacer(modifier = Modifier.width(10.dp))
+
+                            Box(
+                                modifier = Modifier
+                                    .clip(ShapeBadgePill)
+                                    .background(if (aiQuestion.isNotBlank() && !isLoadingAi) PrimaryGreen else Color(0xFFCBD5E1))
+                                    .clickable(enabled = aiQuestion.isNotBlank() && !isLoadingAi) {
+                                        controller.askSensei()
+                                    }
+                                    .padding(horizontal = 16.dp, vertical = 13.dp)
+                            ) {
+                                if (isLoadingAi) {
+                                    CircularProgressIndicator(
+                                        modifier = Modifier.size(16.dp),
+                                        color = Color.White,
+                                        strokeWidth = 2.dp
+                                    )
+                                } else {
+                                    Text(
+                                        text = "Tanya",
+                                        fontSize = 13.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = Color.White
+                                    )
+                                }
+                            }
+                        }
+
+                        // AI Explanation Result Card
+                        AnimatedVisibility(
+                            visible = aiAnswer != null,
+                            enter = fadeIn() + expandVertically(),
+                            exit = fadeOut() + shrinkVertically()
+                        ) {
+                            Column {
+                                Spacer(modifier = Modifier.height(14.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(RoundedCornerShape(14.dp))
+                                        .background(Color(0xFFF0FDF4))
+                                        .border(1.dp, Color(0xFFBBF7D0), RoundedCornerShape(14.dp))
+                                        .padding(14.dp)
+                                ) {
+                                    Column {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.SpaceBetween,
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Text(
+                                                text = "💡 Jawaban Kotoba Sensei:",
+                                                fontSize = 12.sp,
+                                                fontWeight = FontWeight.Bold,
+                                                color = PrimaryGreen
+                                            )
+                                            Box(
+                                                modifier = Modifier
+                                                    .size(24.dp)
+                                                    .clip(CircleShape)
+                                                    .background(Color.White)
+                                                    .clickable { controller.clearAiAnswer() },
+                                                contentAlignment = Alignment.Center
+                                            ) {
+                                                Text(text = "✕", fontSize = 11.sp, color = TextSecondary)
+                                            }
+                                        }
+                                        Spacer(modifier = Modifier.height(8.dp))
+                                        Text(
+                                            text = aiAnswer ?: "",
+                                            fontSize = 13.sp,
+                                            color = TextPrimary,
+                                            lineHeight = 20.sp
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+            }
 
-                Spacer(modifier = Modifier.width(12.dp))
-
-                Column {
+            // Section Title: Partikel Dasar N5
+            item {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
-                        text = "📖 Glosarium Tata Bahasa N5",
-                        fontSize = 17.sp,
+                        text = "Daftar Partikel & Tata Bahasa N5",
+                        fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary
                     )
                     Text(
-                        text = "Referensi partikel & tanya jawab Gemini Sensei",
+                        text = "${filteredParticles.size} Item",
                         fontSize = 12.sp,
-                        color = TextSecondary
+                        fontWeight = FontWeight.SemiBold,
+                        color = PrimaryGreen
                     )
                 }
             }
-        }
 
-        // Gemini AI Sensei Question Box (PRD Fase 4 & 5.9)
-        item {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(ShapeHeroLarge)
-                    .background(Color.White)
-                    .border(1.dp, PrimaryGreen.copy(alpha = 0.3f), ShapeHeroLarge)
-                    .padding(16.dp)
-            ) {
-                Column {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Box(
-                            modifier = Modifier
-                                .size(34.dp)
-                                .clip(CircleShape)
-                                .background(PastelGreen),
-                            contentAlignment = Alignment.Center
+            // Particle Cards
+            items(filteredParticles, key = { it.id }) { particle ->
+                val isSelected = selectedParticle?.id == particle.id
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(ShapeCardMedium)
+                        .background(SurfaceCard)
+                        .border(
+                            width = if (isSelected) 2.dp else 1.dp,
+                            color = if (isSelected) PrimaryGreen else BorderOutline,
+                            shape = ShapeCardMedium
+                        )
+                        .clickable { controller.selectParticle(particle) }
+                        .padding(16.dp)
+                ) {
+                    Column {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(text = "🤖", fontSize = 18.sp)
-                        }
-                        Spacer(modifier = Modifier.width(10.dp))
-                        Column {
-                            Text(
-                                text = "Tanya Sensei (Gemini AI)",
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = PrimaryGreen
-                            )
-                            Text(
-                                text = "Bingung partikel atau tata bahasa? Tanyakan langsung!",
-                                fontSize = 11.sp,
-                                color = TextSecondary
-                            )
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    // Quick suggestion pills
-                    LazyRow(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        items(quickQuestions) { q ->
                             Box(
                                 modifier = Modifier
-                                    .clip(ShapeBadgePill)
-                                    .background(SoftPurple)
-                                    .clickable {
-                                        controller.updateAiQuestion(q)
-                                        controller.askSensei(q)
-                                    }
-                                    .padding(horizontal = 10.dp, vertical = 5.dp)
+                                    .size(48.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .background(if (isSelected) PrimaryGreen else PrimarySurface),
+                                contentAlignment = Alignment.Center
                             ) {
                                 Text(
-                                    text = q,
-                                    fontSize = 11.sp,
-                                    fontWeight = FontWeight.Medium,
-                                    color = Color(0xFF4338CA)
-                                )
-                            }
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    // Input & Button
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        OutlinedTextField(
-                            value = aiQuestion,
-                            onValueChange = { controller.updateAiQuestion(it) },
-                            placeholder = {
-                                Text(
-                                    text = "Tulis pertanyaanmu...",
-                                    fontSize = 12.sp,
-                                    color = TextSecondary
-                                )
-                            },
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(50.dp),
-                            shape = RoundedCornerShape(20.dp),
-                            colors = OutlinedTextFieldDefaults.colors(
-                                focusedBorderColor = PrimaryGreen,
-                                unfocusedBorderColor = BorderOutline,
-                                focusedContainerColor = Color(0xFFF8FAFC),
-                                unfocusedContainerColor = Color(0xFFF8FAFC)
-                            ),
-                            singleLine = true
-                        )
-
-                        Spacer(modifier = Modifier.width(8.dp))
-
-                        Box(
-                            modifier = Modifier
-                                .clip(ShapeBadgePill)
-                                .background(if (aiQuestion.isNotBlank() && !isLoadingAi) PrimaryGreen else Color(0xFFCBD5E1))
-                                .clickable(enabled = aiQuestion.isNotBlank() && !isLoadingAi) {
-                                    controller.askSensei()
-                                }
-                                .padding(horizontal = 14.dp, vertical = 12.dp)
-                        ) {
-                            if (isLoadingAi) {
-                                CircularProgressIndicator(
-                                    modifier = Modifier.size(16.dp),
-                                    color = Color.White,
-                                    strokeWidth = 2.dp
-                                )
-                            } else {
-                                Text(
-                                    text = "Tanya",
-                                    fontSize = 13.sp,
+                                    text = particle.character,
+                                    fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = Color.White
+                                    color = if (isSelected) Color.White else PrimaryGreen
                                 )
                             }
-                        }
-                    }
 
-                    // AI Explanation Result Card
-                    AnimatedVisibility(
-                        visible = aiAnswer != null,
-                        enter = fadeIn() + expandVertically(),
-                        exit = fadeOut() + shrinkVertically()
-                    ) {
-                        Spacer(modifier = Modifier.height(12.dp))
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(Color(0xFFF0FDF4))
-                                .border(1.dp, Color(0xFFBBF7D0), RoundedCornerShape(12.dp))
-                                .padding(12.dp)
-                        ) {
-                            Column {
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
+                            Spacer(modifier = Modifier.width(14.dp))
+
+                            Column(modifier = Modifier.weight(1f)) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
                                     Text(
-                                        text = "💡 Jawaban Kotoba Sensei:",
-                                        fontSize = 12.sp,
+                                        text = particle.romaji.uppercase(),
+                                        fontSize = 14.sp,
                                         fontWeight = FontWeight.Bold,
+                                        color = TextPrimary
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text(
+                                        text = "• ${particle.title}",
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.SemiBold,
                                         color = PrimaryGreen
                                     )
-                                    Box(
-                                        modifier = Modifier
-                                            .size(24.dp)
-                                            .clip(CircleShape)
-                                            .background(Color.White)
-                                            .clickable { controller.clearAiAnswer() },
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text(text = "✕", fontSize = 11.sp, color = TextSecondary)
-                                    }
                                 }
-                                Spacer(modifier = Modifier.height(6.dp))
+                                Spacer(modifier = Modifier.height(3.dp))
                                 Text(
-                                    text = aiAnswer ?: "",
+                                    text = particle.explanation,
                                     fontSize = 12.sp,
-                                    color = TextPrimary,
-                                    lineHeight = 18.sp
+                                    color = TextSecondary,
+                                    maxLines = if (isSelected) Int.MAX_VALUE else 2
                                 )
                             }
                         }
-                    }
-                }
-            }
-        }
 
-        // Section Title: Partikel Dasar N5
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Daftar Partikel & Tata Bahasa N5",
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = TextPrimary
-                )
-                Text(
-                    text = "${filteredParticles.size} Item",
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = PrimaryGreen
-                )
-            }
-        }
-
-        // Particle Cards
-        items(filteredParticles, key = { it.id }) { particle ->
-            val isSelected = selectedParticle?.id == particle.id
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(ShapeCardMedium)
-                    .background(SurfaceCard)
-                    .border(
-                        width = if (isSelected) 2.dp else 1.dp,
-                        color = if (isSelected) PrimaryGreen else BorderOutline,
-                        shape = ShapeCardMedium
-                    )
-                    .clickable { controller.selectParticle(particle) }
-                    .padding(14.dp)
-            ) {
-                Column {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(46.dp)
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(if (isSelected) PrimaryGreen else PrimarySurface),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(
-                                text = particle.character,
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = if (isSelected) Color.White else PrimaryGreen
-                            )
-                        }
-
-                        Spacer(modifier = Modifier.width(12.dp))
-
-                        Column(modifier = Modifier.weight(1f)) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
+                        // Expanded Details
+                        AnimatedVisibility(visible = isSelected) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(top = 14.dp)
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .background(Color(0xFFF8FAFC))
+                                    .border(1.dp, BorderOutline, RoundedCornerShape(12.dp))
+                                    .padding(14.dp)
+                            ) {
                                 Text(
-                                    text = particle.romaji.uppercase(),
+                                    text = "📝 Contoh Kalimat:",
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = TextSecondary
+                                )
+                                Spacer(modifier = Modifier.height(6.dp))
+                                Text(
+                                    text = particle.exampleJp,
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = TextPrimary
                                 )
-                                Spacer(modifier = Modifier.width(6.dp))
+                                Spacer(modifier = Modifier.height(2.dp))
                                 Text(
-                                    text = "• ${particle.title}",
+                                    text = particle.exampleRomaji,
                                     fontSize = 12.sp,
-                                    fontWeight = FontWeight.SemiBold,
+                                    fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
                                     color = PrimaryGreen
                                 )
-                            }
-                            Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = particle.explanation,
-                                fontSize = 12.sp,
-                                color = TextSecondary,
-                                maxLines = if (isSelected) Int.MAX_VALUE else 2
-                            )
-                        }
-                    }
-
-                    // Expanded Details
-                    AnimatedVisibility(visible = isSelected) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 12.dp)
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(Color(0xFFF8FAFC))
-                                .border(1.dp, BorderOutline, RoundedCornerShape(10.dp))
-                                .padding(12.dp)
-                        ) {
-                            Text(
-                                text = "📝 Contoh Kalimat:",
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = TextSecondary
-                            )
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = particle.exampleJp,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = TextPrimary
-                            )
-                            Text(
-                                text = particle.exampleRomaji,
-                                fontSize = 12.sp,
-                                fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
-                                color = PrimaryGreen
-                            )
-                            Text(
-                                text = particle.exampleMeaning,
-                                fontSize = 12.sp,
-                                color = TextSecondary
-                            )
-
-                            Spacer(modifier = Modifier.height(8.dp))
-
-                            Box(
-                                modifier = Modifier
-                                    .clip(ShapeBadgePill)
-                                    .background(PastelGreen)
-                                    .clickable {
-                                        val prompt = "Jelaskan lebih detail penggunaan partikel ${particle.character} (${particle.romaji}) dan beri 2 contoh kalimat lagi."
-                                        controller.updateAiQuestion(prompt)
-                                        controller.askSensei(prompt)
-                                    }
-                                    .padding(horizontal = 12.dp, vertical = 6.dp)
-                            ) {
+                                Spacer(modifier = Modifier.height(2.dp))
                                 Text(
-                                    text = "✨ Tanya Detail ke Sensei",
-                                    fontSize = 11.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = PrimaryGreen
+                                    text = particle.exampleMeaning,
+                                    fontSize = 12.sp,
+                                    color = TextSecondary
                                 )
+
+                                Spacer(modifier = Modifier.height(10.dp))
+
+                                Box(
+                                    modifier = Modifier
+                                        .clip(ShapeBadgePill)
+                                        .background(PastelGreen)
+                                        .clickable {
+                                            val prompt = "Jelaskan lebih detail penggunaan partikel ${particle.character} (${particle.romaji}) dan beri 2 contoh kalimat lagi."
+                                            controller.updateAiQuestion(prompt)
+                                            controller.askSensei(prompt)
+                                        }
+                                        .padding(horizontal = 14.dp, vertical = 7.dp)
+                                ) {
+                                    Text(
+                                        text = "✨ Tanya Detail ke Sensei",
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = PrimaryGreen
+                                    )
+                                }
                             }
                         }
                     }
