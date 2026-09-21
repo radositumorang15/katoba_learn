@@ -26,10 +26,33 @@ workflows:
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             archive
-      - name: Export Payload to IPA
+      - name: Package IPA with Embedded Frameworks
         script: |
           mkdir -p $CM_BUILD_DIR/Payload
-          cp -r $CM_BUILD_DIR/iosApp.xcarchive/Products/Applications/*.app $CM_BUILD_DIR/Payload/
+          APP_PATH=$(find "$CM_BUILD_DIR/iosApp.xcarchive/Products/Applications" -maxdepth 1 -name "*.app" | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            APP_PATH=$(ls -d $CM_BUILD_DIR/iosApp.xcarchive/Products/Applications/*.app | head -n 1)
+          fi
+          echo "Found app at: $APP_PATH"
+          cp -r "$APP_PATH" $CM_BUILD_DIR/Payload/
+          
+          TARGET_APP="$CM_BUILD_DIR/Payload/$(basename "$APP_PATH")"
+          mkdir -p "$TARGET_APP/Frameworks"
+          
+          # Salin framework ComposeApp ke dalam bundle Frameworks agar dyld dapat menemukannya
+          FRAMEWORK_SRC="composeApp/build/bin/iosArm64/releaseFramework/ComposeApp.framework"
+          if [ ! -d "$FRAMEWORK_SRC" ]; then
+            FRAMEWORK_SRC="composeApp/build/xcode-frameworks/Release/iphoneos/ComposeApp.framework"
+          fi
+          
+          if [ -d "$FRAMEWORK_SRC" ]; then
+            echo "Copying ComposeApp.framework from $FRAMEWORK_SRC to $TARGET_APP/Frameworks/..."
+            cp -r "$FRAMEWORK_SRC" "$TARGET_APP/Frameworks/"
+          else
+            echo "WARNING: ComposeApp.framework not found in standard build directories!"
+          fi
+          
+          chmod -R 755 "$TARGET_APP"
           cd $CM_BUILD_DIR
           zip -qr katoba-ios.ipa Payload
     artifacts:
