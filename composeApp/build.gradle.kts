@@ -103,6 +103,10 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Kotoba"
             packageVersion = "1.0.0"
+
+            macOS {
+                entitlementsFile.set(project.file("src/desktopMain/resources/entitlements.plist"))
+            }
         }
     }
 }
