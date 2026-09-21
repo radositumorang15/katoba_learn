@@ -3,6 +3,7 @@ package id.kotoba.app.view.screens
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,7 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,9 +29,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import id.kotoba.app.view.theme.PastelGreen
+import id.kotoba.app.Res
+import id.kotoba.app.katoba
 import id.kotoba.app.view.theme.PrimaryGreen
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun SplashScreen(
@@ -59,26 +62,19 @@ fun SplashScreen(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.scale(scale)
         ) {
-            Box(
+            Image(
+                painter = painterResource(Res.drawable.katoba),
+                contentDescription = "Katoba App Icon",
                 modifier = Modifier
-                    .size(110.dp)
-                    .clip(CircleShape)
-                    .background(PastelGreen),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "言",
-                    fontSize = 52.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PrimaryGreen
-                )
-            }
+                    .size(136.dp)
+                    .clip(RoundedCornerShape(32.dp))
+            )
 
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
-                text = "Kotoba",
-                fontSize = 32.sp,
+                text = "Katoba",
+                fontSize = 34.sp,
                 fontWeight = FontWeight.Bold,
                 color = PrimaryGreen
             )

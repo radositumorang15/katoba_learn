@@ -22,7 +22,7 @@ class AiConversationController(
     private val initialWelcome = AiChatMessage(
         id = "welcome_1",
         sender = "sensei",
-        text = "Konnichiwa! (こんにちは！)\nSaya Kotoba Sensei ⛩️. Selamat datang di sesi Ngobrol Bebas! Ayo coba kirim sapaan atau ceritakan harimu dalam bahasa Jepang sederhana."
+        text = "Konnichiwa! (こんにちは！)\nSaya Katoba Sensei ⛩️. Selamat datang di sesi Ngobrol Bebas! Ayo coba kirim sapaan atau ceritakan harimu dalam bahasa Jepang sederhana."
     )
 
     private val _messages = MutableStateFlow<List<AiChatMessage>>(listOf(initialWelcome))

@@ -95,16 +95,31 @@ android {
     }
 }
 
+compose.resources {
+    publicResClass = true
+    packageOfResClass = "id.kotoba.app"
+}
+
 compose.desktop {
     application {
         mainClass = "id.kotoba.app.MainKt"
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "Kotoba"
+            packageName = "Katoba"
             packageVersion = "1.0.0"
+            description = "Katoba - Belajar Bahasa Jepang Anime"
+            copyright = "© 2026 Katoba"
+            vendor = "Katoba"
 
+            windows {
+                iconFile.set(project.file("src/desktopMain/resources/icon.ico"))
+            }
+            linux {
+                iconFile.set(project.file("src/desktopMain/resources/icon.png"))
+            }
             macOS {
+                iconFile.set(project.file("src/desktopMain/resources/icon.png"))
                 entitlementsFile.set(project.file("src/desktopMain/resources/entitlements.plist"))
             }
         }

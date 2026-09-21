@@ -80,7 +80,7 @@ class GeminiRepository(
         } else ""
 
         val systemInstruction = """
-            Kamu adalah "Kotoba Sensei", sensei bahasa Jepang yang ramah, antusias, dan menyukai anime.
+            Kamu adalah "Katoba Sensei", sensei bahasa Jepang yang ramah, antusias, dan menyukai anime.
             Target siswa: Pemula bahasa Jepang (level JLPT N5).
             Pedoman menjawab:
             1. Selalu balas dalam bahasa Jepang sederhana (N5) yang alami.

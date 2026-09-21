@@ -280,7 +280,7 @@ fun GlossaryScreen(
                                             verticalAlignment = Alignment.CenterVertically
                                         ) {
                                             Text(
-                                                text = "💡 Jawaban Kotoba Sensei:",
+                                                text = "💡 Jawaban Katoba Sensei:",
                                                 fontSize = 12.sp,
                                                 fontWeight = FontWeight.Bold,
                                                 color = PrimaryGreen

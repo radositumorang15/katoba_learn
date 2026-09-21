@@ -132,7 +132,7 @@ fun AiConversationScreen(
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
-                                text = "Kotoba Sensei",
+                                text = "Katoba Sensei",
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = TextPrimary
@@ -386,7 +386,7 @@ private fun ChatMessageItem(
                                 .padding(horizontal = 12.dp, vertical = 4.dp)
                         ) {
                             Text(
-                                text = "Kotoba Sensei",
+                                text = "Katoba Sensei",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = PrimaryGreen

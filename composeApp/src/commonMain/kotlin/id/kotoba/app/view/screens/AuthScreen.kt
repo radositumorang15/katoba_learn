@@ -1,5 +1,6 @@
 package id.kotoba.app.view.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -18,11 +19,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import id.kotoba.app.Res
+import id.kotoba.app.katoba
+import org.jetbrains.compose.resources.painterResource
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -83,25 +88,18 @@ fun AuthScreen(
             Spacer(modifier = Modifier.height(20.dp))
 
             // Logo icon
-            Box(
+            Image(
+                painter = painterResource(Res.drawable.katoba),
+                contentDescription = "Katoba Logo",
                 modifier = Modifier
-                    .size(70.dp)
-                    .clip(CircleShape)
-                    .background(PastelGreen),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "言",
-                    fontSize = 32.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PrimaryGreen
-                )
-            }
+                    .size(76.dp)
+                    .clip(RoundedCornerShape(18.dp))
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = if (authMode == AuthMode.SIGN_IN) "Selamat Datang Kembali!" else "Buat Akun Kotoba",
+                text = if (authMode == AuthMode.SIGN_IN) "Selamat Datang Kembali!" else "Buat Akun Katoba",
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary
@@ -247,7 +245,7 @@ fun AuthScreen(
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
-                        text = "Saya berusia 13+ tahun & menyetujui Kebijakan Privasi serta Syarat Ketentuan Kotoba.",
+                        text = "Saya berusia 13+ tahun & menyetujui Kebijakan Privasi serta Syarat Ketentuan Katoba.",
                         fontSize = 11.sp,
                         color = TextSecondary,
                         lineHeight = 16.sp
@@ -280,7 +278,7 @@ fun AuthScreen(
                 Text(
                     text = when {
                         isLoading -> "Menghubungkan ke Neon... ⏳"
-                        authMode == AuthMode.SIGN_IN -> "Masuk ke Kotoba"
+                        authMode == AuthMode.SIGN_IN -> "Masuk ke Katoba"
                         else -> "Daftar Sekarang"
                     },
                     color = Color.White,

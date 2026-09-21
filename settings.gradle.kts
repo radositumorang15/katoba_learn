@@ -1,4 +1,4 @@
-rootProject.name = "Kotoba"
+rootProject.name = "Katoba"
 
 pluginManagement {
     repositories {
