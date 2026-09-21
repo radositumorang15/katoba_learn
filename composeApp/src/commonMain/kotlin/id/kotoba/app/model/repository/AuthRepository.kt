@@ -54,15 +54,18 @@ class AuthRepository(
         val result = neonAuthClient.signIn(email, password)
         return when (result) {
             is NeonAuthResult.Success -> {
-                val isRado = email.equals("radositumorang@gmail.com", ignoreCase = true)
+                val cleanEmail = result.user.email.trim()
+                val displayName = result.user.name?.takeIf { it.isNotBlank() }
+                    ?: cleanEmail.substringBefore("@").replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+                val initial = (displayName.firstOrNull() ?: cleanEmail.firstOrNull() ?: 'U').uppercase().toString()
                 val user = UserProfile(
                     id = result.user.id,
-                    displayName = result.user.name?.ifBlank { email.substringBefore("@") } ?: email.substringBefore("@"),
-                    email = result.user.email,
-                    totalXp = if (isRado) 150 else 50,
-                    currentStreak = if (isRado) 3 else 1,
-                    coins = if (isRado) 100 else 30,
-                    avatarLetter = (result.user.name?.firstOrNull() ?: email.firstOrNull() ?: 'U').uppercase().toString(),
+                    displayName = displayName,
+                    email = cleanEmail,
+                    totalXp = 50,
+                    currentStreak = 1,
+                    coins = 50,
+                    avatarLetter = initial,
                     titleBadge = "Anime Otaku Explorer"
                 )
                 persistSession(user, result.token)
@@ -78,14 +81,19 @@ class AuthRepository(
         val result = neonAuthClient.signUp(email, password, name)
         return when (result) {
             is NeonAuthResult.Success -> {
+                val cleanEmail = result.user.email.trim()
+                val displayName = name.trim().ifBlank {
+                    cleanEmail.substringBefore("@").replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+                }
+                val initial = (displayName.firstOrNull() ?: cleanEmail.firstOrNull() ?: 'K').uppercase().toString()
                 val user = UserProfile(
                     id = result.user.id,
-                    displayName = name.ifBlank { "Otaku Learner" },
-                    email = result.user.email,
+                    displayName = displayName,
+                    email = cleanEmail,
                     totalXp = 50,
                     currentStreak = 1,
                     coins = 50,
-                    avatarLetter = (name.firstOrNull() ?: 'K').uppercase().toString(),
+                    avatarLetter = initial,
                     titleBadge = "Kana Novice"
                 )
                 persistSession(user, result.token)
@@ -97,16 +105,20 @@ class AuthRepository(
         }
     }
 
-    fun login(email: String, name: String = "Rado Situmorang") {
-        val isRado = email.equals("radositumorang@gmail.com", ignoreCase = true)
+    fun login(email: String, name: String = "") {
+        val cleanEmail = email.trim()
+        val displayName = name.trim().ifBlank {
+            cleanEmail.substringBefore("@").replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+        }
+        val initial = (displayName.firstOrNull() ?: cleanEmail.firstOrNull() ?: 'U').uppercase().toString()
         val user = UserProfile(
-            id = if (isRado) "b2f3432b-e013-4ba5-942b-2d694a9bbdb8" else "user_${email.hashCode()}",
-            displayName = if (isRado) "Rado Situmorang" else name.ifBlank { "Otaku Learner" },
-            email = email,
-            totalXp = if (isRado) 150 else 50,
-            currentStreak = if (isRado) 3 else 1,
-            coins = if (isRado) 100 else 30,
-            avatarLetter = if (isRado) "R" else name.firstOrNull()?.uppercase() ?: "O",
+            id = "user_${cleanEmail.lowercase().hashCode().toString().removePrefix("-")}",
+            displayName = displayName,
+            email = cleanEmail,
+            totalXp = 50,
+            currentStreak = 1,
+            coins = 50,
+            avatarLetter = initial,
             titleBadge = "Anime Otaku Explorer"
         )
         persistSession(user, "demo_jwt_token")
