@@ -1,20 +1,53 @@
 package id.kotoba.app.model.repository
 
+import id.kotoba.app.model.AuthSession
 import id.kotoba.app.model.UserProfile
 import id.kotoba.app.model.remote.NeonAuthClient
 import id.kotoba.app.model.remote.NeonAuthResult
+import id.kotoba.app.platform.SessionStorage
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class AuthRepository(
-    private val neonAuthClient: NeonAuthClient = NeonAuthClient()
+    private val neonAuthClient: NeonAuthClient = NeonAuthClient(),
+    private val sessionStorage: SessionStorage = SessionStorage()
 ) {
     private val _currentUser = MutableStateFlow<UserProfile?>(null)
     val currentUser: StateFlow<UserProfile?> = _currentUser.asStateFlow()
 
+    private val _token = MutableStateFlow<String?>(null)
+    val token: StateFlow<String?> = _token.asStateFlow()
+
     private val _isLoggedIn = MutableStateFlow(false)
     val isLoggedIn: StateFlow<Boolean> = _isLoggedIn.asStateFlow()
+
+    init {
+        // Automatically restore session from persistent storage on startup
+        try {
+            val savedSession = sessionStorage.loadSession()
+            if (savedSession != null) {
+                _currentUser.value = savedSession.user
+                _token.value = savedSession.token
+                _isLoggedIn.value = true
+            }
+        } catch (e: Exception) {
+            // Ignore if corrupted
+        }
+    }
+
+    private fun persistSession(user: UserProfile, authToken: String) {
+        _currentUser.value = user
+        _token.value = authToken
+        _isLoggedIn.value = true
+        sessionStorage.saveSession(
+            AuthSession(
+                user = user,
+                token = authToken,
+                savedAtMillis = System.currentTimeMillis()
+            )
+        )
+    }
 
     suspend fun loginWithNeon(email: String, password: String): String? {
         val result = neonAuthClient.signIn(email, password)
@@ -31,8 +64,7 @@ class AuthRepository(
                     avatarLetter = (result.user.name?.firstOrNull() ?: email.firstOrNull() ?: 'U').uppercase().toString(),
                     titleBadge = "Anime Otaku Explorer"
                 )
-                _currentUser.value = user
-                _isLoggedIn.value = true
+                persistSession(user, result.token)
                 null
             }
             is NeonAuthResult.Error -> {
@@ -55,8 +87,7 @@ class AuthRepository(
                     avatarLetter = (name.firstOrNull() ?: 'K').uppercase().toString(),
                     titleBadge = "Kana Novice"
                 )
-                _currentUser.value = user
-                _isLoggedIn.value = true
+                persistSession(user, result.token)
                 null
             }
             is NeonAuthResult.Error -> {
@@ -77,8 +108,7 @@ class AuthRepository(
             avatarLetter = if (isRado) "R" else name.firstOrNull()?.uppercase() ?: "O",
             titleBadge = "Anime Otaku Explorer"
         )
-        _currentUser.value = user
-        _isLoggedIn.value = true
+        persistSession(user, "demo_jwt_token")
     }
 
     fun continueAsGuest() {
@@ -92,27 +122,32 @@ class AuthRepository(
             avatarLetter = "G",
             titleBadge = "Wanderer"
         )
-        _currentUser.value = guest
-        _isLoggedIn.value = true
+        persistSession(guest, "guest_token")
     }
 
     fun logout() {
+        sessionStorage.clearSession()
         _currentUser.value = null
+        _token.value = null
         _isLoggedIn.value = false
     }
 
     fun addRewards(xp: Int, coins: Int) {
         val current = _currentUser.value ?: return
-        _currentUser.value = current.copy(
+        val updated = current.copy(
             totalXp = current.totalXp + xp,
             coins = current.coins + coins
         )
+        _currentUser.value = updated
+        _token.value?.let { persistSession(updated, it) }
     }
 
     fun incrementStreak() {
         val current = _currentUser.value ?: return
-        _currentUser.value = current.copy(
+        val updated = current.copy(
             currentStreak = current.currentStreak + 1
         )
+        _currentUser.value = updated
+        _token.value?.let { persistSession(updated, it) }
     }
 }
