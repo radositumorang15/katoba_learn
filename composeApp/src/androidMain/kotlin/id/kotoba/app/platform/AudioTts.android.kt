@@ -11,6 +11,8 @@ import java.util.Locale
 actual class AudioTtsEngine : TextToSpeech.OnInitListener {
     private var tts: TextToSpeech? = null
     private var isInitialized = false
+    private var pendingText: String? = null
+    private var pendingLang: String = "ja"
 
     fun init(context: Context) {
         if (tts == null) {
@@ -25,12 +27,21 @@ actual class AudioTtsEngine : TextToSpeech.OnInitListener {
                 tts?.language = Locale.US
             }
             isInitialized = true
+            pendingText?.let {
+                speak(it, pendingLang)
+                pendingText = null
+            }
         }
     }
 
     actual fun speak(text: String, lang: String) {
         if (isInitialized) {
+            val locale = if (lang == "ja") Locale.JAPANESE else Locale.US
+            tts?.language = locale
             tts?.speak(text, TextToSpeech.QUEUE_FLUSH, null, "kotoba_${System.currentTimeMillis()}")
+        } else {
+            pendingText = text
+            pendingLang = lang
         }
     }
 
