@@ -1,0 +1,52 @@
+workflows:
+  kmp-ios-build:
+    name: Build Katoba iOS (Unsigned IPA)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      xcode: latest
+      java: 17
+    scripts:
+      - name: Set executable permissions
+        script: |
+          chmod +x gradlew
+      - name: Build KMP iOS Framework
+        script: |
+          ./gradlew :composeApp:linkReleaseFrameworkIosArm64
+      - name: Build unsigned iOS App via Xcodebuild
+        script: |
+          cd iosApp
+          xcodebuild \
+            -project iosApp.xcodeproj \
+            -scheme iosApp \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -archivePath $CM_BUILD_DIR/iosApp.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            archive
+      - name: Export Payload to IPA
+        script: |
+          mkdir -p $CM_BUILD_DIR/Payload
+          cp -r $CM_BUILD_DIR/iosApp.xcarchive/Products/Applications/*.app $CM_BUILD_DIR/Payload/
+          cd $CM_BUILD_DIR
+          zip -qr katoba-ios.ipa Payload
+    artifacts:
+      - katoba-ios.ipa
+
+  kmp-android-build:
+    name: Build Katoba Android (Release APK)
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    environment:
+      java: 17
+    scripts:
+      - name: Set executable permissions
+        script: |
+          chmod +x gradlew
+      - name: Build Android Release APK
+        script: |
+          ./gradlew :composeApp:assembleRelease
+    artifacts:
+      - composeApp/build/outputs/apk/release/*.apk

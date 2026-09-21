@@ -5,6 +5,7 @@ import id.kotoba.app.model.UserProfile
 import id.kotoba.app.model.remote.NeonAuthClient
 import id.kotoba.app.model.remote.NeonAuthResult
 import id.kotoba.app.platform.SessionStorage
+import id.kotoba.app.platform.getPlatformTimeMillis
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -44,7 +45,7 @@ class AuthRepository(
             AuthSession(
                 user = user,
                 token = authToken,
-                savedAtMillis = System.currentTimeMillis()
+                savedAtMillis = getPlatformTimeMillis()
             )
         )
     }
@@ -113,7 +114,7 @@ class AuthRepository(
 
     fun continueAsGuest() {
         val guest = UserProfile(
-            id = "guest_${System.currentTimeMillis()}",
+            id = "guest_${getPlatformTimeMillis()}",
             displayName = "Guest Explorer",
             email = "guest@kotoba.local",
             totalXp = 0,
