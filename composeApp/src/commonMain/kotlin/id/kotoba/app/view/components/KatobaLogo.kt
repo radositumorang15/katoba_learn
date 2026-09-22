@@ -66,9 +66,9 @@ fun KatobaLogo(
             )
         }
 
-        // Kanji 言 (kotoba / word / language)
+        // ASCII letter to avoid CJK font-cache lookup on first render (Sideloadly sandbox blocks vfs.disk-space)
         Text(
-            text = "言",
+            text = "K",
             color = Color.White,
             fontSize = (size.value * 0.45f).sp,
             fontWeight = FontWeight.Black
