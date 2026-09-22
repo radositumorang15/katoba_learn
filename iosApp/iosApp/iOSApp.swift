@@ -1,5 +1,6 @@
 import SwiftUI
 import ComposeApp
+import AVFoundation
 
 @main
 struct iOSApp: App {
@@ -21,7 +22,17 @@ struct iOSApp: App {
             NSLog("🚨 [FATAL SIGNAL] Caught SIGILL (%d)! App terminating.", sig)
         }
 
-        NSLog("✅ [KOTOBA] Crash handlers and signals installed")
+        // 3. Konfigurasi AVAudioSession ke .playback agar suara TTS tetap berbunyi meski iPhone dalam mode Silent/Hening
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(.playback, mode: .default, options: [.duckOthers])
+            try session.setActive(true)
+            NSLog("🔊 [KOTOBA] AVAudioSession successfully configured to .playback")
+        } catch {
+            NSLog("⚠️ [KOTOBA] Failed to configure AVAudioSession: %@", error.localizedDescription)
+        }
+
+        NSLog("✅ [KOTOBA] Crash handlers and audio session installed")
     }
 
     var body: some Scene {
