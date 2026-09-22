@@ -77,12 +77,9 @@ fun LearningScreen(
                 .widthIn(max = 680.dp)
                 .fillMaxWidth()
                 .fillMaxHeight()
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.SpaceBetween
+                .padding(horizontal = 20.dp, vertical = 14.dp)
         ) {
-        Column {
-            // Top Navigation & Progress Header
+            // FIXED HEADER: Terpisah dari scroll agar respon tap tombol Back instan tanpa delay gestur scroll
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -90,13 +87,14 @@ fun LearningScreen(
             ) {
                 Box(
                     modifier = Modifier
-                        .size(40.dp)
+                        .size(44.dp)
                         .clip(CircleShape)
                         .background(Color(0xFFF1F5F9))
-                        .clickable { controller.goBack() },
+                        .border(1.dp, BorderOutline, CircleShape)
+                        .clickable(onClick = { controller.goBack() }),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(text = "←", fontSize = 20.sp, color = TextPrimary)
+                    Text(text = "←", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 }
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -178,6 +176,18 @@ fun LearningScreen(
                 color = PrimaryGreen,
                 trackColor = Color(0xFFE2E8F0)
             )
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            // SCROLLABLE CONTENT: Hanya konten bawah yang di-scroll
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column {
 
             // Coach Mark Interactive Tooltip (PRD Fase 1.5)
             if (showCoachMark) {
@@ -356,5 +366,6 @@ fun LearningScreen(
             }
         }
     }
+}
 }
 }

@@ -103,14 +103,14 @@ fun GlossaryScreen(
                 ) {
                     Box(
                         modifier = Modifier
-                            .size(40.dp)
+                            .size(44.dp)
                             .clip(CircleShape)
                             .background(Color.White)
                             .border(1.dp, BorderOutline, CircleShape)
-                            .clickable { controller.goBack() },
+                            .clickable(onClick = { controller.goBack() }),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "←", fontSize = 18.sp, color = TextPrimary)
+                        Text(text = "←", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                     }
 
                     Spacer(modifier = Modifier.width(14.dp))

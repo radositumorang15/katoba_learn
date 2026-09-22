@@ -103,14 +103,14 @@ fun AiConversationScreen(
                     // Back button
                     Box(
                         modifier = Modifier
-                            .size(42.dp)
+                            .size(44.dp)
                             .clip(CircleShape)
                             .background(Color(0xFFF1F5F9))
                             .border(1.dp, BorderOutline, CircleShape)
-                            .clickable { controller.goBack() },
+                            .clickable(onClick = { controller.goBack() }),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "←", fontSize = 20.sp, color = TextPrimary)
+                        Text(text = "←", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                     }
 
                     Spacer(modifier = Modifier.width(12.dp))

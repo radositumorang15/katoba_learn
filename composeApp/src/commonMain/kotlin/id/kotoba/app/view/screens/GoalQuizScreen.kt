@@ -87,16 +87,22 @@ fun GoalQuizScreen(controller: GoalQuizController) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 if (currentStep > 0) {
-                    Text(
-                        text = "← Kembali",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Medium,
-                        color = TextSecondary,
+                    Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(8.dp))
-                            .clickable { controller.prevStep() }
-                            .padding(8.dp)
-                    )
+                            .background(Color(0xFFF1F5F9))
+                            .border(1.dp, BorderOutline, RoundedCornerShape(8.dp))
+                            .clickable(onClick = { controller.prevStep() })
+                            .padding(horizontal = 12.dp, vertical = 8.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "← Kembali",
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextPrimary
+                        )
+                    }
                 } else {
                     Spacer(modifier = Modifier.width(60.dp))
                 }

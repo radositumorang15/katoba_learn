@@ -108,13 +108,14 @@ fun QuizScreen(
                     ) {
                         Box(
                             modifier = Modifier
-                                .size(40.dp)
+                                .size(44.dp)
                                 .clip(CircleShape)
                                 .background(Color(0xFFF1F5F9))
-                                .clickable { controller.goBack() },
+                                .border(1.dp, BorderOutline, CircleShape)
+                                .clickable(onClick = { controller.goBack() }),
                             contentAlignment = Alignment.Center
                         ) {
-                            Text(text = "✕", fontSize = 16.sp, color = TextPrimary)
+                            Text(text = "✕", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                         }
 
                         Text(

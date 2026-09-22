@@ -36,15 +36,7 @@ class NavigationController {
 
     private val backStack = mutableListOf<Screen>()
 
-    fun navigateTo(screen: Screen, clearStack: Boolean = false) {
-        if (clearStack) {
-            backStack.clear()
-        } else {
-            backStack.add(_currentScreen.value)
-        }
-        _currentScreen.value = screen
-
-        // Sync tab if screen matches
+    private fun updateSelectedTab(screen: Screen) {
         when (screen) {
             is Screen.Home -> _selectedTab.value = BottomTab.HOME
             is Screen.Roadmap -> _selectedTab.value = BottomTab.ROADMAP
@@ -53,6 +45,16 @@ class NavigationController {
             is Screen.Profile -> _selectedTab.value = BottomTab.PROFILE
             else -> {}
         }
+    }
+
+    fun navigateTo(screen: Screen, clearStack: Boolean = false) {
+        if (clearStack) {
+            backStack.clear()
+        } else {
+            backStack.add(_currentScreen.value)
+        }
+        _currentScreen.value = screen
+        updateSelectedTab(screen)
     }
 
     fun selectTab(tab: BottomTab) {
@@ -69,7 +71,18 @@ class NavigationController {
     fun goBack(): Boolean {
         if (backStack.isNotEmpty()) {
             val prev = backStack.removeAt(backStack.size - 1)
-            _currentScreen.value = prev
+            val targetScreen = if (prev is Screen.Splash || prev is Screen.Onboarding || prev is Screen.Auth) {
+                Screen.Home
+            } else {
+                prev
+            }
+            _currentScreen.value = targetScreen
+            updateSelectedTab(targetScreen)
+            return true
+        } else if (_currentScreen.value !is Screen.Home) {
+            // Fallback aman jika backStack kosong dan user tidak di Home
+            _currentScreen.value = Screen.Home
+            _selectedTab.value = BottomTab.HOME
             return true
         }
         return false

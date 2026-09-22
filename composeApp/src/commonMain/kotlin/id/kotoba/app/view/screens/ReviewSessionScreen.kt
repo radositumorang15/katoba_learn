@@ -2,6 +2,7 @@ package id.kotoba.app.view.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -85,16 +86,22 @@ fun ReviewSessionScreen(controller: ReviewSessionController) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(
-                        text = "✕ Keluar",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Medium,
-                        color = TextSecondary,
+                    Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(8.dp))
-                            .clickable { controller.exitSession() }
-                            .padding(8.dp)
-                    )
+                            .background(Color(0xFFF1F5F9))
+                            .border(1.dp, BorderOutline, RoundedCornerShape(8.dp))
+                            .clickable(onClick = { controller.exitSession() })
+                            .padding(horizontal = 12.dp, vertical = 8.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "✕ Keluar",
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextPrimary
+                        )
+                    }
 
                     Box(
                         modifier = Modifier
