@@ -3,6 +3,7 @@
 package id.kotoba.app.platform
 
 import id.kotoba.app.model.AuthSession
+import id.kotoba.app.model.UserGoal
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.serialization.json.Json
 import platform.Foundation.NSFileManager
@@ -17,10 +18,16 @@ import platform.Foundation.writeToFile
 actual class SessionStorage {
     private val json = Json { ignoreUnknownKeys = true }
     private val fileName = "kotoba_auth_session.json"
+    private val goalFileName = "kotoba_user_goal.json"
     private var memorySession: AuthSession? = null
+    private var memoryGoal: UserGoal? = null
 
     private fun getFilePath(): String {
         return "${NSHomeDirectory()}/Documents/$fileName"
+    }
+
+    private fun getGoalFilePath(): String {
+        return "${NSHomeDirectory()}/Documents/$goalFileName"
     }
 
     actual fun saveSession(session: AuthSession) {
@@ -68,5 +75,52 @@ actual class SessionStorage {
             // Silently ignore deletion failures
         }
     }
+
+    actual fun saveGoal(goal: UserGoal) {
+        memoryGoal = goal
+        try {
+            val path = getGoalFilePath()
+            val text = json.encodeToString(UserGoal.serializer(), goal)
+            val nsString = NSString.create(string = text)
+            nsString.writeToFile(path, atomically = true, encoding = NSUTF8StringEncoding, error = null)
+        } catch (_: Throwable) {
+            // Silently ignore write failures
+        }
+    }
+
+    actual fun loadGoal(): UserGoal? {
+        memoryGoal?.let { return it }
+        return try {
+            val path = getGoalFilePath()
+            val fileManager = NSFileManager.defaultManager
+            if (!fileManager.fileExistsAtPath(path)) {
+                return null
+            }
+            val text = NSString.stringWithContentsOfFile(path, encoding = NSUTF8StringEncoding, error = null)
+            if (!text.isNullOrBlank()) {
+                val goal = json.decodeFromString(UserGoal.serializer(), text)
+                memoryGoal = goal
+                goal
+            } else {
+                null
+            }
+        } catch (_: Throwable) {
+            null
+        }
+    }
+
+    actual fun clearGoal() {
+        memoryGoal = null
+        try {
+            val path = getGoalFilePath()
+            val fileManager = NSFileManager.defaultManager
+            if (fileManager.fileExistsAtPath(path)) {
+                fileManager.removeItemAtPath(path, error = null)
+            }
+        } catch (_: Throwable) {
+            // Silently ignore deletion failures
+        }
+    }
 }
+
 

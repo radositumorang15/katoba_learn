@@ -7,6 +7,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import id.kotoba.app.model.repository.GoalsRepository
 import kotlinx.coroutines.launch
 
 enum class AuthMode {
@@ -16,7 +17,8 @@ enum class AuthMode {
 
 class AuthController(
     private val authRepo: AuthRepository,
-    private val navController: NavigationController
+    private val navController: NavigationController,
+    private val goalsRepo: GoalsRepository? = null
 ) {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
@@ -91,6 +93,11 @@ class AuthController(
                         // Route to Goal Quiz directly after Sign Up (PRD Fase 1.5)
                         navController.navigateTo(Screen.GoalQuiz, clearStack = true)
                     } else {
+                        // Existing user on relog: mark default completed if not set and go straight to Home
+                        val user = authRepo.currentUser.value
+                        if (user != null) {
+                            goalsRepo?.markDefaultCompleted(user.id)
+                        }
                         navController.navigateTo(Screen.Home, clearStack = true)
                     }
                 } else {
@@ -105,6 +112,10 @@ class AuthController(
 
     fun continueAsGuest() {
         authRepo.continueAsGuest()
-        navController.navigateTo(Screen.GoalQuiz, clearStack = true)
+        if (goalsRepo?.hasCompletedGoalQuiz() == true) {
+            navController.navigateTo(Screen.Home, clearStack = true)
+        } else {
+            navController.navigateTo(Screen.GoalQuiz, clearStack = true)
+        }
     }
 }

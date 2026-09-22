@@ -45,8 +45,12 @@ class ReviewSessionController(
         val due = srsRepo.getDueItems(allItems)
         _reviewItems.value = due
         if (due.isNotEmpty()) {
-            // Play audio prompt for first card
-            ttsEngine.speak(due.first().audioPrompt)
+            // Play audio prompt for first card safely
+            runCatching {
+                ttsEngine.speak(due.first().audioPrompt)
+            }.onFailure {
+                println("⚠️ [ReviewSession] Audio autoplay failed: ${it.message}")
+            }
         }
     }
 
@@ -63,7 +67,11 @@ class ReviewSessionController(
 
     fun playAudio() {
         currentItem?.let { item ->
-            ttsEngine.speak(item.audioPrompt)
+            runCatching {
+                ttsEngine.speak(item.audioPrompt)
+            }.onFailure {
+                println("⚠️ [ReviewSession] Play audio failed: ${it.message}")
+            }
         }
     }
 
@@ -92,9 +100,11 @@ class ReviewSessionController(
         val nextIdx = _currentIndex.value + 1
         if (nextIdx < _reviewItems.value.size) {
             _currentIndex.value = nextIdx
-            // Play next audio
+            // Play next audio safely
             _reviewItems.value.getOrNull(nextIdx)?.let {
-                ttsEngine.speak(it.audioPrompt)
+                runCatching {
+                    ttsEngine.speak(it.audioPrompt)
+                }
             }
         } else {
             // Completed session!
@@ -107,6 +117,7 @@ class ReviewSessionController(
     }
 
     fun exitSession() {
+        runCatching { ttsEngine.stop() }
         navController.navigateTo(Screen.Home, clearStack = true)
     }
 }

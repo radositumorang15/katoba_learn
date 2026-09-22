@@ -129,7 +129,7 @@ fun ReviewSessionScreen(controller: ReviewSessionController) {
 
                 // Progress Indicator
                 val progressFraction = if (reviewItems.isNotEmpty()) {
-                    (currentIndex + 1).toFloat() / reviewItems.size
+                    ((currentIndex + 1).toFloat() / reviewItems.size).coerceIn(0f, 1f)
                 } else 1f
 
                 LinearProgressIndicator(

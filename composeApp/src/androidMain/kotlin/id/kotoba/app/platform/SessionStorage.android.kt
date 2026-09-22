@@ -3,6 +3,7 @@ package id.kotoba.app.platform
 import android.content.Context
 import android.content.SharedPreferences
 import id.kotoba.app.model.AuthSession
+import id.kotoba.app.model.UserGoal
 import kotlinx.serialization.json.Json
 
 actual class SessionStorage {
@@ -58,4 +59,33 @@ actual class SessionStorage {
             e.printStackTrace()
         }
     }
+
+    actual fun saveGoal(goal: UserGoal) {
+        try {
+            val text = json.encodeToString(UserGoal.serializer(), goal)
+            getPrefs()?.edit()?.putString("user_goal", text)?.apply()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    actual fun loadGoal(): UserGoal? {
+        return try {
+            val text = getPrefs()?.getString("user_goal", null)
+            if (!text.isNullOrBlank()) {
+                json.decodeFromString(UserGoal.serializer(), text)
+            } else null
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    actual fun clearGoal() {
+        try {
+            getPrefs()?.edit()?.remove("user_goal")?.apply()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }
+

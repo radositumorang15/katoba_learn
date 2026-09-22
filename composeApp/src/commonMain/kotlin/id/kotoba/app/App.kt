@@ -144,8 +144,8 @@ private fun AppContent(state: AppState) {
     val profileController = remember(authRepository, progressRepository, navController) {
         ProfileController(authRepository, progressRepository, navController)
     }
-    val authController = remember(authRepository, navController) {
-        AuthController(authRepository, navController)
+    val authController = remember(authRepository, goalsRepository, navController) {
+        AuthController(authRepository, navController, goalsRepository)
     }
     val goalQuizController = remember(goalsRepository, progressRepository, authRepository, navController) {
         GoalQuizController(goalsRepository, progressRepository, authRepository, navController)
@@ -159,7 +159,12 @@ private fun AppContent(state: AppState) {
             SplashScreen(
                 onFinished = {
                     if (isLoggedIn) {
+                        val user = authRepository.currentUser.value
                         if (goalsRepository.hasCompletedGoalQuiz()) {
+                            navController.navigateTo(Screen.Home, clearStack = true)
+                        } else if (user != null && user.email.isNotBlank()) {
+                            // Existing registered user shouldn't be trapped in goal quiz
+                            goalsRepository.markDefaultCompleted(user.id)
                             navController.navigateTo(Screen.Home, clearStack = true)
                         } else {
                             navController.navigateTo(Screen.GoalQuiz, clearStack = true)
