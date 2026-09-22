@@ -58,7 +58,7 @@ actual class GeminiApiClient actual constructor() {
             return@withContext GeminiResult.Error("URL endpoint Gemini tidak valid")
         }
 
-        val request = NSMutableURLRequest.requestWithURL(nsUrl).apply {
+        val request = (NSMutableURLRequest.requestWithURL(nsUrl) as NSMutableURLRequest).apply {
             setHTTPMethod("POST")
             setValue("application/json; charset=utf-8", forHTTPHeaderField = "Content-Type")
             val postData: NSData? = NSString.create(string = bodyString).dataUsingEncoding(NSUTF8StringEncoding)
@@ -90,6 +90,7 @@ actual class GeminiApiClient actual constructor() {
                         val parsed = json.parseToJsonElement(responseText).jsonObject
                         val candidates = parsed["candidates"]?.jsonArray
                         val firstCandidate = candidates?.firstOrNull()?.jsonObject
+                        val parts = firstCandidate?.get("content")?.jsonObject?.get("parts")?.jsonArray
                         val fullText = parts?.mapNotNull { part ->
                             runCatching { part.jsonObject["text"]?.jsonPrimitive?.content }.getOrNull()
                         }?.filter { it.isNotBlank() }?.joinToString("\n")

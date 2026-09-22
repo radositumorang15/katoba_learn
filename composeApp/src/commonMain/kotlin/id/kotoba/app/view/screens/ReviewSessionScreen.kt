@@ -277,15 +277,30 @@ fun ReviewSessionScreen(controller: ReviewSessionController) {
                             horizontalArrangement = Arrangement.SpaceEvenly
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text(text = "$correctCount", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = SuccessGreen)
+                                Text(
+                                    text = "$correctCount",
+                                    fontSize = 22.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = SuccessGreen
+                                )
                                 Text(text = "Hafal", fontSize = 12.sp, color = TextSecondary)
                             }
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text(text = "$repeatCount", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = ErrorRed)
+                                Text(
+                                    text = "$repeatCount",
+                                    fontSize = 22.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = ErrorRed
+                                )
                                 Text(text = "Diulang", fontSize = 12.sp, color = TextSecondary)
                             }
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text(text = "+$earnedXp", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = WarmYellow)
+                                Text(
+                                    text = "+$earnedXp",
+                                    fontSize = 22.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = WarmYellow
+                                )
                                 Text(text = "XP Didapat", fontSize = 12.sp, color = TextSecondary)
                             }
                         }
