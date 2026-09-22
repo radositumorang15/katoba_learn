@@ -21,7 +21,7 @@ import java.net.SocketTimeoutException
 
 actual class GeminiApiClient {
     private val apiKey = "AQ.Ab8RN6IzWaMMe8iUAeTzq1ApVtSbKYJBExuJ2LvqhuFfJj7dCw"
-    private val endpointUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=$apiKey"
+    private val endpointUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$apiKey"
     private val json = Json { ignoreUnknownKeys = true }
 
     actual suspend fun generateContent(prompt: String, systemInstruction: String?): GeminiResult = withContext(Dispatchers.IO) {

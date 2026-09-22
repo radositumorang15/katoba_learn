@@ -27,6 +27,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -35,10 +36,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -75,11 +79,21 @@ fun AiConversationScreen(
     }
 
     // Centered responsive container across Desktop, Tablet & Mobile
+    val focusManager = LocalFocusManager.current
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     Box(
         modifier = modifier
             .fillMaxSize()
             .background(Color(0xFFF8FAFC))
-            .imePadding(),
+            .imePadding()
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) {
+                focusManager.clearFocus(force = true)
+                keyboardController?.hide()
+            },
         contentAlignment = Alignment.TopCenter
     ) {
         Column(
@@ -227,7 +241,14 @@ fun AiConversationScreen(
                 state = listState,
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
+                        focusManager.clearFocus(force = true)
+                        keyboardController?.hide()
+                    },
                 contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
@@ -249,15 +270,14 @@ fun AiConversationScreen(
                                 .padding(horizontal = 14.dp, vertical = 8.dp)
                         ) {
                             CircularProgressIndicator(
-                                modifier = Modifier.size(14.dp),
+                                modifier = Modifier.size(16.dp),
                                 color = PrimaryGreen,
                                 strokeWidth = 2.dp
                             )
-                            Spacer(modifier = Modifier.width(10.dp))
+                            Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Sensei sedang membalas...",
+                                text = "Sensei sedang menyusun balasan...",
                                 fontSize = 12.sp,
-                                fontWeight = FontWeight.Medium,
                                 color = PrimaryGreen
                             )
                         }
@@ -265,7 +285,7 @@ fun AiConversationScreen(
                 }
             }
 
-            // Bottom Input Area
+            // Bottom Input Bar
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -287,6 +307,18 @@ fun AiConversationScreen(
                                 color = TextSecondary
                             )
                         },
+                        keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
+                            imeAction = androidx.compose.ui.text.input.ImeAction.Send
+                        ),
+                        keyboardActions = androidx.compose.foundation.text.KeyboardActions(
+                            onSend = {
+                                if (inputText.isNotBlank() && !isLoading) {
+                                    controller.sendMessage()
+                                    focusManager.clearFocus(force = true)
+                                    keyboardController?.hide()
+                                }
+                            }
+                        ),
                         modifier = Modifier
                             .weight(1f)
                             .height(52.dp),
@@ -310,6 +342,8 @@ fun AiConversationScreen(
                             .background(if (inputText.isNotBlank() && !isLoading) PrimaryGreen else Color(0xFFCBD5E1))
                             .clickable(enabled = inputText.isNotBlank() && !isLoading) {
                                 controller.sendMessage()
+                                focusManager.clearFocus(force = true)
+                                keyboardController?.hide()
                             },
                         contentAlignment = Alignment.Center
                     ) {

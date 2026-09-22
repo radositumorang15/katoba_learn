@@ -34,6 +34,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -81,17 +82,34 @@ fun GlossaryScreen(
         "Beda です dan だ?"
     )
 
+    val focusManager = androidx.compose.ui.platform.LocalFocusManager.current
+    val keyboardController = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
+
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFF8FAFC)),
+            .background(Color(0xFFF8FAFC))
+            .clickable(
+                interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() },
+                indication = null
+            ) {
+                focusManager.clearFocus(force = true)
+                keyboardController?.hide()
+            },
         contentAlignment = Alignment.TopCenter
     ) {
         LazyColumn(
             modifier = Modifier
                 .widthIn(max = 760.dp)
                 .fillMaxWidth()
-                .fillMaxHeight(),
+                .fillMaxHeight()
+                .clickable(
+                    interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() },
+                    indication = null
+                ) {
+                    focusManager.clearFocus(force = true)
+                    keyboardController?.hide()
+                },
             contentPadding = PaddingValues(horizontal = 20.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -186,6 +204,8 @@ fun GlossaryScreen(
                                         .clickable {
                                             controller.updateAiQuestion(q)
                                             controller.askSensei(q)
+                                            focusManager.clearFocus(force = true)
+                                            keyboardController?.hide()
                                         }
                                         .padding(horizontal = 12.dp, vertical = 6.dp)
                                 ) {
@@ -216,6 +236,18 @@ fun GlossaryScreen(
                                         color = TextSecondary
                                     )
                                 },
+                                keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(
+                                    imeAction = androidx.compose.ui.text.input.ImeAction.Search
+                                ),
+                                keyboardActions = androidx.compose.foundation.text.KeyboardActions(
+                                    onSearch = {
+                                        if (aiQuestion.isNotBlank() && !isLoadingAi) {
+                                            controller.askSensei()
+                                            focusManager.clearFocus(force = true)
+                                            keyboardController?.hide()
+                                        }
+                                    }
+                                ),
                                 modifier = Modifier
                                     .weight(1f)
                                     .height(52.dp),
@@ -241,6 +273,8 @@ fun GlossaryScreen(
                                     )
                                     .clickable(enabled = aiQuestion.isNotBlank() && !isLoadingAi) {
                                         controller.askSensei()
+                                        focusManager.clearFocus(force = true)
+                                        keyboardController?.hide()
                                     }
                                     .padding(horizontal = 16.dp, vertical = 13.dp)
                             ) {
