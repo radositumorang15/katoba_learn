@@ -37,20 +37,29 @@ actual class AudioTtsEngine {
             sharedSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.AVSpeechBoundaryImmediate)
 
             val voiceCode = if (lang == "ja") "ja-JP" else "en-US"
-            val voice = AVSpeechSynthesisVoice.voiceWithLanguage(voiceCode)
-                ?: AVSpeechSynthesisVoice.speechVoices()
-                    .filterIsInstance<AVSpeechSynthesisVoice>()
-                    .firstOrNull { it.language.startsWith(if (lang == "ja") "ja" else "en", ignoreCase = true) }
-                ?: AVSpeechSynthesisVoice.voiceWithLanguage("en-US")
+            val matchingVoices = AVSpeechSynthesisVoice.speechVoices()
+                .filterIsInstance<AVSpeechSynthesisVoice>()
+                .filter { it.language.startsWith(if (lang == "ja") "ja" else "en", ignoreCase = true) }
+
+            // Prioritize highest quality voice installed (Premium > Enhanced > Default)
+            val voice = matchingVoices.maxByOrNull { it.quality }
+                ?: AVSpeechSynthesisVoice.voiceWithLanguage(voiceCode)
                 ?: AVSpeechSynthesisVoice.speechVoices().firstOrNull() as? AVSpeechSynthesisVoice
 
             val utterance = AVSpeechUtterance(string = text).apply {
                 this.voice = voice
                 this.volume = 1.0f
+                // Kecepatan 0.44f membuat pengucapan huruf Kana satu per satu (seperti 'あ', 'い')
+                // terdengar sangat jelas, artikulatif, dan tidak terburu-buru/terpotong.
+                this.rate = 0.44f
+                this.pitchMultiplier = 1.0f
+                // Memberi jeda 50ms agar DAC hardware speaker iPhone siap dan tidak memotong huruf depan
+                this.preUtteranceDelay = 0.05
             }
 
             if (voice != null) {
-                NSLog("🔊 [AudioTts] Speaking: '%@' with voice: %@ (%@)", text, voice.name, voice.language)
+                NSLog("🔊 [AudioTts] Speaking: '%@' with voice: %@ (quality=%ld, lang=%@)", 
+                    text, voice.name, voice.quality.toLong(), voice.language)
             } else {
                 NSLog("⚠️ [AudioTts] Speaking: '%@' with system default voice (no %@ voice found)", text, voiceCode)
             }

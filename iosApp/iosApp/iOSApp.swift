@@ -22,12 +22,12 @@ struct iOSApp: App {
             NSLog("🚨 [FATAL SIGNAL] Caught SIGILL (%d)! App terminating.", sig)
         }
 
-        // 3. Konfigurasi AVAudioSession ke .playback agar suara TTS tetap berbunyi meski iPhone dalam mode Silent/Hening
+        // 3. Konfigurasi AVAudioSession ke .playback dengan mode .spokenAudio agar vokal TTS jernih & lantang walau iPhone dalam mode Silent/Hening
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playback, mode: .default, options: [.duckOthers])
+            try session.setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
             try session.setActive(true)
-            NSLog("🔊 [KOTOBA] AVAudioSession successfully configured to .playback")
+            NSLog("🔊 [KOTOBA] AVAudioSession configured to .playback with mode .spokenAudio")
         } catch {
             NSLog("⚠️ [KOTOBA] Failed to configure AVAudioSession: %@", error.localizedDescription)
         }
