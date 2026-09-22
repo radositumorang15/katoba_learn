@@ -99,7 +99,7 @@ class AiConversationController(
             line.any { it in '\u3040'..'\u30ff' || it in '\u4e00'..'\u9faf' }
         } ?: lines.firstOrNull() ?: messageText
 
-        ttsEngine.speak(japaneseCandidate)
+        runCatching { ttsEngine.speak(japaneseCandidate) }
     }
 
     fun dismissError() {

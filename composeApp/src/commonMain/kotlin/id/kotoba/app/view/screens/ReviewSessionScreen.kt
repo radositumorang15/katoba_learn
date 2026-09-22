@@ -232,16 +232,16 @@ fun ReviewSessionScreen(controller: ReviewSessionController) {
                     modifier = Modifier
                         .size(80.dp)
                         .clip(CircleShape)
-                        .background(PastelGreen),
+                        .background(if (reviewItems.isEmpty()) PrimarySurface else PastelGreen),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(text = "🌟", fontSize = 40.sp)
+                    Text(text = if (reviewItems.isEmpty()) "🎉" else "🌟", fontSize = 40.sp)
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = "Sesi Ulangan Selesai!",
+                    text = if (reviewItems.isEmpty()) "Belum Ada Kartu Jatuh Tempo!" else "Sesi Ulangan Selesai!",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = TextPrimary
@@ -250,7 +250,10 @@ fun ReviewSessionScreen(controller: ReviewSessionController) {
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Hebat! Semua item jatuh tempo hari ini telah dijadwalkan ulang oleh algoritma Spaced Repetition.",
+                    text = if (reviewItems.isEmpty())
+                        "Semua materi yang kamu pelajari masih tersimpan segar dalam ingatan! Cek kembali besok atau pelajari level baru."
+                    else
+                        "Hebat! Semua item jatuh tempo hari ini telah dijadwalkan ulang oleh algoritma Spaced Repetition.",
                     fontSize = 14.sp,
                     color = TextSecondary,
                     textAlign = TextAlign.Center,
@@ -259,35 +262,36 @@ fun ReviewSessionScreen(controller: ReviewSessionController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                // Stats Card
-                Surface(
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
-                    color = PrimarySurface.copy(alpha = 0.5f),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, PrimaryGreen.copy(alpha = 0.2f))
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(18.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly
+                // Stats Card (Only shown if items were reviewed)
+                if (reviewItems.isNotEmpty()) {
+                    Surface(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp),
+                        color = PrimarySurface.copy(alpha = 0.5f),
+                        border = androidx.compose.foundation.BorderStroke(1.dp, PrimaryGreen.copy(alpha = 0.2f))
                     ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(text = "$correctCount", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = SuccessGreen)
-                            Text(text = "Hafal", fontSize = 12.sp, color = TextSecondary)
-                        }
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(text = "$repeatCount", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = ErrorRed)
-                            Text(text = "Diulang", fontSize = 12.sp, color = TextSecondary)
-                        }
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(text = "+$earnedXp", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = WarmYellow)
-                            Text(text = "XP Didapat", fontSize = 12.sp, color = TextSecondary)
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(18.dp),
+                            horizontalArrangement = Arrangement.SpaceEvenly
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(text = "$correctCount", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = SuccessGreen)
+                                Text(text = "Hafal", fontSize = 12.sp, color = TextSecondary)
+                            }
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(text = "$repeatCount", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = ErrorRed)
+                                Text(text = "Diulang", fontSize = 12.sp, color = TextSecondary)
+                            }
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text(text = "+$earnedXp", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = WarmYellow)
+                                Text(text = "XP Didapat", fontSize = 12.sp, color = TextSecondary)
+                            }
                         }
                     }
+                    Spacer(modifier = Modifier.height(32.dp))
                 }
-
-                Spacer(modifier = Modifier.height(32.dp))
 
                 Button(
                     onClick = { controller.exitSession() },
@@ -305,9 +309,11 @@ fun ReviewSessionScreen(controller: ReviewSessionController) {
                 }
             }
 
-            ConfettiView(
-                modifier = Modifier.fillMaxSize()
-            )
+            if (earnedXp > 0) {
+                ConfettiView(
+                    modifier = Modifier.fillMaxSize()
+                )
+            }
         }
     }
 }

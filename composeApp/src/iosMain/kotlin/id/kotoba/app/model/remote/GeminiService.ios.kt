@@ -90,11 +90,12 @@ actual class GeminiApiClient actual constructor() {
                         val parsed = json.parseToJsonElement(responseText).jsonObject
                         val candidates = parsed["candidates"]?.jsonArray
                         val firstCandidate = candidates?.firstOrNull()?.jsonObject
-                        val parts = firstCandidate?.get("content")?.jsonObject?.get("parts")?.jsonArray
-                        val text = parts?.firstOrNull()?.jsonObject?.get("text")?.jsonPrimitive?.content
+                        val fullText = parts?.mapNotNull { part ->
+                            runCatching { part.jsonObject["text"]?.jsonPrimitive?.content }.getOrNull()
+                        }?.filter { it.isNotBlank() }?.joinToString("\n")
 
-                        if (!text.isNullOrBlank()) {
-                            continuation.resume(GeminiResult.Success(text.trim()))
+                        if (!fullText.isNullOrBlank()) {
+                            continuation.resume(GeminiResult.Success(fullText.trim()))
                         } else {
                             continuation.resume(GeminiResult.Error("Respon kosong dari Gemini"))
                         }

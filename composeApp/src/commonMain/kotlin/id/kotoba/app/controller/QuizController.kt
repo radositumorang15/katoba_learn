@@ -70,7 +70,7 @@ class QuizController(
 
     fun playQuestionAudio() {
         currentQuestion?.let {
-            ttsEngine?.speak(it.audioPrompt, "ja")
+            runCatching { ttsEngine?.speak(it.audioPrompt, "ja") }
         }
     }
 

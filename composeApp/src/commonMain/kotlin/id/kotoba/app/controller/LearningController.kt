@@ -115,7 +115,7 @@ class LearningController(
     }
 
     fun playAiExampleAudio(text: String) {
-        ttsEngine?.speak(text, "ja")
+        runCatching { ttsEngine?.speak(text, "ja") }
     }
 
     fun goToAiConversation() {
@@ -142,7 +142,7 @@ class LearningController(
 
     fun playCurrentAudio() {
         currentKana?.let {
-            ttsEngine?.speak(it.audioPrompt, "ja")
+            runCatching { ttsEngine?.speak(it.audioPrompt, "ja") }
         }
     }
 
