@@ -1,6 +1,9 @@
+@file:OptIn(ExperimentalForeignApi::class)
+
 package id.kotoba.app.platform
 
 import id.kotoba.app.model.AuthSession
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.serialization.json.Json
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
@@ -13,6 +16,7 @@ import platform.Foundation.create
 import platform.Foundation.stringWithContentsOfFile
 import platform.Foundation.writeToFile
 
+@OptIn(ExperimentalForeignApi::class)
 actual class SessionStorage {
     private val json = Json { ignoreUnknownKeys = true }
     private val fileName = "kotoba_auth_session.json"
