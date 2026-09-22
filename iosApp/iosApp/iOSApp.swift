@@ -4,20 +4,24 @@ import ComposeApp
 @main
 struct iOSApp: App {
     init() {
-        // 1. Tangkap Objective-C / Swift Uncaught Exception
+        NSLog("🚀 [KOTOBA] iOSApp.init() started")
+
+        // 1. Tangkap Objective-C / Swift Uncaught Exception dengan NSLog (muncul di iPhone syslog)
         NSSetUncaughtExceptionHandler { exception in
-            print("🚨 [FATAL EXCEPTION] Name: \(exception.name.rawValue)")
-            print("🚨 [FATAL EXCEPTION] Reason: \(exception.reason ?? "No reason")")
-            print("🚨 [FATAL EXCEPTION] CallStack:\n\(exception.callStackSymbols.joined(separator: "\n"))")
+            NSLog("🚨 [FATAL EXCEPTION] Name: %@", exception.name.rawValue)
+            NSLog("🚨 [FATAL EXCEPTION] Reason: %@", exception.reason ?? "No reason")
+            NSLog("🚨 [FATAL EXCEPTION] CallStack:\n%@", exception.callStackSymbols.joined(separator: "\n"))
         }
 
         // 2. Tangkap sinyal Unix Abort sebelum proses mati
         signal(SIGABRT) { sig in
-            print("🚨 [FATAL SIGNAL] Caught SIGABRT (\(sig))! App will terminate.")
+            NSLog("🚨 [FATAL SIGNAL] Caught SIGABRT (%d)! App terminating.", sig)
         }
         signal(SIGILL) { sig in
-            print("🚨 [FATAL SIGNAL] Caught SIGILL (\(sig))! App will terminate.")
+            NSLog("🚨 [FATAL SIGNAL] Caught SIGILL (%d)! App terminating.", sig)
         }
+
+        NSLog("✅ [KOTOBA] Crash handlers and signals installed")
     }
 
     var body: some Scene {
