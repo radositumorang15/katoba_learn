@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,6 +35,20 @@ import id.kotoba.app.katoba
 import id.kotoba.app.view.theme.PrimaryGreen
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
+
+/**
+ * Helper composable that safely loads a compose resource painter.
+ * Returns null if the resource is missing (e.g. compose-resources not bundled in iOS IPA).
+ * This prevents uncaught MissingResourceException → SIGABRT on iOS.
+ */
+@Composable
+private fun safeLogoPainter(): Painter? {
+    return try {
+        painterResource(Res.drawable.katoba)
+    } catch (_: Exception) {
+        null
+    }
+}
 
 @Composable
 fun SplashScreen(
@@ -62,13 +77,32 @@ fun SplashScreen(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.scale(scale)
         ) {
-            Image(
-                painter = painterResource(Res.drawable.katoba),
-                contentDescription = "Katoba App Icon",
-                modifier = Modifier
-                    .size(136.dp)
-                    .clip(RoundedCornerShape(32.dp))
-            )
+            val logoPainter = safeLogoPainter()
+            if (logoPainter != null) {
+                Image(
+                    painter = logoPainter,
+                    contentDescription = "Katoba App Icon",
+                    modifier = Modifier
+                        .size(136.dp)
+                        .clip(RoundedCornerShape(32.dp))
+                )
+            } else {
+                // Fallback jika compose-resources belum ter-bundle
+                Box(
+                    modifier = Modifier
+                        .size(136.dp)
+                        .clip(RoundedCornerShape(32.dp))
+                        .background(PrimaryGreen),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "K",
+                        fontSize = 64.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                }
+            }
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -90,3 +124,4 @@ fun SplashScreen(
         }
     }
 }
+
