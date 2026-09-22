@@ -44,9 +44,15 @@ fun SplashScreen(
     )
 
     LaunchedEffect(Unit) {
-        startAnimation = true
-        delay(1600)
-        onFinished()
+        runCatching {
+            startAnimation = true
+            delay(1600)
+            onFinished()
+        }.onFailure { e ->
+            println("⚠️ [SplashScreen] Startup task failed: ${e.message}")
+            // Tetap navigasi ke layar berikutnya meski ada error
+            try { onFinished() } catch (_: Throwable) {}
+        }
     }
 
     Box(
