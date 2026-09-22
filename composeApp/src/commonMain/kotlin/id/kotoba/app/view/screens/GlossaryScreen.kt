@@ -234,7 +234,11 @@ fun GlossaryScreen(
                             Box(
                                 modifier = Modifier
                                     .clip(ShapeBadgePill)
-                                    .background(if (aiQuestion.isNotBlank() && !isLoadingAi) PrimaryGreen else Color(0xFFCBD5E1))
+                                    .background(
+                                        if (aiQuestion.isNotBlank() && !isLoadingAi) PrimaryGreen else Color(
+                                            0xFFCBD5E1
+                                        )
+                                    )
                                     .clickable(enabled = aiQuestion.isNotBlank() && !isLoadingAi) {
                                         controller.askSensei()
                                     }
@@ -443,7 +447,8 @@ fun GlossaryScreen(
                                         .clip(ShapeBadgePill)
                                         .background(PastelGreen)
                                         .clickable {
-                                            val prompt = "Jelaskan lebih detail penggunaan partikel ${particle.character} (${particle.romaji}) dan beri 2 contoh kalimat lagi."
+                                            val prompt =
+                                                "Jelaskan lebih detail penggunaan partikel ${particle.character} (${particle.romaji}) dan beri 2 contoh kalimat lagi."
                                             controller.updateAiQuestion(prompt)
                                             controller.askSensei(prompt)
                                         }
