@@ -5,67 +5,101 @@ package id.kotoba.app.platform
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import kotlinx.cinterop.ExperimentalForeignApi
-import platform.AVFAudio.AVAudioSession
-import platform.AVFAudio.AVAudioSessionCategoryPlayback
 import platform.AVFAudio.AVSpeechBoundary
 import platform.AVFAudio.AVSpeechSynthesisVoice
 import platform.AVFAudio.AVSpeechSynthesizer
 import platform.AVFAudio.AVSpeechUtterance
-import platform.AVFAudio.setActive
+import platform.Foundation.NSLog
+import platform.darwin.dispatch_async
+import platform.darwin.dispatch_get_main_queue
+
+interface NativeAudioSpeaker {
+    fun speak(text: String, lang: String)
+    fun stop()
+}
+
+object NativeAudioHub {
+    var speaker: NativeAudioSpeaker? = null
+}
 
 actual class AudioTtsEngine {
     companion object {
-        // Keep a strong static reference to ensure AVSpeechSynthesizer is NOT deallocated during speech
-        private val sharedSynthesizer: AVSpeechSynthesizer by lazy {
-            AVSpeechSynthesizer()
+        private var fallbackSynthesizer: AVSpeechSynthesizer? = null
+        private var activeUtterance: AVSpeechUtterance? = null
+
+        private fun getOrCreateSynthesizer(): AVSpeechSynthesizer {
+            val existing = fallbackSynthesizer
+            if (existing != null) return existing
+            val synth = AVSpeechSynthesizer()
+            fallbackSynthesizer = synth
+            return synth
         }
     }
 
     actual fun speak(text: String, lang: String) {
         if (text.isBlank()) return
 
-        try {
-            // Activate audio session in playback mode so silent switch does not mute sound
+        // 1. Delegate to native Swift speaker if registered (best reliability & native ARC memory safety)
+        val nativeSpeaker = NativeAudioHub.speaker
+        if (nativeSpeaker != null) {
             try {
-                val audioSession = AVAudioSession.sharedInstance()
-                audioSession.setCategory(AVAudioSessionCategoryPlayback, error = null)
-                audioSession.setActive(true, error = null)
-            } catch (e: Throwable) {
-                // Non-fatal if audio session is already active
+                nativeSpeaker.speak(text, lang)
+                return
+            } catch (t: Throwable) {
+                NSLog("⚠️ [AudioTts] Native speaker delegate error: %@", t.message ?: "Unknown")
             }
+        }
 
-            // Stop any ongoing utterance
+        // 2. Safe Fallback in Kotlin/Native on Main Thread
+        dispatch_async(dispatch_get_main_queue()) {
             try {
-                sharedSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.AVSpeechBoundaryImmediate)
-            } catch (e: Throwable) {
-                // Non-fatal
+                val synth = getOrCreateSynthesizer()
+
+                // Only stop if actively speaking to avoid iOS 17/18 internal exception
+                try {
+                    if (synth.isSpeaking()) {
+                        synth.stopSpeakingAtBoundary(AVSpeechBoundary.AVSpeechBoundaryImmediate)
+                    }
+                } catch (_: Throwable) {}
+
+                val utterance = AVSpeechUtterance.speechUtteranceWithString(text)
+                activeUtterance = utterance
+
+                val voiceCode = if (lang == "ja") "ja-JP" else "en-US"
+                val voice = AVSpeechSynthesisVoice.voiceWithLanguage(voiceCode)
+                if (voice != null) {
+                    utterance.setVoice(voice)
+                }
+
+                utterance.setVolume(1.0f)
+                utterance.setRate(0.46f)
+                utterance.setPitchMultiplier(1.0f)
+
+                synth.speakUtterance(utterance)
+            } catch (t: Throwable) {
+                NSLog("⚠️ [AudioTts fallback] speak error: %@", t.message ?: "Unknown")
             }
-
-            val voiceCode = if (lang == "ja") "ja-JP" else "en-US"
-            val voice = AVSpeechSynthesisVoice.voiceWithLanguage(voiceCode)
-                ?: AVSpeechSynthesisVoice.voiceWithLanguage("en-US")
-
-            val utterance = AVSpeechUtterance(string = text).apply {
-                this.voice = voice
-                this.volume = 1.0f
-                // Kecepatan 0.46f membuat artikulasi huruf/frasa bahasa Jepang jelas dan tidak terburu-buru
-                this.rate = 0.46f
-                this.pitchMultiplier = 1.0f
-            }
-
-            println("🔊 [AudioTts] Speaking: '$text' with voice: ${voice?.name ?: "system default"} (lang=$voiceCode)")
-            sharedSynthesizer.speakUtterance(utterance)
-        } catch (t: Throwable) {
-            println("⚠️ [AudioTts] Failed to speak: ${t.message}")
         }
     }
 
     actual fun stop() {
         try {
-            sharedSynthesizer.stopSpeakingAtBoundary(AVSpeechBoundary.AVSpeechBoundaryImmediate)
-        } catch (t: Throwable) {
-            // Silently handle
-        }
+            val nativeSpeaker = NativeAudioHub.speaker
+            if (nativeSpeaker != null) {
+                nativeSpeaker.stop()
+                return
+            }
+
+            dispatch_async(dispatch_get_main_queue()) {
+                try {
+                    fallbackSynthesizer?.let { synth ->
+                        if (synth.isSpeaking()) {
+                            synth.stopSpeakingAtBoundary(AVSpeechBoundary.AVSpeechBoundaryImmediate)
+                        }
+                    }
+                } catch (_: Throwable) {}
+            }
+        } catch (_: Throwable) {}
     }
 }
 
@@ -73,5 +107,6 @@ actual class AudioTtsEngine {
 actual fun rememberAudioTtsEngine(): AudioTtsEngine {
     return remember { AudioTtsEngine() }
 }
+
 
 

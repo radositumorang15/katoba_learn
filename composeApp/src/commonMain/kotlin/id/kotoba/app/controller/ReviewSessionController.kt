@@ -44,14 +44,6 @@ class ReviewSessionController(
         }
         val due = srsRepo.getDueItems(allItems)
         _reviewItems.value = due
-        if (due.isNotEmpty()) {
-            // Play audio prompt for first card safely
-            runCatching {
-                ttsEngine.speak(due.first().audioPrompt)
-            }.onFailure {
-                println("⚠️ [ReviewSession] Audio autoplay failed: ${it.message}")
-            }
-        }
     }
 
     val currentItem: KanaItem?
