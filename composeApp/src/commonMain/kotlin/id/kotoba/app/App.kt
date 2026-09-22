@@ -44,8 +44,6 @@ import id.kotoba.app.view.screens.ReviewSessionScreen
 import id.kotoba.app.view.screens.RoadmapScreen
 import id.kotoba.app.view.screens.SplashScreen
 import id.kotoba.app.view.theme.KotobaTheme
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 import id.kotoba.app.controller.AiConversationController
 import id.kotoba.app.controller.GlossaryController
@@ -55,9 +53,8 @@ import id.kotoba.app.view.screens.GlossaryScreen
 
 /**
  * Container holding all lazy-initialized repositories.
- * Repositories are created OFF the main thread to avoid blocking
- * the initial Compose layout pass and triggering NSUserDefaults /
- * disk I/O in a sandbox context that blocks vfs.disk-space.
+ * Repositories are initialized inside LaunchedEffect so that the initial
+ * frame renders immediately without layout stalls.
  */
 private class AppState(
     val progressRepository: ProgressRepository,
@@ -70,24 +67,20 @@ private class AppState(
 @Composable
 fun App() {
     KotobaTheme {
-        // All repositories start as null – Compose renders a blank frame first.
-        // Initialization is done inside LaunchedEffect on the IO dispatcher so
-        // that NSUserDefaults access (SessionStorage) and KanaRepository
-        // object initialisation do NOT run on the main thread during layout.
+        // Compose renders the initial frame (SplashScreen) first.
+        // Initialization runs in LaunchedEffect on first frame.
         var appState by remember { mutableStateOf<AppState?>(null) }
         var initError by remember { mutableStateOf<String?>(null) }
 
         LaunchedEffect(Unit) {
             runCatching {
-                withContext(Dispatchers.Default) {
-                    AppState(
-                        progressRepository = ProgressRepository(),
-                        authRepository = AuthRepository(),   // ← NSUserDefaults here, off main thread
-                        srsRepository = SrsRepository(),
-                        goalsRepository = GoalsRepository(),
-                        geminiRepository = GeminiRepository()
-                    )
-                }
+                AppState(
+                    progressRepository = ProgressRepository(),
+                    authRepository = AuthRepository(),
+                    srsRepository = SrsRepository(),
+                    goalsRepository = GoalsRepository(),
+                    geminiRepository = GeminiRepository()
+                )
             }.onSuccess { state ->
                 appState = state
             }.onFailure { e ->
