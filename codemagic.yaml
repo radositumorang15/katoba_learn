@@ -17,7 +17,8 @@ workflows:
         script: |
           ./gradlew :composeApp:iosArm64AggregateResources
           echo "=== Compose Resources prepared ==="
-          find composeApp/build -type d -name "compose-resources" 2>/dev/null || true
+          find composeApp/build -type d -name "composeResources" 2>/dev/null || true
+          find composeApp/build -name "katoba.png" 2>/dev/null || true
       - name: Build unsigned iOS App via Xcodebuild
         script: |
           cd iosApp
@@ -47,46 +48,35 @@ workflows:
           TARGET_APP="$CM_BUILD_DIR/Payload/$(basename "$APP_PATH")"
           rm -rf "$TARGET_APP/Frameworks"
           
-          # Copy Compose Resources ke dalam app bundle.
-          # Dengan isStatic = true, resource files TIDAK di-embed ke framework binary,
-          # sehingga harus disalin manual ke Katoba.app/compose-resources/
-          COMPOSE_RES=""
-          # Path 1: output dari syncComposeResourcesForIos (jika xcodebuild menjalankannya)
-          if [ -d "$TARGET_APP/compose-resources" ]; then
-            echo "Compose resources already present in app bundle."
-          else
-            # Path 2: output dari iosArm64AggregateResources (path resmi Kotlin 2.1 / Compose 1.7)
-            for CANDIDATE in \
-              "composeApp/build/kotlin-multiplatform-resources/aggregated-resources/iosArm64" \
-              "composeApp/build/compose/ios/composeApp/compose-resources" \
-              "composeApp/build/compose/ios/compose-resources"; do
-              if [ -d "$CANDIDATE" ]; then
-                COMPOSE_RES="$CANDIDATE"
-                break
-              fi
-            done
-            # Path 3: cari secara generik
-            if [ -z "$COMPOSE_RES" ]; then
-              COMPOSE_RES=$(find composeApp/build -type d -name "aggregated-resources" | head -n 1)
-              if [ -n "$COMPOSE_RES" ]; then
-                COMPOSE_RES="$COMPOSE_RES/iosArm64"
-              fi
-            fi
-            if [ -z "$COMPOSE_RES" ]; then
-              COMPOSE_RES=$(find composeApp/build -type d -name "compose-resources" | head -n 1)
-            fi
+          # Copy Compose Resources ke dalam app bundle
+          # Compose Multiplatform 1.7+ pada iOS mencari file di:
+          # 1) Katoba.app/composeResources/id.kotoba.app/...
+          # 2) Katoba.app/compose-resources/id.kotoba.app/...
+          # 3) Katoba.app/id.kotoba.app/...
+          echo "=== Searching for generated compose resources ==="
+          RES_DIR=$(find composeApp/build -type d -name "composeResources" 2>/dev/null | grep -E "aggregated-resources|preparedResources|assembledResources" | head -n 1)
+          
+          if [ -z "$RES_DIR" ]; then
+            RES_DIR=$(find composeApp/build -type d -name "composeResources" 2>/dev/null | head -n 1)
+          fi
+          
+          if [ -n "$RES_DIR" ] && [ -d "$RES_DIR" ]; then
+            echo "Found Compose Resources at: $RES_DIR"
+            mkdir -p "$TARGET_APP/composeResources"
+            mkdir -p "$TARGET_APP/compose-resources"
             
-            if [ -n "$COMPOSE_RES" ] && [ -d "$COMPOSE_RES" ]; then
-              echo "Copying Compose Resources from $COMPOSE_RES to $TARGET_APP/compose-resources/"
-              mkdir -p "$TARGET_APP/compose-resources"
-              cp -R "$COMPOSE_RES"/* "$TARGET_APP/compose-resources/"
-              echo "=== Contents of compose-resources/ ==="
-              find "$TARGET_APP/compose-resources" -type f | head -20
-            else
-              echo "WARNING: Compose resources directory not found! App may crash on resource load."
-              echo "=== Searching for resource files ==="
-              find composeApp/build -name "katoba.png" 2>/dev/null | head -10
-            fi
+            # Copy ke TARGET_APP/composeResources/
+            cp -R "$RES_DIR"/* "$TARGET_APP/composeResources/"
+            # Copy ke TARGET_APP/compose-resources/ (legacy/alternative path)
+            cp -R "$RES_DIR"/* "$TARGET_APP/compose-resources/"
+            # Copy ke TARGET_APP root (direct path)
+            cp -R "$RES_DIR"/* "$TARGET_APP/"
+            
+            echo "=== Verified Bundle Resources ==="
+            find "$TARGET_APP" -name "katoba.png"
+          else
+            echo "WARNING: Could not find composeResources folder in build directory!"
+            find composeApp/build -name "katoba.png" 2>/dev/null || true
           fi
           
           chmod -R 755 "$TARGET_APP"

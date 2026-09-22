@@ -25,9 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import id.kotoba.app.Res
-import id.kotoba.app.katoba
-import org.jetbrains.compose.resources.painterResource
+import id.kotoba.app.view.components.KatobaLogo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -88,12 +86,9 @@ fun AuthScreen(
             Spacer(modifier = Modifier.height(20.dp))
 
             // Logo icon
-            Image(
-                painter = painterResource(Res.drawable.katoba),
-                contentDescription = "Katoba Logo",
-                modifier = Modifier
-                    .size(76.dp)
-                    .clip(RoundedCornerShape(18.dp))
+            KatobaLogo(
+                size = 76.dp,
+                cornerRadius = 18.dp
             )
 
             Spacer(modifier = Modifier.height(16.dp))

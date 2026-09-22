@@ -7,17 +7,31 @@ import platform.AVFAudio.AVSpeechSynthesizer
 import platform.AVFAudio.AVSpeechUtterance
 
 actual class AudioTtsEngine {
-    private val synthesizer = AVSpeechSynthesizer()
+    private val synthesizer by lazy {
+        try {
+            AVSpeechSynthesizer()
+        } catch (t: Throwable) {
+            null
+        }
+    }
 
     actual fun speak(text: String, lang: String) {
-        val utterance = AVSpeechUtterance(string = text)
-        val voiceCode = if (lang == "ja") "ja-JP" else "en-US"
-        utterance.voice = AVSpeechSynthesisVoice.voiceWithLanguage(voiceCode)
-        synthesizer.speakUtterance(utterance)
+        try {
+            val utterance = AVSpeechUtterance(string = text)
+            val voiceCode = if (lang == "ja") "ja-JP" else "en-US"
+            utterance.voice = AVSpeechSynthesisVoice.voiceWithLanguage(voiceCode)
+            synthesizer?.speakUtterance(utterance)
+        } catch (t: Throwable) {
+            // Silently handle any audio engine issue
+        }
     }
 
     actual fun stop() {
-        synthesizer.stopSpeakingAtBoundary(platform.AVFAudio.AVSpeechBoundary.AVSpeechBoundaryImmediate)
+        try {
+            synthesizer?.stopSpeakingAtBoundary(platform.AVFAudio.AVSpeechBoundary.AVSpeechBoundaryImmediate)
+        } catch (t: Throwable) {
+            // Silently handle any audio engine issue
+        }
     }
 }
 

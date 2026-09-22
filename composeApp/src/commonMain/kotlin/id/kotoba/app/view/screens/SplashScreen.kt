@@ -29,11 +29,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import id.kotoba.app.Res
-import id.kotoba.app.katoba
+import id.kotoba.app.view.components.KatobaLogo
 import id.kotoba.app.view.theme.PrimaryGreen
 import kotlinx.coroutines.delay
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun SplashScreen(
@@ -62,12 +60,9 @@ fun SplashScreen(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.scale(scale)
         ) {
-            Image(
-                painter = painterResource(Res.drawable.katoba),
-                contentDescription = "Katoba App Icon",
-                modifier = Modifier
-                    .size(136.dp)
-                    .clip(RoundedCornerShape(32.dp))
+            KatobaLogo(
+                size = 136.dp,
+                cornerRadius = 32.dp
             )
 
             Spacer(modifier = Modifier.height(20.dp))

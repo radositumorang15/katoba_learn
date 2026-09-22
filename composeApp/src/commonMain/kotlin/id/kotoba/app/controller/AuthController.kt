@@ -3,6 +3,7 @@ package id.kotoba.app.controller
 import id.kotoba.app.model.repository.AuthRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,7 +18,7 @@ class AuthController(
     private val authRepo: AuthRepository,
     private val navController: NavigationController
 ) {
-    private val scope = CoroutineScope(Dispatchers.Default)
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val _authMode = MutableStateFlow(AuthMode.SIGN_IN)
     val authMode: StateFlow<AuthMode> = _authMode.asStateFlow()
@@ -76,23 +77,28 @@ class AuthController(
         _errorMessage.value = null
 
         scope.launch {
-            val isSignUp = _authMode.value == AuthMode.SIGN_UP
-            val error = if (!isSignUp) {
-                authRepo.loginWithNeon(_email.value.trim(), _password.value)
-            } else {
-                authRepo.signUpWithNeon(_email.value.trim(), _password.value, _displayName.value.trim())
-            }
-
-            _isLoading.value = false
-            if (error == null) {
-                if (isSignUp) {
-                    // Route to Goal Quiz directly after Sign Up (PRD Fase 1.5)
-                    navController.navigateTo(Screen.GoalQuiz, clearStack = true)
+            try {
+                val isSignUp = _authMode.value == AuthMode.SIGN_UP
+                val error = if (!isSignUp) {
+                    authRepo.loginWithNeon(_email.value.trim(), _password.value)
                 } else {
-                    navController.navigateTo(Screen.Home, clearStack = true)
+                    authRepo.signUpWithNeon(_email.value.trim(), _password.value, _displayName.value.trim())
                 }
-            } else {
-                _errorMessage.value = error
+
+                _isLoading.value = false
+                if (error == null) {
+                    if (isSignUp) {
+                        // Route to Goal Quiz directly after Sign Up (PRD Fase 1.5)
+                        navController.navigateTo(Screen.GoalQuiz, clearStack = true)
+                    } else {
+                        navController.navigateTo(Screen.Home, clearStack = true)
+                    }
+                } else {
+                    _errorMessage.value = error
+                }
+            } catch (t: Throwable) {
+                _isLoading.value = false
+                _errorMessage.value = t.message ?: "Terjadi kesalahan pada sistem autentikasi."
             }
         }
     }
