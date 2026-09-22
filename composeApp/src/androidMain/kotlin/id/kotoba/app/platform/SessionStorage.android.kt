@@ -6,7 +6,7 @@ import id.kotoba.app.model.AuthSession
 import id.kotoba.app.model.UserGoal
 import kotlinx.serialization.json.Json
 
-actual class SessionStorage {
+actual class SessionStorage actual constructor() {
     private val json = Json { ignoreUnknownKeys = true }
 
     companion object {

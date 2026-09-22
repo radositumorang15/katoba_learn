@@ -5,7 +5,7 @@ import id.kotoba.app.model.UserGoal
 import kotlinx.serialization.json.Json
 import java.io.File
 
-actual class SessionStorage {
+actual class SessionStorage actual constructor() {
     private val json = Json { ignoreUnknownKeys = true; prettyPrint = true }
     private val sessionDir = File(System.getProperty("user.home"), ".kotoba")
     private val sessionFile = File(sessionDir, "session.json")

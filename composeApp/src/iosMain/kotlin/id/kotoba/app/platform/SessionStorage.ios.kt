@@ -15,7 +15,7 @@ import platform.Foundation.stringWithContentsOfFile
 import platform.Foundation.writeToFile
 
 @OptIn(ExperimentalForeignApi::class)
-actual class SessionStorage {
+actual class SessionStorage actual constructor() {
     private val json = Json { ignoreUnknownKeys = true }
     private val fileName = "kotoba_auth_session.json"
     private val goalFileName = "kotoba_user_goal.json"

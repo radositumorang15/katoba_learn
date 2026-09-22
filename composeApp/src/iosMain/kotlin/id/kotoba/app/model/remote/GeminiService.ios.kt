@@ -29,7 +29,7 @@ import platform.Foundation.dataTaskWithRequest
 import platform.Foundation.dataUsingEncoding
 import kotlin.coroutines.resume
 
-actual class GeminiApiClient {
+actual class GeminiApiClient actual constructor() {
     private val apiKey = "AQ.Ab8RN6IzWaMMe8iUAeTzq1ApVtSbKYJBExuJ2LvqhuFfJj7dCw"
     private val endpointUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$apiKey"
     private val json = Json { ignoreUnknownKeys = true }
