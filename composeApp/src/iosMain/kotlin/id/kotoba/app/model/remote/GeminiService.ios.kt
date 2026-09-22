@@ -58,13 +58,12 @@ actual class GeminiApiClient actual constructor() {
             return@withContext GeminiResult.Error("URL endpoint Gemini tidak valid")
         }
 
-        val request = (NSMutableURLRequest.requestWithURL(nsUrl) as NSMutableURLRequest).apply {
-            setHTTPMethod("POST")
-            setValue("application/json; charset=utf-8", forHTTPHeaderField = "Content-Type")
-            val postData: NSData? = NSString.create(string = bodyString).dataUsingEncoding(NSUTF8StringEncoding)
-            setHTTPBody(postData)
-            setTimeoutInterval(25.0)
-        }
+        val request = NSMutableURLRequest.requestWithURL(nsUrl) as NSMutableURLRequest
+        request.HTTPMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField = "Content-Type")
+        val postData: NSData? = NSString.create(string = bodyString).dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = postData
+        request.timeoutInterval = 25.0
 
         suspendCancellableCoroutine<GeminiResult> { continuation ->
             val session = NSURLSession.sharedSession
