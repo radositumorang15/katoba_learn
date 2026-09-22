@@ -2,7 +2,7 @@
 
 package id.kotoba.app.model.remote
 
-import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -15,18 +15,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
-import platform.Foundation.NSData
-import platform.Foundation.NSError
-import platform.Foundation.NSHTTPURLResponse
-import platform.Foundation.NSMutableURLRequest
-import platform.Foundation.NSString
-import platform.Foundation.NSURL
-import platform.Foundation.NSURLResponse
-import platform.Foundation.NSURLSession
-import platform.Foundation.NSUTF8StringEncoding
-import platform.Foundation.create
-import platform.Foundation.dataTaskWithRequest
-import platform.Foundation.dataUsingEncoding
+import platform.Foundation.*
 import kotlin.coroutines.resume
 
 actual class GeminiApiClient actual constructor() {
@@ -58,12 +47,12 @@ actual class GeminiApiClient actual constructor() {
             return@withContext GeminiResult.Error("URL endpoint Gemini tidak valid")
         }
 
-        val request = NSMutableURLRequest.requestWithURL(nsUrl) as NSMutableURLRequest
-        request.HTTPMethod = "POST"
+        val request = NSMutableURLRequest.requestWithURL(nsUrl) as? NSMutableURLRequest
+            ?: NSMutableURLRequest(uRL = nsUrl)
+        request.httpMethod = "POST"
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField = "Content-Type")
-        val postData: NSData? = NSString.create(string = bodyString).dataUsingEncoding(NSUTF8StringEncoding)
-        request.HTTPBody = postData
-        request.timeoutInterval = 25.0
+        val postData: NSData? = (bodyString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        request.httpBody = postData
 
         suspendCancellableCoroutine<GeminiResult> { continuation ->
             val session = NSURLSession.sharedSession
@@ -118,4 +107,3 @@ actual class GeminiApiClient actual constructor() {
         }
     }
 }
-
