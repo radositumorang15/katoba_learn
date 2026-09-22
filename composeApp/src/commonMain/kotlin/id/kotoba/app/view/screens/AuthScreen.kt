@@ -33,7 +33,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -88,30 +87,14 @@ fun AuthScreen(
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Logo icon — safe load to prevent crash if compose-resources missing on iOS
-            val logoPainter: Painter? = try {
-                painterResource(Res.drawable.katoba)
-            } catch (_: Exception) { null }
-
-            if (logoPainter != null) {
-                Image(
-                    painter = logoPainter,
-                    contentDescription = "Katoba Logo",
-                    modifier = Modifier
-                        .size(76.dp)
-                        .clip(RoundedCornerShape(18.dp))
-                )
-            } else {
-                Box(
-                    modifier = Modifier
-                        .size(76.dp)
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(PrimaryGreen),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("K", fontSize = 32.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                }
-            }
+            // Logo icon
+            Image(
+                painter = painterResource(Res.drawable.katoba),
+                contentDescription = "Katoba Logo",
+                modifier = Modifier
+                    .size(76.dp)
+                    .clip(RoundedCornerShape(18.dp))
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
