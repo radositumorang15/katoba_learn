@@ -27,7 +27,11 @@ enum class BottomTab {
     PROFILE
 }
 
-class NavigationController {
+open class NavigationController(
+    var onNavigateCallback: ((Screen, Boolean) -> Unit)? = null,
+    var onGoBackCallback: (() -> Boolean)? = null,
+    var onSelectTabCallback: ((BottomTab) -> Unit)? = null
+) {
     private val _currentScreen = MutableStateFlow<Screen>(Screen.Splash)
     val currentScreen: StateFlow<Screen> = _currentScreen.asStateFlow()
 
@@ -47,7 +51,14 @@ class NavigationController {
         }
     }
 
-    fun navigateTo(screen: Screen, clearStack: Boolean = false) {
+    open fun navigateTo(screen: Screen, clearStack: Boolean = false) {
+        val callback = onNavigateCallback
+        if (callback != null) {
+            callback(screen, clearStack)
+            _currentScreen.value = screen
+            updateSelectedTab(screen)
+            return
+        }
         if (clearStack) {
             backStack.clear()
         } else {
@@ -57,7 +68,13 @@ class NavigationController {
         updateSelectedTab(screen)
     }
 
-    fun selectTab(tab: BottomTab) {
+    open fun selectTab(tab: BottomTab) {
+        val callback = onSelectTabCallback
+        if (callback != null) {
+            callback(tab)
+            _selectedTab.value = tab
+            return
+        }
         _selectedTab.value = tab
         when (tab) {
             BottomTab.HOME -> navigateTo(Screen.Home)
@@ -68,7 +85,11 @@ class NavigationController {
         }
     }
 
-    fun goBack(): Boolean {
+    open fun goBack(): Boolean {
+        val callback = onGoBackCallback
+        if (callback != null) {
+            return callback()
+        }
         if (backStack.isNotEmpty()) {
             val prev = backStack.removeAt(backStack.size - 1)
             val targetScreen = if (prev is Screen.Splash || prev is Screen.Onboarding || prev is Screen.Auth) {
