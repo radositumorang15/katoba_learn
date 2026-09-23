@@ -49,10 +49,10 @@ actual class GeminiApiClient actual constructor() {
 
         val request = NSMutableURLRequest.requestWithURL(nsUrl) as? NSMutableURLRequest
             ?: NSMutableURLRequest(uRL = nsUrl)
-        request.httpMethod = "POST"
+        request.setHTTPMethod("POST")
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField = "Content-Type")
         val postData: NSData? = (bodyString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        request.httpBody = postData
+        request.setHTTPBody(postData)
 
         suspendCancellableCoroutine<GeminiResult> { continuation ->
             val session = NSURLSession.sharedSession
