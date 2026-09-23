@@ -3,7 +3,7 @@
 package id.kotoba.app.model.remote
 
 import id.kotoba.app.model.UserProgress
-import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -18,17 +18,7 @@ import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
-import platform.Foundation.NSData
-import platform.Foundation.NSError
-import platform.Foundation.NSHTTPURLResponse
-import platform.Foundation.NSMutableURLRequest
-import platform.Foundation.NSString
-import platform.Foundation.NSURL
-import platform.Foundation.NSURLResponse
-import platform.Foundation.NSURLSession
-import platform.Foundation.NSUTF8StringEncoding
-import platform.Foundation.create
-import platform.Foundation.dataUsingEncoding
+import platform.Foundation.*
 import kotlin.coroutines.resume
 
 actual class NeonDatabaseClient actual constructor() {
