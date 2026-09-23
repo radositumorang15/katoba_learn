@@ -30,4 +30,8 @@ class RoadmapController(
     fun onStartQuiz(levelId: String) {
         navController.navigateTo(Screen.Quiz(levelId))
     }
+
+    fun goBack() {
+        navController.goBack()
+    }
 }

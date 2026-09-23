@@ -44,6 +44,7 @@ import id.kotoba.app.view.navigation.HomeTab
 import id.kotoba.app.view.navigation.LearnTab
 import id.kotoba.app.view.navigation.ProfileTab
 import id.kotoba.app.view.navigation.RoadmapTab
+import id.kotoba.app.view.navigation.TabNavigatorRegistry
 
 @Composable
 fun OptimizedBottomNavBar(modifier: Modifier = Modifier) {
@@ -100,7 +101,13 @@ private fun TabNavigationItem(tab: Tab, icon: String) {
             .clickable(
                 interactionSource = interactionSource,
                 indication = null
-            ) { tabNavigator.current = tab }
+            ) {
+                if (tabNavigator.current == tab) {
+                    TabNavigatorRegistry.popTabToRoot(tab)
+                } else {
+                    tabNavigator.current = tab
+                }
+            }
             .padding(horizontal = 8.dp, vertical = 4.dp),
         verticalArrangement = Arrangement.Center
     ) {

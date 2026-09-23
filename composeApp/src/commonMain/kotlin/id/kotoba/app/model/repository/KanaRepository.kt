@@ -118,7 +118,8 @@ object KanaRepository {
             type = KanaType.HIRAGANA_DAKUON,
             animeContext = "Ganbare! (がんばれ) - Berjuanglah!",
             meaning = "Dakuon dari 'ka' dengan tenten (\")",
-            audioPrompt = "が"
+            audioPrompt = "が",
+            mnemonic = "か (ka) ditambah dua garis kecil jadi suara berat GA"
         ),
         KanaItem(
             id = "h_gi",
@@ -127,7 +128,8 @@ object KanaRepository {
             type = KanaType.HIRAGANA_DAKUON,
             animeContext = "Gintama (銀魂) - Jiwa Perak",
             meaning = "Dakuon dari 'ki' dengan tenten (\")",
-            audioPrompt = "ぎ"
+            audioPrompt = "ぎ",
+            mnemonic = "き (ki) bergetar menjadi GI seperti gitar"
         ),
         KanaItem(
             id = "h_za",
@@ -136,7 +138,8 @@ object KanaRepository {
             type = KanaType.HIRAGANA_DAKUON,
             animeContext = "Zasshu (雑種) - Gilgamesh: 'Bastar* / Mongrel!'",
             meaning = "Dakuon dari 'sa' dengan tenten (\")",
-            audioPrompt = "ざ"
+            audioPrompt = "ざ",
+            mnemonic = "さ (sa) mendengung menjadi ZA seperti lebah"
         ),
         KanaItem(
             id = "h_da",
@@ -145,7 +148,8 @@ object KanaRepository {
             type = KanaType.HIRAGANA_DAKUON,
             animeContext = "Dame (だめ) - Tidak boleh / Terlarang!",
             meaning = "Dakuon dari 'ta' dengan tenten (\")",
-            audioPrompt = "だ"
+            audioPrompt = "だ",
+            mnemonic = "た (ta) dipukul jadi DA seperti drum"
         ),
         KanaItem(
             id = "h_ba",
@@ -154,7 +158,8 @@ object KanaRepository {
             type = KanaType.HIRAGANA_DAKUON,
             animeContext = "Baka! (ばか) - Tsundere: 'Dasar bodoh!'",
             meaning = "Dakuon dari 'ha' dengan tenten (\")",
-            audioPrompt = "ば"
+            audioPrompt = "ば",
+            mnemonic = "は (ha) meledak jadi BA seperti bom"
         ),
         KanaItem(
             id = "h_pa",
@@ -163,7 +168,8 @@ object KanaRepository {
             type = KanaType.HIRAGANA_DAKUON,
             animeContext = "Pan (パン) - Roti / Makanan bekal sekolah",
             meaning = "Handakuon dari 'ha' dengan maru (○)",
-            audioPrompt = "ぱ"
+            audioPrompt = "ぱ",
+            mnemonic = "は (ha) dengan gelembung bulat jadi PA ringan"
         )
     )
 
@@ -175,7 +181,8 @@ object KanaRepository {
             type = KanaType.YOUON_SOKUON,
             animeContext = "Kyaaa! (きゃー) - Jeritan histeris anime rom-com!",
             meaning = "Kombinasi Ki + Ya kecil",
-            audioPrompt = "きゃ"
+            audioPrompt = "きゃ",
+            mnemonic = "Ki kecilkan Ya: suara jeritan cewek anime"
         ),
         KanaItem(
             id = "h_ryu",
@@ -184,7 +191,8 @@ object KanaRepository {
             type = KanaType.YOUON_SOKUON,
             animeContext = "Ryuu (竜 / 龍) - Naga (contoh: Rasengan Dragon)",
             meaning = "Kombinasi Ri + Yu kecil",
-            audioPrompt = "りゅ"
+            audioPrompt = "りゅ",
+            mnemonic = "Ri + Yu kecil meluncur seperti naga terbang"
         ),
         KanaItem(
             id = "h_sokuon",
@@ -193,7 +201,8 @@ object KanaRepository {
             type = KanaType.YOUON_SOKUON,
             animeContext = "Chotto matte! (ちょっと待って) - Tunggu sebentar!",
             meaning = "Sokuon jeda henti bunyi ganda",
-            audioPrompt = "ちょっと待って"
+            audioPrompt = "ちょっと待って",
+            mnemonic = "Tsu kecil = rem mendadak, hentikan napas sejenak!"
         ),
         KanaItem(
             id = "h_sho",
@@ -202,7 +211,8 @@ object KanaRepository {
             type = KanaType.YOUON_SOKUON,
             animeContext = "Shounen (少年) - Remaja / Genre aksi petualangan",
             meaning = "Kombinasi Shi + Yo kecil",
-            audioPrompt = "しょ"
+            audioPrompt = "しょ",
+            mnemonic = "Shi + Yo kecil melebur jadi SHO pendek"
         )
     )
 
@@ -214,7 +224,8 @@ object KanaRepository {
             type = KanaType.ANIME_VOCAB,
             animeContext = "Sugoi! - 'Luar biasa! Keren banget!'",
             meaning = "Kekaguman luar biasa saat pertarungan epik",
-            audioPrompt = "すごい"
+            audioPrompt = "すごい",
+            mnemonic = "Su-Go-I! Tiga suku kata penuh energi kagum"
         ),
         KanaItem(
             id = "v_maji",
@@ -223,7 +234,8 @@ object KanaRepository {
             type = KanaType.ANIME_VOCAB,
             animeContext = "Maji de?! (まじで) - 'Seriusan lu?!'",
             meaning = "Ungkapan slang tidak percaya",
-            audioPrompt = "まじで"
+            audioPrompt = "まじで",
+            mnemonic = "Ma-Ji = Magic? Seserius itu?!"
         ),
         KanaItem(
             id = "v_yatta",
@@ -232,7 +244,8 @@ object KanaRepository {
             type = KanaType.ANIME_VOCAB,
             animeContext = "Yatta!! - 'Horeee kita berhasil!'",
             meaning = "Pekikan kemenangan",
-            audioPrompt = "やった"
+            audioPrompt = "やった",
+            mnemonic = "Ya-TTA! Teriakan gembira dengan pukulan udara"
         ),
         KanaItem(
             id = "v_senpai",
@@ -241,7 +254,8 @@ object KanaRepository {
             type = KanaType.ANIME_VOCAB,
             animeContext = "Notice me Senpai! - 'Kakak kelas / senior'",
             meaning = "Panggilan hormat untuk senior",
-            audioPrompt = "せんぱい"
+            audioPrompt = "せんぱい",
+            mnemonic = "Sen(ior) + pai(ring) = kakak senior idaman"
         ),
         KanaItem(
             id = "v_daisuki",
@@ -250,7 +264,58 @@ object KanaRepository {
             type = KanaType.ANIME_VOCAB,
             animeContext = "Daisuki dayo! - 'Aku sangat suka kamu!'",
             meaning = "Pernyataan cinta anime",
-            audioPrompt = "だいすき"
+            audioPrompt = "だいすき",
+            mnemonic = "Dai(besar) + Suki(suka) = Cinta BESAR"
+        ),
+        KanaItem(
+            id = "v_naruhodo",
+            character = "なるほど",
+            romaji = "naruhodo",
+            type = KanaType.ANIME_VOCAB,
+            animeContext = "Naruhodo! - 'Aaah begitu ya! Paham!'",
+            meaning = "Ungkapan 'Aha!' saat memahami sesuatu",
+            audioPrompt = "なるほど",
+            mnemonic = "Naru(jadi) + hodo(sejauh) = Oh jadi begitu!"
+        ),
+        KanaItem(
+            id = "v_kakkoii",
+            character = "かっこいい",
+            romaji = "kakkoii",
+            type = KanaType.ANIME_VOCAB,
+            animeContext = "Kakkoii! - 'Keren banget!' (memuji cowok keren)",
+            meaning = "Keren / Ganteng / Tampan",
+            audioPrompt = "かっこいい",
+            mnemonic = "Kakko(penampilan) + ii(bagus) = tampilan keren!"
+        ),
+        KanaItem(
+            id = "v_yabai",
+            character = "やばい",
+            romaji = "yabai",
+            type = KanaType.ANIME_VOCAB,
+            animeContext = "Yabai! - 'Gila! Bahaya!' (slang modern Jepang)",
+            meaning = "Gila / Luar biasa / Bahaya (bisa positif & negatif)",
+            audioPrompt = "やばい",
+            mnemonic = "Ya-bai! Bisa WOW atau AWAS tergantung konteks"
+        ),
+        KanaItem(
+            id = "v_urusai",
+            character = "うるさい",
+            romaji = "urusai",
+            type = KanaType.ANIME_VOCAB,
+            animeContext = "Urusai! - 'Berisik!' (tsundere klasik)",
+            meaning = "Berisik / Ribut (ekspresi kesal khas tsundere)",
+            audioPrompt = "うるさい",
+            mnemonic = "U-ru-sai! Tiga suku kata penuh kekesalan"
+        ),
+        KanaItem(
+            id = "v_nakama",
+            character = "なかま",
+            romaji = "nakama",
+            type = KanaType.ANIME_VOCAB,
+            animeContext = "Nakama da! - 'Kita teman sejati!' (Luffy, One Piece)",
+            meaning = "Teman / Sahabat / Rekan seperjuangan",
+            audioPrompt = "なかま",
+            mnemonic = "Na-ka-ma: ikatan persahabatan One Piece"
         )
     )
 
@@ -262,7 +327,8 @@ object KanaRepository {
             type = KanaType.KATAKANA,
             animeContext = "Anime (Animation) - Serial animasi Jepang!",
             meaning = "Katakana serapan bahasa Inggris",
-            audioPrompt = "アニメ"
+            audioPrompt = "アニメ",
+            mnemonic = "A-NI-ME: tiga karakter tajam khas Katakana"
         ),
         KanaItem(
             id = "k_ramen",
@@ -271,7 +337,8 @@ object KanaRepository {
             type = KanaType.KATAKANA,
             animeContext = "Ichiraku Ramen (Naruto) - Mie kuah khas Jepang!",
             meaning = "Menggunakan tanda vokal panjang (ー)",
-            audioPrompt = "ラーメン"
+            audioPrompt = "ラーメン",
+            mnemonic = "RA-A-MEN: garis panjang ー = tarik vokal"
         ),
         KanaItem(
             id = "k_meka",
@@ -280,7 +347,8 @@ object KanaRepository {
             type = KanaType.KATAKANA,
             animeContext = "Mecha (Gundam / Evangelion) - Robot tempur raksasa",
             meaning = "Katakana Me + Ka",
-            audioPrompt = "メカ"
+            audioPrompt = "メカ",
+            mnemonic = "ME-KA: dua huruf tajam seperti besi robot"
         ),
         KanaItem(
             id = "k_otaku",
@@ -289,7 +357,58 @@ object KanaRepository {
             type = KanaType.KATAKANA,
             animeContext = "Otaku - Penggemar berat pop-culture Jepang!",
             meaning = "Katakana O + Ta + Ku",
-            audioPrompt = "オタク"
+            audioPrompt = "オタク",
+            mnemonic = "O-TA-KU: tiga suku kata identitas wibu"
+        ),
+        KanaItem(
+            id = "k_geemu",
+            character = "ゲーム",
+            romaji = "geemu",
+            type = KanaType.KATAKANA,
+            animeContext = "Game (SAO / No Game No Life) - Dunia permainan!",
+            meaning = "Permainan / Video game (serapan Inggris)",
+            audioPrompt = "ゲーム",
+            mnemonic = "GE-E-MU: vokal panjang ー pada E"
+        ),
+        KanaItem(
+            id = "k_terebi",
+            character = "テレビ",
+            romaji = "terebi",
+            type = KanaType.KATAKANA,
+            animeContext = "Terebi de anime o mimasu! - Nonton anime di TV!",
+            meaning = "Televisi (dari 'Television')",
+            audioPrompt = "テレビ",
+            mnemonic = "TE-RE-BI: singkatan khas Jepang dari Television"
+        ),
+        KanaItem(
+            id = "k_konbini",
+            character = "コンビニ",
+            romaji = "konbini",
+            type = KanaType.KATAKANA,
+            animeContext = "Konbini (7-Eleven) - Minimarket serba ada di anime!",
+            meaning = "Minimarket / Convenience store",
+            audioPrompt = "コンビニ",
+            mnemonic = "KON-BI-NI: singkatan dari Convenience"
+        ),
+        KanaItem(
+            id = "k_manga",
+            character = "マンガ",
+            romaji = "manga",
+            type = KanaType.KATAKANA,
+            animeContext = "Manga o yomimasu! - Baca komik Jepang!",
+            meaning = "Komik Jepang (ditulis Katakana untuk efek modern)",
+            audioPrompt = "マンガ",
+            mnemonic = "MA-N-GA: tiga huruf sumber budaya pop"
+        ),
+        KanaItem(
+            id = "k_karaoke",
+            character = "カラオケ",
+            romaji = "karaoke",
+            type = KanaType.KATAKANA,
+            animeContext = "Karaoke ni ikimashou! - Ayo ke karaoke!",
+            meaning = "Bernyanyi tanpa band (kara=kosong + oke=orkestra)",
+            audioPrompt = "カラオケ",
+            mnemonic = "KA-RA-O-KE: orkestra kosong = nyanyi sendiri!"
         )
     )
 
@@ -301,7 +420,8 @@ object KanaRepository {
             type = KanaType.PARTICLE,
             animeContext = "Watashi wa... (Luffy: 'Ore wa Kaizoku Ou ni naru!')",
             meaning = "Partikel penanda topik kalimat (ditulis 'ha', dibaca 'wa')",
-            audioPrompt = "おれはかいぞくおうになる"
+            audioPrompt = "おれはかいぞくおうになる",
+            mnemonic = "Ditulis は tapi dibaca WA jika jadi partikel"
         ),
         KanaItem(
             id = "p_o",
@@ -310,7 +430,8 @@ object KanaRepository {
             type = KanaType.PARTICLE,
             animeContext = "Ramen o taberu - 'Makan ramen'",
             meaning = "Partikel penanda objek langsung",
-            audioPrompt = "ラーメンをたべる"
+            audioPrompt = "ラーメンをたべる",
+            mnemonic = "を menunjuk BENDA yang kena aksi kata kerja"
         ),
         KanaItem(
             id = "p_no",
@@ -319,7 +440,8 @@ object KanaRepository {
             type = KanaType.PARTICLE,
             animeContext = "Kimi no Na wa - 'Namamu (Kepemilikan)'",
             meaning = "Partikel penghubung kepemilikan kata benda",
-            audioPrompt = "きみのなわ"
+            audioPrompt = "きみのなわ",
+            mnemonic = "の = 'punya': Kimi NO Na = Nama MILIK kamu"
         )
     )
 
@@ -450,6 +572,50 @@ object KanaRepository {
             audioPrompt = "いきます",
             furigana = "いきます",
             mnemonic = "Menuju ke suatu tempat"
+        ),
+        KanaItem(
+            id = "g_nomimasu",
+            character = "飲みます",
+            romaji = "nomimasu",
+            type = KanaType.KANJI,
+            animeContext = "Ocha o nomimasu - Minum teh hijau!",
+            meaning = "Minum (Bentuk sopan -masu)",
+            audioPrompt = "のみます",
+            furigana = "のみます",
+            mnemonic = "Nomi = minum, -masu = sopan"
+        ),
+        KanaItem(
+            id = "g_mimasu",
+            character = "見ます",
+            romaji = "mimasu",
+            type = KanaType.KANJI,
+            animeContext = "Anime o mimasu! - Nonton anime!",
+            meaning = "Melihat / Menonton (Bentuk sopan -masu)",
+            audioPrompt = "みます",
+            furigana = "みます",
+            mnemonic = "Mi = mata melihat, -masu = sopan"
+        ),
+        KanaItem(
+            id = "g_kakimasu",
+            character = "書きます",
+            romaji = "kakimasu",
+            type = KanaType.KANJI,
+            animeContext = "Tegami o kakimasu - Menulis surat!",
+            meaning = "Menulis (Bentuk sopan -masu)",
+            audioPrompt = "かきます",
+            furigana = "かきます",
+            mnemonic = "Kaki = menulis dengan tangan"
+        ),
+        KanaItem(
+            id = "g_yomimasu",
+            character = "読みます",
+            romaji = "yomimasu",
+            type = KanaType.KANJI,
+            animeContext = "Manga o yomimasu! - Baca manga!",
+            meaning = "Membaca (Bentuk sopan -masu)",
+            audioPrompt = "よみます",
+            furigana = "よみます",
+            mnemonic = "Yomi = membaca, mata menyapu huruf"
         )
     )
 
@@ -462,7 +628,8 @@ object KanaRepository {
             animeContext = "Hajimemashite, Ore wa Monkey D. Luffy!",
             meaning = "Salam perkenalan pertama kali ('Senang bertemu')",
             audioPrompt = "はじめまして",
-            furigana = "はじめまして"
+            furigana = "はじめまして",
+            mnemonic = "Hajime(mulai) + mashite = 'Ini awal pertemuan kita'"
         ),
         KanaItem(
             id = "c_yoroshiku",
@@ -472,7 +639,41 @@ object KanaRepository {
             animeContext = "Yoroshiku ne! - Mohon bimbingan & kerjasamanya!",
             meaning = "Ungkapan sopan wajib dalam budaya Jepang",
             audioPrompt = "よろしくおねがいします",
-            furigana = "よろしくおねがいします"
+            furigana = "よろしくおねがいします",
+            mnemonic = "Yoroshiku = tolong baik-baik ya sama saya"
+        ),
+        KanaItem(
+            id = "c_namae",
+            character = "わたしのなまえは...",
+            romaji = "watashi no namae wa...",
+            type = KanaType.CONVERSATION,
+            animeContext = "Watashi no namae wa Sakura desu!",
+            meaning = "Nama saya adalah... (pola perkenalan dasar)",
+            audioPrompt = "わたしのなまえは",
+            furigana = "わたしのなまえは",
+            mnemonic = "Watashi(saya) + no(punya) + namae(nama) + wa(topik)"
+        ),
+        KanaItem(
+            id = "c_kara",
+            character = "...からきました",
+            romaji = "...kara kimashita",
+            type = KanaType.CONVERSATION,
+            animeContext = "Indonesia kara kimashita! - Saya dari Indonesia!",
+            meaning = "Berasal dari... (menyatakan asal)",
+            audioPrompt = "インドネシアからきました",
+            furigana = "からきました",
+            mnemonic = "Kara(dari) + kimashita(datang) = datang dari..."
+        ),
+        KanaItem(
+            id = "c_shumi",
+            character = "しゅみは...です",
+            romaji = "shumi wa ... desu",
+            type = KanaType.CONVERSATION,
+            animeContext = "Shumi wa anime desu! - Hobi saya anime!",
+            meaning = "Hobi saya adalah... (menyatakan kegemaran)",
+            audioPrompt = "しゅみはアニメです",
+            furigana = "しゅみは…です",
+            mnemonic = "Shumi(hobi) + wa(topik) + desu(adalah)"
         )
     )
 
@@ -485,7 +686,8 @@ object KanaRepository {
             animeContext = "Sumimasen! - Memanggil pelayan di restoran anime!",
             meaning = "Permisi / Maaf",
             audioPrompt = "すみません",
-            furigana = "すみません"
+            furigana = "すみません",
+            mnemonic = "Su-mi-ma-sen: empat suku kata untuk sopan santun"
         ),
         KanaItem(
             id = "c_kore",
@@ -495,7 +697,41 @@ object KanaRepository {
             animeContext = "Kore o kudasai! - 'Tolong berikan yang ini!' di Konbini",
             meaning = "Ungkapan belanja praktis",
             audioPrompt = "これをください",
-            furigana = "これをください"
+            furigana = "これをください",
+            mnemonic = "Kore(ini) + o(objek) + kudasai(tolong beri)"
+        ),
+        KanaItem(
+            id = "c_ikura",
+            character = "いくらですか",
+            romaji = "ikura desu ka",
+            type = KanaType.CONVERSATION,
+            animeContext = "Ikura desu ka? - Berapa harganya di toko Akihabara!",
+            meaning = "Berapa harganya? (belanja praktis)",
+            audioPrompt = "いくらですか",
+            furigana = "いくらですか",
+            mnemonic = "Ikura(berapa) + desu ka(?) = tanya harga"
+        ),
+        KanaItem(
+            id = "c_osusume",
+            character = "おすすめは？",
+            romaji = "osusume wa?",
+            type = KanaType.CONVERSATION,
+            animeContext = "Osusume wa? - Minta rekomendasi menu di izakaya!",
+            meaning = "Apa rekomendasinya? (di restoran/toko)",
+            audioPrompt = "おすすめは",
+            furigana = "おすすめは",
+            mnemonic = "O-susume = rekomendasi, tinggal tanya!"
+        ),
+        KanaItem(
+            id = "c_oishii",
+            character = "おいしいです",
+            romaji = "oishii desu",
+            type = KanaType.CONVERSATION,
+            animeContext = "Oishii! - Reaksi makan di anime Food Wars!",
+            meaning = "Enak! / Lezat! (memuji makanan)",
+            audioPrompt = "おいしいです",
+            furigana = "おいしいです",
+            mnemonic = "Oi-shii! = suara keenakan saat makan"
         )
     )
 
@@ -508,7 +744,30 @@ object KanaRepository {
             animeContext = "Zettai akiramenaide! - Jangan pernah menyerah!",
             meaning = "Kalimat motivasi pahlawan Shonen",
             audioPrompt = "あきらめないで",
-            furigana = "あきらめないで"
+            furigana = "あきらめないで",
+            mnemonic = "Akirame(menyerah) + nai(jangan) + de(!) = JANGAN MENYERAH"
+        ),
+        KanaItem(
+            id = "c_madamada",
+            character = "まだまだだね",
+            romaji = "mada mada da ne",
+            type = KanaType.CONVERSATION,
+            animeContext = "Mada mada da ne! - Ryoma (Prince of Tennis): 'Masih jauh!'",
+            meaning = "Masih jauh / Belum cukup (tantangan rival)",
+            audioPrompt = "まだまだだね",
+            furigana = "まだまだだね",
+            mnemonic = "Mada(belum) x2 = masih jauuuuh banget"
+        ),
+        KanaItem(
+            id = "c_orewa",
+            character = "俺の名前は...",
+            romaji = "ore no namae wa...",
+            type = KanaType.CONVERSATION,
+            animeContext = "Ore no namae wa Uzumaki Naruto dattebayo!",
+            meaning = "Namaku adalah... (gaya maskulin / protagonis)",
+            audioPrompt = "おれのなまえは",
+            furigana = "おれのなまえは",
+            mnemonic = "Ore(aku-cowok) + no namae wa = gaya perkenalan hero"
         )
     )
 
@@ -561,7 +820,7 @@ object KanaRepository {
             subtitle = "Sugoi, Maji, Yatta, Senpai",
             description = "Pelajari kosakata anime terpopuler tanpa beban kanji rumit di awal.",
             category = "Fase B: Kosakata & Katakana",
-            totalLessons = 5,
+            totalLessons = 10,
             xpReward = 250,
             isUnlocked = false,
             isCompleted = false,
@@ -574,7 +833,7 @@ object KanaRepository {
             subtitle = "Aksara Serapan Anime & Pop Culture",
             description = "Bisa membaca istilah keren: Anime, Ramen, Mecha, dan Otaku dalam Katakana.",
             category = "Fase B: Kosakata & Katakana",
-            totalLessons = 4,
+            totalLessons = 9,
             xpReward = 300,
             isUnlocked = false,
             isCompleted = false,
@@ -627,7 +886,7 @@ object KanaRepository {
             subtitle = "Bentuk -masu & Kata Kerja Populer",
             description = "Pelajari cara menyusun kalimat positif, negatif, dan ajakan.",
             category = "Fase C: Kanji & Tata Bahasa",
-            totalLessons = 2,
+            totalLessons = 6,
             xpReward = 500,
             isUnlocked = false,
             isCompleted = false,
@@ -641,7 +900,7 @@ object KanaRepository {
             subtitle = "Nama, Asal, & Hobi",
             description = "Berani memperkenalkan diri dalam suasana santai maupun formal.",
             category = "Fase D: Percakapan",
-            totalLessons = 2,
+            totalLessons = 5,
             xpReward = 550,
             isUnlocked = false,
             isCompleted = false,
@@ -654,7 +913,7 @@ object KanaRepository {
             subtitle = "Di Konbini, Restoran, & Toko",
             description = "Frasa belanja dan memesan makanan tanpa rasa canggung.",
             category = "Fase D: Percakapan",
-            totalLessons = 2,
+            totalLessons = 5,
             xpReward = 600,
             isUnlocked = false,
             isCompleted = false,
@@ -667,7 +926,7 @@ object KanaRepository {
             subtitle = "Ujian Akhir Dialog Anime",
             description = "Tes pemahaman kutipan dialog anime seru tanpa teks bantuan.",
             category = "Fase D: Percakapan",
-            totalLessons = 1,
+            totalLessons = 3,
             xpReward = 700,
             isUnlocked = false,
             isCompleted = false,
@@ -779,6 +1038,17 @@ object KanaRepository {
                 correctOptionIndex = 1,
                 explanation = "Youon 'きゃ' dibaca luluh satu suku kata menjadi 'KYA'.",
                 animeContext = "Kyaaa! Hazukashii!"
+            ),
+            QuizQuestion(
+                id = "q3_3",
+                levelId = "lvl_3",
+                questionText = "Kombinasi huruf 'りゅ' (Ryu) melambangkan kata apa dalam anime?",
+                audioPrompt = "りゅ",
+                visualCharacter = "りゅ",
+                options = listOf("Naga (Dragon)", "Kelinci", "Ikan", "Kucing"),
+                correctOptionIndex = 0,
+                explanation = "'りゅ' (Ryu/Ryuu) berarti Naga, sering muncul dalam jurus dan nama pahlawan anime.",
+                animeContext = "Ryuu no Kokyuu!"
             )
         ),
         "lvl_4" to listOf(
@@ -803,6 +1073,17 @@ object KanaRepository {
                 correctOptionIndex = 1,
                 explanation = "'せんぱい' adalah ejaan Hiragana untuk 'senpai'.",
                 animeContext = "Senpai ni aitai!"
+            ),
+            QuizQuestion(
+                id = "q4_3",
+                levelId = "lvl_4",
+                questionText = "Kata anime 'なるほど' (Naruhodo) diucapkan saat...",
+                audioPrompt = "なるほど",
+                visualCharacter = "なるほど",
+                options = listOf("Memahami penjelasan ('Aaah begitu ya!')", "Marah besar", "Meminta maaf", "Menolak ajakan"),
+                correctOptionIndex = 0,
+                explanation = "'なるほど' (Naruhodo) adalah seruan saat kita memahami maksud perkataan orang lain.",
+                animeContext = "Naruhodo ne!"
             )
         ),
         "lvl_5" to listOf(
@@ -827,6 +1108,17 @@ object KanaRepository {
                 correctOptionIndex = 1,
                 explanation = "Garis 'ー' (chōonpu) melambangkan bunyi vokal panjang dalam Katakana.",
                 animeContext = "Ichiraku Ramen!"
+            ),
+            QuizQuestion(
+                id = "q5_3",
+                levelId = "lvl_5",
+                questionText = "Kata Katakana 'コンビニ' (Konbini) adalah sebutan untuk...",
+                audioPrompt = "コンビニ",
+                visualCharacter = "コンビニ",
+                options = listOf("Minimarket (Convenience Store)", "Komputer", "Konser musik", "Pendingin ruangan"),
+                correctOptionIndex = 0,
+                explanation = "'コンビニ' adalah singkatan khas Jepang untuk Convenience Store serba ada.",
+                animeContext = "Konbini de kaimono!"
             )
         ),
         "lvl_6" to listOf(
@@ -851,6 +1143,17 @@ object KanaRepository {
                 correctOptionIndex = 0,
                 explanation = "'Kimi no Na wa' berarti 'Namamu' (Nama milik kamu).",
                 animeContext = "Kimi no Na wa (Your Name)"
+            ),
+            QuizQuestion(
+                id = "q6_3",
+                levelId = "lvl_6",
+                questionText = "Partikel yang tepat untuk kalimat: 'Ramen __ tabemasu' (Makan ramen) adalah...",
+                audioPrompt = "ラーメンをたべる",
+                visualCharacter = "を",
+                options = listOf("を (o)", "は (wa)", "の (no)", "か (ka)"),
+                correctOptionIndex = 0,
+                explanation = "Partikel 'を' (dibaca 'o') menandai objek langsung yang dikenai perbuatan kata kerja.",
+                animeContext = "Ramen o tabemasu!"
             )
         ),
         "lvl_7" to listOf(
@@ -875,6 +1178,17 @@ object KanaRepository {
                 correctOptionIndex = 0,
                 explanation = "'日' melambangkan matahari dan hari, seperti pada 'Nihon' (Jepang).",
                 animeContext = "Nihon (日本)"
+            ),
+            QuizQuestion(
+                id = "q7_3",
+                levelId = "lvl_7",
+                questionText = "Kanji '月' (tsuki / getsu) melambangkan apa?",
+                audioPrompt = "つき",
+                visualCharacter = "月",
+                options = listOf("Bulan", "Matahari", "Bintang", "Awan"),
+                correctOptionIndex = 0,
+                explanation = "Kanji '月' melambangkan bulan (satelit/kalender), seperti dalam ungkapan romantis anime 'Tsuki ga kirei'.",
+                animeContext = "Tsuki ga kirei desu ne"
             )
         ),
         "lvl_8" to listOf(
@@ -888,6 +1202,28 @@ object KanaRepository {
                 correctOptionIndex = 0,
                 explanation = "'人' dibaca 'hito' atau 'jin', artinya orang (contoh: Anime-jin, Nihon-jin).",
                 animeContext = "Nihon-jin (Orang Jepang)"
+            ),
+            QuizQuestion(
+                id = "q8_2",
+                levelId = "lvl_8",
+                questionText = "Kanji '水' (mizu) yang sering ada pada jurus anime melambangkan elemen apa?",
+                audioPrompt = "みず",
+                visualCharacter = "水",
+                options = listOf("Air", "Api", "Bumi", "Petir"),
+                correctOptionIndex = 0,
+                explanation = "'水' dibaca 'mizu' (air), seperti pada pernapasan air Demon Slayer.",
+                animeContext = "Mizu no Kokyuu!"
+            ),
+            QuizQuestion(
+                id = "q8_3",
+                levelId = "lvl_8",
+                questionText = "Kanji '大' (dai / ookii) memiliki arti lawan dari '小' (chiisai). Apa artinya?",
+                audioPrompt = "おおきい",
+                visualCharacter = "大",
+                options = listOf("Besar", "Kecil", "Cepat", "Jauh"),
+                correctOptionIndex = 0,
+                explanation = "'大' melambangkan manusia merentangkan tangan lebar yang berarti BESAR.",
+                animeContext = "Daisuki (大好き)!"
             )
         ),
         "lvl_9" to listOf(
@@ -901,6 +1237,28 @@ object KanaRepository {
                 correctOptionIndex = 0,
                 explanation = "Kata kerja 'makan' bentuk -masu adalah 'Tabemasu'.",
                 animeContext = "Ramen o tabemasu!"
+            ),
+            QuizQuestion(
+                id = "q9_2",
+                levelId = "lvl_9",
+                questionText = "Bentuk sopan -masu untuk kata kerja 'minum' adalah...",
+                audioPrompt = "のみます",
+                visualCharacter = "飲みます",
+                options = listOf("Nomimasu", "Tabemasu", "Mimasu", "Kakimasu"),
+                correctOptionIndex = 0,
+                explanation = "'飲みます' (Nomimasu) berarti minum, seperti 'Ocha o nomimasu'.",
+                animeContext = "Ocha o nomimasu!"
+            ),
+            QuizQuestion(
+                id = "q9_3",
+                levelId = "lvl_9",
+                questionText = "Kalimat 'Anime o mimasu' (アニメを見ます) memiliki arti apa?",
+                audioPrompt = "みます",
+                visualCharacter = "見ます",
+                options = listOf("Menonton anime", "Menggambar anime", "Membeli anime", "Mendengarkan anime"),
+                correctOptionIndex = 0,
+                explanation = "'見ます' (Mimasu) berarti melihat atau menonton.",
+                animeContext = "Anime o mimasu!"
             )
         ),
         "lvl_10" to listOf(
@@ -914,6 +1272,28 @@ object KanaRepository {
                 correctOptionIndex = 0,
                 explanation = "'Hajimemashite' diucapkan saat pertama kali bertemu seseorang.",
                 animeContext = "Hajimemashite! Ore wa Luffy!"
+            ),
+            QuizQuestion(
+                id = "q10_2",
+                levelId = "lvl_10",
+                questionText = "Frasa 'よろしくお願いします' (Yoroshiku onegaishimasu) bermakna...",
+                audioPrompt = "よろしくおねがいします",
+                visualCharacter = "よろしくお願いします",
+                options = listOf("Mohon bimbingan / bantuannya", "Selamat tinggal", "Permisi mau lewat", "Berapa harganya?"),
+                correctOptionIndex = 0,
+                explanation = "'Yoroshiku onegaishimasu' memohon hubungan baik, kerja sama, dan bimbingan.",
+                animeContext = "Yoroshiku ne!"
+            ),
+            QuizQuestion(
+                id = "q10_3",
+                levelId = "lvl_10",
+                questionText = "Pola kalimat '... kara kimashita' digunakan untuk menyatakan apa?",
+                audioPrompt = "インドネシアからきました",
+                visualCharacter = "...からきました",
+                options = listOf("Asal negara / daerah", "Makanan kesukaan", "Waktu sekarang", "Pekerjaan"),
+                correctOptionIndex = 0,
+                explanation = "'... kara kimashita' berarti 'datang/berasal dari...', untuk menyatakan asal daerah.",
+                animeContext = "Indonesia kara kimashita!"
             )
         ),
         "lvl_11" to listOf(
@@ -927,6 +1307,28 @@ object KanaRepository {
                 correctOptionIndex = 0,
                 explanation = "'Sumimasen' adalah kata serbaguna untuk 'Permisi' atau 'Maaf'.",
                 animeContext = "Sumimasen! Kore o kudasai!"
+            ),
+            QuizQuestion(
+                id = "q11_2",
+                levelId = "lvl_11",
+                questionText = "Di toko/restoran, pertanyaan 'いくらですか' (Ikura desu ka?) digunakan untuk menanyakan apa?",
+                audioPrompt = "いくらですか",
+                visualCharacter = "いくらですか",
+                options = listOf("Berapa harganya?", "Berapa jam lagi?", "Siapa namanya?", "Di mana toiletnya?"),
+                correctOptionIndex = 0,
+                explanation = "'Ikura desu ka?' berarti 'Berapa harganya?' saat berbelanja.",
+                animeContext = "Kore wa ikura desu ka?"
+            ),
+            QuizQuestion(
+                id = "q11_3",
+                levelId = "lvl_11",
+                questionText = "Ekspresi karakter anime saat menikmati makanan lezat adalah...",
+                audioPrompt = "おいしいです",
+                visualCharacter = "おいしいです",
+                options = listOf("Oishii desu! (Enak!)", "Itai desu! (Sakit!)", "Abunai desu! (Bahaya!)", "Nemui desu! (Ngantuk!)"),
+                correctOptionIndex = 0,
+                explanation = "'おいしいです' (Oishii desu) berarti 'Enak/Lezat!' memuji masakan.",
+                animeContext = "Umai! Oishii!"
             )
         ),
         "lvl_12" to listOf(
@@ -940,6 +1342,28 @@ object KanaRepository {
                 correctOptionIndex = 0,
                 explanation = "'Akiramenaide!' adalah seruan khas karakter utama: 'Jangan menyerah!'",
                 animeContext = "Zettai akiramenaide!"
+            ),
+            QuizQuestion(
+                id = "q12_2",
+                levelId = "lvl_12",
+                questionText = "Kutipan rival terkenal 'まだまだだね' (Mada mada da ne) memiliki arti...",
+                audioPrompt = "まだまだだね",
+                visualCharacter = "まだまだだね",
+                options = listOf("Masih belum cukup / Masih jauh!", "Sudah hebat!", "Kamu menang!", "Bagus sekali!"),
+                correctOptionIndex = 0,
+                explanation = "'Mada mada da ne' adalah catchphrase Echizen Ryoma: 'Kemampuanmu masih jauh!'.",
+                animeContext = "Mada mada da ne!"
+            ),
+            QuizQuestion(
+                id = "q12_3",
+                levelId = "lvl_12",
+                questionText = "Kata ganti orang pertama (aku) yang khas dipakai hero anime cowok adalah...",
+                audioPrompt = "おれのなまえは",
+                visualCharacter = "俺 (Ore)",
+                options = listOf("Ore (俺)", "Watashi (私)", "Anata (あなた)", "Kare (彼)"),
+                correctOptionIndex = 0,
+                explanation = "'俺' (Ore) adalah sebutan 'aku' gaya maskulin yang sangat khas bagi jagoan anime Shonen.",
+                animeContext = "Ore wa Kaizoku Ou ni naru!"
             )
         )
     )

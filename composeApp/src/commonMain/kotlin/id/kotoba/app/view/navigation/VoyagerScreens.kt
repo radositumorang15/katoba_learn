@@ -111,6 +111,9 @@ fun rememberVoyagerNavController(
                 if (navigator.canPop) {
                     navigator.pop()
                     true
+                } else if (tabNavigator != null && tabNavigator.current != HomeTab) {
+                    tabNavigator.current = HomeTab
+                    true
                 } else if (rootNavigator != null && rootNavigator.canPop) {
                     rootNavigator.pop()
                     true
@@ -332,11 +335,13 @@ object GlossaryVoyagerScreen : Screen {
         val navigator = LocalNavigator.currentOrThrow
         val rootNavigator = LocalRootNavigator.current
         val navController = rememberVoyagerNavController(navigator, rootNavigator)
+        val ttsEngine = LocalAudioTtsEngine.current
 
-        val glossaryController = remember(appState, navController) {
+        val glossaryController = remember(appState, navController, ttsEngine) {
             GlossaryController(
                 geminiRepo = appState.geminiRepository,
-                navController = navController
+                navController = navController,
+                ttsEngine = ttsEngine
             )
         }
         GlossaryScreen(controller = glossaryController)

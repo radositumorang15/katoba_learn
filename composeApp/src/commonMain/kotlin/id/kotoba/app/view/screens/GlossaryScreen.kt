@@ -397,7 +397,8 @@ fun GlossaryScreen(
                                 modifier = Modifier
                                     .size(48.dp)
                                     .clip(RoundedCornerShape(14.dp))
-                                    .background(if (isSelected) PrimaryGreen else PrimarySurface),
+                                    .background(if (isSelected) PrimaryGreen else PrimarySurface)
+                                    .clickable { controller.playTts(particle.character) },
                                 contentAlignment = Alignment.Center
                             ) {
                                 Text(
@@ -447,16 +448,37 @@ fun GlossaryScreen(
                                     .border(1.dp, BorderOutline, RoundedCornerShape(12.dp))
                                     .padding(14.dp)
                             ) {
-                                Text(
-                                    text = "📝 Contoh Kalimat:",
-                                    fontSize = 11.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = TextSecondary
-                                )
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(
+                                        text = "📝 Contoh Kalimat:",
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = TextSecondary
+                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(ShapeBadgePill)
+                                            .background(PastelBlue)
+                                            .clickable { controller.playTts(particle.exampleJp) }
+                                            .padding(horizontal = 10.dp, vertical = 4.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = "🔊 Putar Suara",
+                                            fontSize = 11.sp,
+                                            fontWeight = FontWeight.SemiBold,
+                                            color = Color(0xFF2563EB)
+                                        )
+                                    }
+                                }
                                 Spacer(modifier = Modifier.height(6.dp))
                                 Text(
                                     text = particle.exampleJp,
-                                    fontSize = 14.sp,
+                                    fontSize = 15.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = TextPrimary
                                 )

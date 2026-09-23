@@ -3,6 +3,7 @@ package id.kotoba.app.platform
 import android.content.Context
 import android.content.SharedPreferences
 import id.kotoba.app.model.AuthSession
+import id.kotoba.app.model.StoredUserProgress
 import id.kotoba.app.model.UserGoal
 import kotlinx.serialization.json.Json
 
@@ -83,6 +84,34 @@ actual class SessionStorage actual constructor() {
     actual fun clearGoal() {
         try {
             getPrefs()?.edit()?.remove("user_goal")?.apply()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    actual fun saveProgress(progress: StoredUserProgress) {
+        try {
+            val text = json.encodeToString(StoredUserProgress.serializer(), progress)
+            getPrefs()?.edit()?.putString("user_progress_data", text)?.apply()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    actual fun loadProgress(): StoredUserProgress? {
+        return try {
+            val text = getPrefs()?.getString("user_progress_data", null)
+            if (!text.isNullOrBlank()) {
+                json.decodeFromString(StoredUserProgress.serializer(), text)
+            } else null
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    actual fun clearProgress() {
+        try {
+            getPrefs()?.edit()?.remove("user_progress_data")?.apply()
         } catch (e: Exception) {
             e.printStackTrace()
         }

@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -69,12 +70,38 @@ fun ProfileScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(20.dp)
         ) {
-        Text(
-            text = "Profil Pembelajar",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = TextPrimary
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(44.dp)
+                    .clip(CircleShape)
+                    .background(Color(0xFFF1F5F9))
+                    .border(1.dp, BorderOutline, CircleShape)
+                    .clickable(onClick = { controller.goBack() }),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = "←", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
+            }
+
+            Spacer(modifier = Modifier.width(14.dp))
+
+            Column {
+                Text(
+                    text = "Profil Pembelajar",
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = TextPrimary
+                )
+                Text(
+                    text = "Statistik & Progres Belajar",
+                    fontSize = 12.sp,
+                    color = TextSecondary
+                )
+            }
+        }
 
         Spacer(modifier = Modifier.height(20.dp))
 

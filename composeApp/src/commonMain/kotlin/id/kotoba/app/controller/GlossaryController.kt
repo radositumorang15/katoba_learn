@@ -1,6 +1,7 @@
 package id.kotoba.app.controller
 
 import id.kotoba.app.model.repository.GeminiRepository
+import id.kotoba.app.platform.AudioTtsEngine
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -23,6 +24,7 @@ data class GrammarParticle(
 class GlossaryController(
     private val geminiRepo: GeminiRepository = GeminiRepository(),
     private val navController: NavigationController,
+    private val ttsEngine: AudioTtsEngine? = null,
     private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 ) {
     val defaultParticles = listOf(
@@ -169,6 +171,10 @@ class GlossaryController(
 
     fun clearAiAnswer() {
         _aiAnswer.value = null
+    }
+
+    fun playTts(text: String) {
+        ttsEngine?.speak(text)
     }
 
     fun goBack() {

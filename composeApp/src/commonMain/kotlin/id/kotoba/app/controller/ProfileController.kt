@@ -30,4 +30,8 @@ class ProfileController(
         authRepo.logout()
         navController.navigateTo(Screen.Auth, clearStack = true)
     }
+
+    fun goBack() {
+        navController.goBack()
+    }
 }

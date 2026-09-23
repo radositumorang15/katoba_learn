@@ -46,9 +46,11 @@ fun App() {
 
         LaunchedEffect(Unit) {
             runCatching {
+                val progressRepo = ProgressRepository()
+                val authRepo = AuthRepository(progressRepo = progressRepo)
                 AppState(
-                    progressRepository = ProgressRepository(),
-                    authRepository = AuthRepository(),
+                    progressRepository = progressRepo,
+                    authRepository = authRepo,
                     srsRepository = SrsRepository(),
                     goalsRepository = GoalsRepository(),
                     geminiRepository = GeminiRepository()

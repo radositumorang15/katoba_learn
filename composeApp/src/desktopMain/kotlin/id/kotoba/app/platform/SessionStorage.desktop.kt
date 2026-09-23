@@ -1,6 +1,7 @@
 package id.kotoba.app.platform
 
 import id.kotoba.app.model.AuthSession
+import id.kotoba.app.model.StoredUserProgress
 import id.kotoba.app.model.UserGoal
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -10,6 +11,7 @@ actual class SessionStorage actual constructor() {
     private val sessionDir = File(System.getProperty("user.home"), ".kotoba")
     private val sessionFile = File(sessionDir, "session.json")
     private val goalFile = File(sessionDir, "goal.json")
+    private val progressFile = File(sessionDir, "progress.json")
 
     actual fun saveSession(session: AuthSession) {
         try {
@@ -79,6 +81,43 @@ actual class SessionStorage actual constructor() {
         try {
             if (goalFile.exists()) {
                 goalFile.delete()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    actual fun saveProgress(progress: StoredUserProgress) {
+        try {
+            if (!sessionDir.exists()) {
+                sessionDir.mkdirs()
+            }
+            val text = json.encodeToString(StoredUserProgress.serializer(), progress)
+            progressFile.writeText(text, Charsets.UTF_8)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    actual fun loadProgress(): StoredUserProgress? {
+        return try {
+            if (progressFile.exists()) {
+                val text = progressFile.readText(Charsets.UTF_8)
+                if (text.isNotBlank()) {
+                    json.decodeFromString(StoredUserProgress.serializer(), text)
+                } else null
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    actual fun clearProgress() {
+        try {
+            if (progressFile.exists()) {
+                progressFile.delete()
             }
         } catch (e: Exception) {
             e.printStackTrace()

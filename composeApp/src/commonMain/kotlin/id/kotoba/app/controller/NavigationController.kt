@@ -87,8 +87,8 @@ open class NavigationController(
 
     open fun goBack(): Boolean {
         val callback = onGoBackCallback
-        if (callback != null) {
-            return callback()
+        if (callback != null && callback()) {
+            return true
         }
         if (backStack.isNotEmpty()) {
             val prev = backStack.removeAt(backStack.size - 1)

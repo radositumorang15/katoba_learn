@@ -169,8 +169,32 @@ private fun CardFrontFace(
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary
             )
+            Spacer(modifier = Modifier.height(6.dp))
+            // Romaji pronunciation badge - always visible on front
+            Box(
+                modifier = Modifier
+                    .clip(ShapeBadgePill)
+                    .background(SoftPurple)
+                    .padding(horizontal = 14.dp, vertical = 4.dp)
+            ) {
+                Text(
+                    text = "🗣 ${kana.romaji}",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF7C3AED)
+                )
+            }
+            // Show audioPrompt if different from character (e.g., particles use full phrases)
+            if (kana.audioPrompt != kana.character && kana.audioPrompt != kana.romaji) {
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "🔉 「${kana.audioPrompt}」",
+                    fontSize = 12.sp,
+                    color = TextSecondary
+                )
+            }
             if (kana.mnemonic.isNotBlank()) {
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "💡 ${kana.mnemonic}",
                     fontSize = 13.sp,
@@ -187,7 +211,7 @@ private fun CardFrontFace(
                 .padding(horizontal = 16.dp, vertical = 6.dp)
         ) {
             Text(
-                text = "🔄 Ketuk kartu untuk melihat arti & romaji",
+                text = "🔄 Ketuk untuk melihat konteks anime & contoh AI",
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = PrimaryGreen

@@ -6,6 +6,25 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import cafe.adriel.voyager.transitions.SlideTransition
 
+// Registry to allow popping a tab's nested navigator to root (e.g. when tapping the active tab in bottom bar)
+object TabNavigatorRegistry {
+    var homeNavigator: Navigator? = null
+    var roadmapNavigator: Navigator? = null
+    var learnNavigator: Navigator? = null
+    var glossaryNavigator: Navigator? = null
+    var profileNavigator: Navigator? = null
+
+    fun popTabToRoot(tab: Tab) {
+        when (tab) {
+            HomeTab -> homeNavigator?.popUntilRoot()
+            RoadmapTab -> roadmapNavigator?.popUntilRoot()
+            LearnTab -> learnNavigator?.popUntilRoot()
+            GlossaryTab -> glossaryNavigator?.popUntilRoot()
+            ProfileTab -> profileNavigator?.popUntilRoot()
+        }
+    }
+}
+
 // 1. Home Tab with nested Navigator & SlideTransition
 object HomeTab : Tab {
     override val options: TabOptions
@@ -18,6 +37,7 @@ object HomeTab : Tab {
     @Composable
     override fun Content() {
         Navigator(HomeVoyagerScreen) { navigator ->
+            TabNavigatorRegistry.homeNavigator = navigator
             SlideTransition(navigator)
         }
     }
@@ -35,6 +55,7 @@ object RoadmapTab : Tab {
     @Composable
     override fun Content() {
         Navigator(RoadmapVoyagerScreen) { navigator ->
+            TabNavigatorRegistry.roadmapNavigator = navigator
             SlideTransition(navigator)
         }
     }
@@ -52,6 +73,7 @@ object LearnTab : Tab {
     @Composable
     override fun Content() {
         Navigator(LearningVoyagerScreen("lvl_1")) { navigator ->
+            TabNavigatorRegistry.learnNavigator = navigator
             SlideTransition(navigator)
         }
     }
@@ -69,6 +91,7 @@ object GlossaryTab : Tab {
     @Composable
     override fun Content() {
         Navigator(GlossaryVoyagerScreen) { navigator ->
+            TabNavigatorRegistry.glossaryNavigator = navigator
             SlideTransition(navigator)
         }
     }
@@ -86,6 +109,7 @@ object ProfileTab : Tab {
     @Composable
     override fun Content() {
         Navigator(ProfileVoyagerScreen) { navigator ->
+            TabNavigatorRegistry.profileNavigator = navigator
             SlideTransition(navigator)
         }
     }

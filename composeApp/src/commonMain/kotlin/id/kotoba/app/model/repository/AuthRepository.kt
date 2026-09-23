@@ -4,15 +4,23 @@ import id.kotoba.app.model.AuthSession
 import id.kotoba.app.model.UserProfile
 import id.kotoba.app.model.remote.NeonAuthClient
 import id.kotoba.app.model.remote.NeonAuthResult
+import id.kotoba.app.model.remote.NeonDatabaseClient
 import id.kotoba.app.platform.SessionStorage
 import id.kotoba.app.platform.getPlatformTimeMillis
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class AuthRepository(
     private val neonAuthClient: NeonAuthClient = NeonAuthClient(),
-    private val sessionStorage: SessionStorage = SessionStorage()
+    private val sessionStorage: SessionStorage = SessionStorage(),
+    private val dbClient: NeonDatabaseClient = NeonDatabaseClient(),
+    private val progressRepo: ProgressRepository? = null,
+    private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 ) {
     private val _currentUser = MutableStateFlow<UserProfile?>(null)
     val currentUser: StateFlow<UserProfile?> = _currentUser.asStateFlow()
@@ -31,6 +39,7 @@ class AuthRepository(
                 _currentUser.value = savedSession.user
                 _token.value = savedSession.token
                 _isLoggedIn.value = true
+                progressRepo?.setCurrentUserId(savedSession.user.id)
             }
         } catch (e: Exception) {
             // Ignore if corrupted
@@ -48,6 +57,7 @@ class AuthRepository(
                 savedAtMillis = getPlatformTimeMillis()
             )
         )
+        progressRepo?.setCurrentUserId(user.id)
     }
 
     suspend fun loginWithNeon(email: String, password: String): String? {
@@ -143,6 +153,7 @@ class AuthRepository(
         _currentUser.value = null
         _token.value = null
         _isLoggedIn.value = false
+        progressRepo?.setCurrentUserId(null)
     }
 
     fun addRewards(xp: Int, coins: Int) {
@@ -153,6 +164,12 @@ class AuthRepository(
         )
         _currentUser.value = updated
         _token.value?.let { persistSession(updated, it) }
+
+        if (!current.id.startsWith("guest_")) {
+            scope.launch {
+                dbClient.updateUserProfile(current.id, updated.totalXp, updated.coins, updated.currentStreak)
+            }
+        }
     }
 
     fun incrementStreak() {
@@ -162,5 +179,11 @@ class AuthRepository(
         )
         _currentUser.value = updated
         _token.value?.let { persistSession(updated, it) }
+
+        if (!current.id.startsWith("guest_")) {
+            scope.launch {
+                dbClient.updateUserProfile(current.id, updated.totalXp, updated.coins, updated.currentStreak)
+            }
+        }
     }
 }

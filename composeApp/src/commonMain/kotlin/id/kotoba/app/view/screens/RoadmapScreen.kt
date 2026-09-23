@@ -68,18 +68,39 @@ fun RoadmapScreen(
                 .padding(horizontal = 20.dp, vertical = 16.dp)
         ) {
             item {
-                Text(
-                    text = "Peta Level Petualangan",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = TextPrimary
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "Taklukkan setiap level untuk membuka materi selanjutnya!",
-                    fontSize = 13.sp,
-                    color = TextSecondary
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(44.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFFF1F5F9))
+                            .border(1.dp, BorderOutline, CircleShape)
+                            .clickable(onClick = { controller.goBack() }),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "←", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
+                    }
+
+                    Spacer(modifier = Modifier.width(14.dp))
+
+                    Column {
+                        Text(
+                            text = "Peta Level Petualangan",
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextPrimary
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = "Taklukkan setiap level untuk membuka materi selanjutnya!",
+                            fontSize = 12.sp,
+                            color = TextSecondary
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
