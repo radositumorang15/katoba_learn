@@ -1,0 +1,749 @@
+[
+  {
+    "level_id": "lvl_7",
+    "level_name": "Kanji Angka & Waktu",
+    "phase": "Fase C: Kanji & Tata Bahasa",
+    "items": [
+      {
+        "type": "KANJI",
+        "character": "一",
+        "reading_on": "イチ (ichi), イツ (itsu)",
+        "reading_kun": "ひと-, ひと.つ (hito-)",
+        "romaji": "ichi / hito",
+        "meaning": "Satu (1)",
+        "example_sentence": {
+          "jp": "[林檎|りんご]を [一|ひと]つ ください。",
+          "romaji": "Ringo o hitotsu kudasai.",
+          "id": "Tolong beri saya satu buah apel."
+        },
+        "radical_hint": "Radikal 一 (ichi) — satu goresan horizontal lurus melambangkan satu garis horizon atau satu jari yang teracung.",
+        "register": "polite",
+        "usage_note": "Untuk menghitung benda umum, gunakan 'hitotsu' (ひとつ). Sebagai angka mutlak nomor/telepon gunakan 'ichi'.",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "二",
+        "reading_on": "ニ (ni), ジ (ji)",
+        "reading_kun": "ふた-, ふた.つ (futa-)",
+        "romaji": "ni / futa",
+        "meaning": "Dua (2)",
+        "example_sentence": {
+          "jp": "[切符|きっぷ]を [二|ふた]つ [買|か]いました。",
+          "romaji": "Kippu o futatsu kaimashita.",
+          "id": "Saya membeli dua lembar tiket."
+        },
+        "radical_hint": "Radikal 二 (ni) — dua garis horizontal sejajar melambangkan dua benda atau langit dan bumi.",
+        "register": "polite",
+        "usage_note": "Menghitung benda umum: 'futatsu' (ふたつ). Menghitung orang berdua: 'futari' (二人 - tidak beraturan).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "三",
+        "reading_on": "サン (san)",
+        "reading_kun": "み-, みっ.つ (mi-)",
+        "romaji": "san / mi",
+        "meaning": "Tiga (3)",
+        "example_sentence": {
+          "jp": "[今|いま]、[三|さん][時|じ]です。",
+          "romaji": "Ima, san-ji desu.",
+          "id": "Sekarang tepat jam tiga."
+        },
+        "radical_hint": "Tiga goresan horizontal sejajar yang melambangkan tiga entitas dasar alam semesta: langit, manusia, dan bumi.",
+        "register": "polite",
+        "usage_note": "Menghitung benda umum: 'mittsu' (みっつ). Jam 3: 'san-ji' (三時).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "四",
+        "reading_on": "シ (shi)",
+        "reading_kun": "よ-, よ.つ, よっ.つ, よん (yon / yo)",
+        "romaji": "yon / shi",
+        "meaning": "Empat (4)",
+        "example_sentence": {
+          "jp": "[部屋|へや]に [四|よ]人 います。",
+          "romaji": "Heya ni yo-nin imasu.",
+          "id": "Ada empat orang di dalam ruangan."
+        },
+        "radical_hint": "Radikal 囗 (bingkai luar) + 儿 (kaki orang) — jendela dengan tirai yang terbuka menampakkan empat sudut pandang.",
+        "register": "neutral",
+        "usage_note": "Pengucapan 'yon' lebih sering dipakai daripada 'shi' untuk menghindari asosiasi kata kematian (死). Jam 4 disebut 'yo-ji' (bukan yon-ji/shi-ji).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "五",
+        "reading_on": "ゴ (go)",
+        "reading_kun": "いつ-, いつ.つ (itsu-)",
+        "romaji": "go / itsu",
+        "meaning": "Lima (5)",
+        "example_sentence": {
+          "jp": "[五|ご][分|ふん] [待|ま]ってください。",
+          "romaji": "Go-fun matte kudasai.",
+          "id": "Tolong tunggu lima menit."
+        },
+        "radical_hint": "Garis horizontal atas (langit) dan bawah (bumi) dihubungkan garis menyilang melambangkan 5 arah mata angin (utara, selatan, barat, timur, dan pusat).",
+        "register": "polite",
+        "usage_note": "Menghitung benda umum: 'itsutsu' (いつつ). Tanggal 5: 'itsuka' (五日).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "日",
+        "reading_on": "ニチ (nichi), ジツ (jitsu)",
+        "reading_kun": "ひ (hi), -び (-bi), -か (-ka)",
+        "romaji": "nichi / hi / bi",
+        "meaning": "Matahari / Hari",
+        "example_sentence": {
+          "jp": "[日|にち][曜|よう][日|び]に [会|あ]いましょう。",
+          "romaji": "Nichiyoubi ni aimashou.",
+          "id": "Ayo bertemu di hari Minggu."
+        },
+        "radical_hint": "Radikal 日 (matahari) — representasi piktograf lingkaran matahari yang kemudian disederhanakan menjadi persegi dengan garis di tengah.",
+        "register": "polite",
+        "usage_note": "Bisa muncul dua kali dalam nama hari Minggu: 'Nichi' (di awal) dan 'bi' (di akhir suffix hari).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "月",
+        "reading_on": "ゲツ (getsu), ガツ (gatsu)",
+        "reading_kun": "つき (tsuki)",
+        "romaji": "getsu / gatsu / tsuki",
+        "meaning": "Bulan (Kalender / Benda Langit)",
+        "example_sentence": {
+          "jp": "[今|こん][月|げつ]は とても [忙|いそが]しいです。",
+          "romaji": "Kongetsu wa totemo isogashii desu.",
+          "id": "Bulan ini saya sangat sibuk."
+        },
+        "radical_hint": "Radikal 月 (bulan) — siluet bulan sabit di langit malam yang terhalang dua garis awan tipis melintang.",
+        "register": "polite",
+        "usage_note": "Sebagai nama hari Senin: 'Getsuyoubi' (月曜日). Sebagai penunjuk nama bulan: [Angka] + 'gatsu' (contoh: 一月 Ichigatsu = Januari).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "年",
+        "reading_on": "ネン (nen)",
+        "reading_kun": "とし (toshi)",
+        "romaji": "nen / toshi",
+        "meaning": "Tahun / Usia",
+        "example_sentence": {
+          "jp": "[来|らい][年|ねん]、[日本|にほん]へ [行|い]きます！",
+          "romaji": "Rainen, Nihon e ikimasu!",
+          "id": "Tahun depan, saya akan pergi ke Jepang!"
+        },
+        "radical_hint": "Beras padi yang dipanen sekali dalam setahun melambangkan pergantian satu tahun kalender penuh.",
+        "register": "polite",
+        "usage_note": "Menyatakan tahun: 2026年 (nisen-nijuuroku-nen). 'Kotoshi' (今年 = tahun ini) dan 'Rainen' (来年 = tahun depan).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "時",
+        "reading_on": "ジ (ji)",
+        "reading_kun": "とき (toki)",
+        "romaji": "ji / toki",
+        "meaning": "Waktu / Jam / Saat",
+        "example_sentence": {
+          "jp": "[何|なん][時|じ]に [始|はじ]まりますか？",
+          "romaji": "Nan-ji ni hajimarimasu ka?",
+          "id": "Jam berapa acaranya akan dimulai?"
+        },
+        "radical_hint": "Radikal 日 (matahari) + 寺 (kuil) — lonceng kuil yang berdentang menandai pembagian waktu mengikuti peredaran matahari di langit.",
+        "register": "polite",
+        "usage_note": "Sebagai suffix penunjuk jam: [Angka] + 時 (ji), misalnya 1時 (ichi-ji), 2時 (ni-ji), 3時 (san-ji).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "分",
+        "reading_on": "ブン (bun), フン (fun), プン (pun)",
+        "reading_kun": "わ.かる (wakaru), わ.ける (wakeru)",
+        "romaji": "fun / pun / wakaru",
+        "meaning": "Menit / Membagi / Mengerti",
+        "example_sentence": {
+          "jp": "あと[十|じゅっ][分|ぷん]で [着|つ]きます。",
+          "romaji": "Ato juppun de tsukimasu.",
+          "id": "Kira-kira sepuluh menit lagi akan tiba."
+        },
+        "radical_hint": "Radikal 八 (membagi dua) + 刀 (pisau katana) — memotong suatu benda menjadi bagian menit yang lebih kecil.",
+        "register": "polite",
+        "usage_note": "Pelafalan menit berubah bunyi euphony: 1分 (ippun), 2分 (ni-fun), 3分 (san-pun), 5分 (go-fun), 10分 (juppun). Bentuk kata kerja: わかる (wakaru = mengerti).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Pilihlah Kanji yang memiliki arti angka 'Tiga (3)':",
+        "options": ["一", "二", "三", "四"],
+        "correct_answer": "三",
+        "based_on_item": "三"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Apakah arti dari Kanji '時' dalam kalimat '三時 (san-ji)'?",
+        "options": ["Hari", "Bulan", "Jam / Waktu", "Tahun"],
+        "correct_answer": "Jam / Waktu",
+        "based_on_item": "時"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah romanisasi yang tepat untuk kata '今月' (bulan ini)?",
+        "options": ["Kongetsu", "Kotoshi", "Kyou", "Konshuu"],
+        "correct_answer": "Kongetsu",
+        "based_on_item": "月"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio berikut: manakah Kanji yang diucapkan sebagai 'Nichi' atau 'Hi'?",
+        "options": ["日", "月", "年", "分"],
+        "correct_answer": "日",
+        "based_on_item": "日"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Bagaimana cara menulis angka 'Lima (5)' dalam aksara Kanji?",
+        "options": ["三", "四", "五", "六"],
+        "correct_answer": "五",
+        "based_on_item": "五"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Kata '来年 (Rainen)' mengacu pada kurun waktu apa?",
+        "options": ["Tahun lalu", "Tahun ini", "Tahun depan", "Setiap tahun"],
+        "correct_answer": "Tahun depan",
+        "based_on_item": "年"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah bacaan romaji yang benar untuk kalimat: '五分 (5 menit)':",
+        "options": ["Go-fun", "Go-ji", "Go-nen", "Go-gatsu"],
+        "correct_answer": "Go-fun",
+        "based_on_item": "分"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan pelafalan 'Futatsu'. Kanji manakah yang merepresentasikan jumlah tersebut?",
+        "options": ["一つ", "二つ", "三つ", "四つ"],
+        "correct_answer": "二つ",
+        "based_on_item": "二"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Dalam frasa '日曜日 (Nichiyoubi)', hari apakah yang dimaksud?",
+        "options": ["Hari Senin", "Hari Rabu", "Hari Sabtu", "Hari Minggu"],
+        "correct_answer": "Hari Minggu",
+        "based_on_item": "日"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Manakah Kanji yang tepat untuk mengisi titik-titik berikut: '林檎を [ ... ]つ ください' (Beri saya satu apel)?",
+        "options": ["一", "二", "三", "四"],
+        "correct_answer": "一",
+        "based_on_item": "一"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_8",
+    "level_name": "Kanji Kehidupan Sehari-hari & Alam",
+    "phase": "Fase C: Kanji & Tata Bahasa",
+    "items": [
+      {
+        "type": "KANJI",
+        "character": "人",
+        "reading_on": "ジン (jin), ニン (nin)",
+        "reading_kun": "ひと (hito)",
+        "romaji": "hito / jin / nin",
+        "meaning": "Orang / Manusia",
+        "example_sentence": {
+          "jp": "あの[人|ひと]は [誰|だれ]ですか？",
+          "romaji": "Ano hito wa dare desu ka?",
+          "id": "Orang di sebelah sana itu siapa?"
+        },
+        "radical_hint": "Radikal 人 — piktograf seorang manusia tegak yang melangkah maju dengan kedua kakinya menapak mantap.",
+        "register": "polite",
+        "usage_note": "Sebagai suffix warga negara dibaca 'jin' (contoh: インドネシア人 Indoneshia-jin = orang Indonesia). Sebagai penghitung orang: 1人 (hitori), 2人 (futari), 3人 (san-nin).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "水",
+        "reading_on": "スイ (sui)",
+        "reading_kun": "みず (mizu)",
+        "romaji": "mizu / sui",
+        "meaning": "Air",
+        "example_sentence": {
+          "jp": "お[水|みず]を [飲|の]みます。",
+          "romaji": "Omizu o nomimasu.",
+          "id": "Saya meminum air putih."
+        },
+        "radical_hint": "Radikal 水 — aliran air sungai yang mengalir deras di tengah dengan percikan tetesan air di sisi kiri dan kanannya.",
+        "register": "polite",
+        "usage_note": "Air minum sehari-hari sering diawali awalan sopan bi-ka-go: 'omizu' (お水). Hari Rabu: 'Suiyoubi' (水曜日).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "火",
+        "reading_on": "カ (ka)",
+        "reading_kun": "ひ (hi)",
+        "romaji": "hi / ka",
+        "meaning": "Api",
+        "example_sentence": {
+          "jp": "[火|か][曜|よう][日|び]は [休|やす]みです。",
+          "romaji": "Kayoubi wa yasumi desu.",
+          "id": "Hari Selasa adalah hari libur saya."
+        },
+        "radical_hint": "Radikal 火 — lidah kobaran api unggun yang menyala menjilat ke atas dengan percikan bunga api di samping.",
+        "register": "polite",
+        "usage_note": "Hari Selasa dinamai berdasarkan elemen api: 'Kayoubi' (火曜日). Kata 'hanabi' (花火) artinya kembang api (bunga api).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "木",
+        "reading_on": "モク (moku), ボク (boku)",
+        "reading_kun": "き (ki)",
+        "romaji": "ki / moku",
+        "meaning": "Pohon / Kayu",
+        "example_sentence": {
+          "jp": "[大|おお]きな [木|き]の [下|した]で [休|やす]みましょう。",
+          "romaji": "Ookina ki no shita de yasumimashou.",
+          "id": "Ayo kita beristirahat di bawah pohon yang rindang ini."
+        },
+        "radical_hint": "Radikal 木 — pohon rimbun dengan cabang dahan melebar di atas, batang utama kokoh, dan akar menancap ke dalam tanah.",
+        "register": "polite",
+        "usage_note": "Hari Kamis dinamai dari elemen kayu: 'Mokuyoubi' (木曜日).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "金",
+        "reading_on": "キン (kin), コン (kon)",
+        "reading_kun": "かね (kane), かな (kana)",
+        "romaji": "kane / kin",
+        "meaning": "Uang / Emas / Logam",
+        "example_sentence": {
+          "jp": "お[金|かね]が ありません！",
+          "romaji": "Okane ga arimasen!",
+          "id": "Aduh, saya tidak punya uang!"
+        },
+        "radical_hint": "Radikal 金 — atap tempat peleburan logam dengan butiran bongkahan emas yang tersimpan di bawah tanah.",
+        "register": "polite",
+        "usage_note": "Uang selalu disebut 'okane' (お金). Emas murni disebut 'kin' (金). Hari Jumat: 'Kinyoubi' (金曜日).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "土",
+        "reading_on": "ド (do), ト (to)",
+        "reading_kun": "つち (tsuchi)",
+        "romaji": "tsuchi / do",
+        "meaning": "Tanah / Bumi",
+        "example_sentence": {
+          "jp": "[土|ど][曜|よう][日|び]に アニメを [見|み]ます。",
+          "romaji": "Doyoubi ni anime o mimasu.",
+          "id": "Pada hari Sabtu saya menonton anime."
+        },
+        "radical_hint": "Radikal 土 — tunas tanaman muda yang tumbuh menembus keluar dari lapisan tanah subur.",
+        "register": "polite",
+        "usage_note": "Hari Sabtu melambangkan elemen tanah: 'Doyoubi' (土曜日). Tanah liat/humus: 'tsuchi' (つち).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "山",
+        "reading_on": "サン (san), セン (sen)",
+        "reading_kun": "やま (yama)",
+        "romaji": "yama / san",
+        "meaning": "Gunung",
+        "example_sentence": {
+          "jp": "[富士|ふじ][山|さん]は とても [高|たか]いです。",
+          "romaji": "Fujisan wa totemo takai desu.",
+          "id": "Gunung Fuji itu sangat tinggi dan megah."
+        },
+        "radical_hint": "Radikal 山 — tiga puncak gunung berjajar dengan puncak tertingginya menjulang gagah di tengah.",
+        "register": "polite",
+        "usage_note": "Jika berdiri sendiri dibaca 'yama'. Jika menempel pada nama gunung tertentu dibaca 'san' (contoh: Fuji-san, bukan Fuji-yama).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "川",
+        "reading_on": "セン (sen)",
+        "reading_kun": "かわ (kawa)",
+        "romaji": "kawa / gawa",
+        "meaning": "Sungai",
+        "example_sentence": {
+          "jp": "[川|かわ]で [魚|さかな]を [見|み]つけました！",
+          "romaji": "Kawa de sakana o mitsukemashita!",
+          "id": "Saya menemukan ikan di sungai!"
+        },
+        "radical_hint": "Radikal 川 — tiga aliran air sungai yang mengalir tenang di antara lekukan dua tepi tebing tebing.",
+        "register": "polite",
+        "usage_note": "Sebagai suffix nama sungai sering berubah bunyi menjadi 'gawa' karena rendaku (contoh: Shinano-gawa).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "大",
+        "reading_on": "ダイ (dai), タイ (tai)",
+        "reading_kun": "おお-, おお.きい (oo-)",
+        "romaji": "dai / ookii",
+        "meaning": "Besar",
+        "example_sentence": {
+          "jp": "この[犬|いぬ]は とても [大|おお]きいです。",
+          "romaji": "Kono inu wa totemo ookii desu.",
+          "id": "Anjing ini berukuran sangat besar."
+        },
+        "radical_hint": "Radikal 大 — seseorang yang merentangkan kedua tangan dan kedua kakinya selebar mungkin untuk menunjukkan sesuatu yang 'Besar'.",
+        "register": "polite",
+        "usage_note": "Kata sifat: 'ookii' (大きい). Kata benda universitas: 'daigaku' (大学). Sangat suka (populer di anime): 'daisuki' (大好き).",
+        "needs_review": false
+      },
+      {
+        "type": "KANJI",
+        "character": "小",
+        "reading_on": "ショウ (shou)",
+        "reading_kun": "ちい-, ちい.さい (chii-), こ- (ko-), お- (o-)",
+        "romaji": "shou / chiisai",
+        "meaning": "Kecil",
+        "example_sentence": {
+          "jp": "[小|ちい]さな [鳥|とり]が かわいいです。",
+          "romaji": "Chiisana tori ga kawaii desu.",
+          "id": "Burung kecil itu sangat lucu/imut."
+        },
+        "radical_hint": "Radikal 小 — satu garis vertikal dibelah oleh dua goresan percikan kecil di sampingnya, melambangkan pembagian menjadi partikel kecil.",
+        "register": "polite",
+        "usage_note": "Kata sifat: 'chiisai' (小さい). Prefiks imut/anak: 'kotori' (小鳥 = anak burung), 'kawa' -> 'ogawa' (小川 = sungai kecil/parit).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Kanji manakah yang melambangkan arti 'Air'?",
+        "options": ["火", "水", "木", "金"],
+        "correct_answer": "水",
+        "based_on_item": "水"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Apakah arti dari kata 'お金 (okane)' dalam bahasa Indonesia?",
+        "options": ["Emas perhiasan", "Uang", "Waktu luang", "Logam mulia"],
+        "correct_answer": "Uang",
+        "based_on_item": "金"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah pembacaan romaji yang tepat untuk nama gunung legendaris '富士山':",
+        "options": ["Fujisan", "Fujiyama", "Fujikawa", "Fujiki"],
+        "correct_answer": "Fujisan",
+        "based_on_item": "山"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan pelafalan 'Hito'. Kanji manakah yang mewakili kata tersebut?",
+        "options": ["人", "大", "小", "木"],
+        "correct_answer": "人",
+        "based_on_item": "人"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Kanji apakah yang memiliki arti berlawanan dengan '大' (Besar)?",
+        "options": ["山", "川", "小", "土"],
+        "correct_answer": "小",
+        "based_on_item": "小"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Hari '火曜日 (Kayoubi)' adalah hari apa dalam kalender mingguan?",
+        "options": ["Hari Senin", "Hari Selasa", "Hari Kamis", "Hari Jumat"],
+        "correct_answer": "Hari Selasa",
+        "based_on_item": "火"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Bagaimana cara baca romaji untuk kata '川' (sungai)?",
+        "options": ["Kawa", "Yama", "Tsuchi", "Mizu"],
+        "correct_answer": "Kawa",
+        "based_on_item": "川"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan suara berikut: Kanji manakah yang dilafalkan sebagai 'Moku' atau 'Ki' (Pohon)?",
+        "options": ["木", "金", "土", "日"],
+        "correct_answer": "木",
+        "based_on_item": "木"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Dalam frasa '大好き (daisuki)', kanji '大' menambahkan nuansa makna apa?",
+        "options": ["Sedikit suka", "Sangat / Luar biasa suka", "Pura-pura suka", "Dulu pernah suka"],
+        "correct_answer": "Sangat / Luar biasa suka",
+        "based_on_item": "大"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Pilihlah Kanji yang digunakan untuk menulis hari Sabtu ('Doyoubi'):",
+        "options": ["日", "月", "土", "木"],
+        "correct_answer": "土",
+        "based_on_item": "土"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_9",
+    "level_name": "Pola Kalimat -masu & Kerja Dasar",
+    "phase": "Fase C: Kanji & Tata Bahasa",
+    "items": [
+      {
+        "type": "VOCAB",
+        "character": "食べます",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "tabemasu",
+        "meaning": "Makan (Bentuk Sopan Sekarang/Masa Depan)",
+        "example_sentence": {
+          "jp": "[朝|あさ]ごはんを [食|た]べます。",
+          "romaji": "Asagohan o tabemasu.",
+          "id": "Saya sarapan / makan pagi."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kamus (casual): 食べる (taberu). Untuk kalimat negatif sopan gunakan 食べません (tabemasen).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "飲みます",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "nomimasu",
+        "meaning": "Minum (Bentuk Sopan)",
+        "example_sentence": {
+          "jp": "お[茶|ちゃ]を [飲|の]みます。",
+          "romaji": "Ocha o nomimasu.",
+          "id": "Saya minum teh hijau."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kamus: 飲む (nomu). Dipasangkan dengan partikel objek を (o), misal: 水を飲みます (minum air).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "行きます",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ikimasu",
+        "meaning": "Pergi (Bentuk Sopan)",
+        "example_sentence": {
+          "jp": "[明日|あした]、[学校|がっこう]へ [行|い]きます。",
+          "romaji": "Ashita, gakkou e ikimasu.",
+          "id": "Besok saya pergi ke sekolah."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kamus: 行く (iku). Konteks anime seruan casual: 'Ikuzo!' (いくぞ) = Ayo berangkat/maju!",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "見ます",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "mimasu",
+        "meaning": "Melihat / Menonton",
+        "example_sentence": {
+          "jp": "[夜|よる]、アニメを [見|み]ます！",
+          "romaji": "Yoru, anime o mimasu!",
+          "id": "Di malam hari, saya menonton anime favorit saya!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kamus: 見る (miru). Dalam anime sering terdengar ajakan kasual 'Miyou!' (ayo tonton) atau 'Mite!' (lihat deh!).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "聞きます",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "kikimasu",
+        "meaning": "Mendengar / Mendengarkan / Bertanya",
+        "example_sentence": {
+          "jp": "[毎日|まいにち]、[音楽|おんがく]を [聞|き]きます。",
+          "romaji": "Mainichi, ongaku o kikimasu.",
+          "id": "Setiap hari saya mendengarkan musik."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kamus: 聞く (kiku). Selain mendengar musik/suara, juga dipakai saat bertanya kepada guru/petugas.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "買います",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "kaimasu",
+        "meaning": "Membeli",
+        "example_sentence": {
+          "jp": "コンビニで パンを [買|か]いました。",
+          "romaji": "Konbini de pan o kaimashita.",
+          "id": "Saya membeli roti di minimarket (konbini)."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kamus: 買う (kau). Bentuk lampau: 買いました (kaimashita = sudah membeli).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜ません",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-masen",
+        "meaning": "Pola Negatif Sopan: Tidak [Melakukan]",
+        "example_sentence": {
+          "jp": "[肉|にく]を [食|た]べません。",
+          "romaji": "Niku o tabemasen.",
+          "id": "Saya tidak memakan daging."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Akhiran kalimat sopan untuk menyatakan penolakan atau kebiasaan tidak melakukan suatu hal di waktu sekarang/akan datang.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜ました",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-mashita",
+        "meaning": "Pola Lampau Sopan: Sudah / Telah [Melakukan]",
+        "example_sentence": {
+          "jp": "[昨日|きのう]、たくさん [勉強|べんきょう]しました！",
+          "romaji": "Kinou, takusan benkyou shimashita!",
+          "id": "Kemarin, saya sudah belajar banyak sekali!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Menggantikan akhiran -masu untuk menandakan aksi yang sudah tuntas terjadi di masa lampau (past tense).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜ましょう",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-mashou",
+        "meaning": "Pola Ajakan Sopan: Ayo kita [Melakukan Sesuatu Bersama]",
+        "example_sentence": {
+          "jp": "[一緒|いっしょ]に ごはんを [食|た]べましょう！",
+          "romaji": "Issho ni gohan o tabemashou!",
+          "id": "Ayo kita makan bersama-sama!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Ajakan sopan kepada lawan bicara. Padanan bentuk kasualnya yang sering muncul di anime adalah bentuk maksud (volitional form) seperti 'Tabeyou!' atau 'Ikou!'.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "を (o / wo)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "o",
+        "meaning": "Partikel Penanda Objek Penderita Langsung",
+        "example_sentence": {
+          "jp": "[水|みず]を [飲|の]みます。",
+          "romaji": "Mizu o nomimasu.",
+          "id": "Saya meminum air putih (Air adalah objek langsung dari kata kerja minum)."
+        },
+        "radical_hint": null,
+        "register": "neutral",
+        "usage_note": "Ditulis dengan aksara Hiragana 'wo' (を), tetapi diucapkan murni sebagai bunyi vokal 'o'. Selalu ditaruh tepat setelah kata benda objek penderita.",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Lengkapilah kalimat berikut: 'お茶 [ ... ] 飲みます' (Saya minum teh hijau):",
+        "options": ["は", "を", "に", "で"],
+        "correct_answer": "を",
+        "based_on_item": "を (o / wo)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Apakah arti dari kalimat 'アニメを見ます (Anime o mimasu)'?",
+        "options": ["Saya membuat anime", "Saya membeli anime", "Saya menonton anime", "Saya menggambar anime"],
+        "correct_answer": "Saya menonton anime",
+        "based_on_item": "見ます"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah bentuk romaji yang benar untuk kalimat ajakan '食べましょう'?",
+        "options": ["Tabemashou", "Tabemashita", "Tabemasen", "Tabemasu"],
+        "correct_answer": "Tabemashou",
+        "based_on_item": "〜ましょう"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan pelafalan kata kerja ini. Manakah kata kerja yang diucapkan?",
+        "options": ["食べます", "飲みます", "行きます", "買います"],
+        "correct_answer": "行きます",
+        "based_on_item": "行きます"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Jika 'Ikimasu' artinya 'pergi', apakah arti dari 'Ikimashita'?",
+        "options": ["Tidak akan pergi", "Ayo pergi", "Sudah pergi / Telah berangkat", "Ingin pergi"],
+        "correct_answer": "Sudah pergi / Telah berangkat",
+        "based_on_item": "〜ました"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Bagaimana bentuk negatif sopan untuk kata '食べます' (Saya tidak makan)?",
+        "options": ["食べました", "食べません", "食べましょう", "食べたい"],
+        "correct_answer": "食べません",
+        "based_on_item": "〜ません"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah romanisasi yang tepat untuk kata kerja '買います':",
+        "options": ["Kaimasu", "Kikimasu", "Kakimasu", "Kaerimasu"],
+        "correct_answer": "Kaimasu",
+        "based_on_item": "買います"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Manakah kata yang berarti mendengarkan musik atau suara?",
+        "options": ["見ます", "聞きます", "行きます", "飲みます"],
+        "correct_answer": "聞きます",
+        "based_on_item": "聞きます"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Apa arti dari seruan populer di anime 'いくぞ！ (Ikuzo!)' yang berakar dari kata '行きます'?",
+        "options": ["Ayo makan!", "Ayo berangkat / Ayo maju!", "Tunggu sebentar!", "Jangan pergi!"],
+        "correct_answer": "Ayo berangkat / Ayo maju!",
+        "based_on_item": "行きます"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Manakah kata kerja yang tepat untuk melengkapi: 'コンビニで パンを [ ... ]ました' (Saya membeli roti di minimarket)?",
+        "options": ["買", "行", "見", "聞"],
+        "correct_answer": "買",
+        "based_on_item": "買います"
+      }
+    ]
+  }
+]
