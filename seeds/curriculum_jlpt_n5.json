@@ -1,5 +1,1404 @@
 [
   {
+    "level_id": "lvl_1",
+    "level_name": "Hiragana Inti (Seion)",
+    "phase": "Fase A: Fondasi Kana",
+    "items": [
+      {
+        "type": "KANA",
+        "character": "あ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "a",
+        "meaning": "Bunyi vokal dasar 'A'",
+        "example_sentence": {
+          "jp": "ありがとう ございます。",
+          "romaji": "Arigatou gozaimasu.",
+          "id": "Terima kasih banyak."
+        },
+        "radical_hint": "Bentuk huruf seperti buah apel berputar dengan tangkai melengkung di atasnya.",
+        "register": "polite",
+        "usage_note": "Huruf vokal pertama dalam urutan Gojuuon (50 bunyi). Mulai dari garis horizontal atas, vertikal melengkung, lalu putaran bawah.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "い",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "i",
+        "meaning": "Bunyi vokal dasar 'I'",
+        "example_sentence": {
+          "jp": "いい 天気ですね！",
+          "romaji": "Ii tenki desu ne!",
+          "id": "Cuacanya bagus ya!"
+        },
+        "radical_hint": "Dua garis sejajar melengkung menyerupai dua ikan lumba-lumba melompat.",
+        "register": "casual",
+        "usage_note": "Garis kiri sedikit lebih panjang dan memiliki kait kecil (hane) di ujung bawahnya.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "う",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "u",
+        "meaning": "Bunyi vokal dasar 'U'",
+        "example_sentence": {
+          "jp": "うまい！",
+          "romaji": "Umai!",
+          "id": "Enak banget! / Hebat!"
+        },
+        "radical_hint": "Seperti orang yang membungkuk hormat (ojigi) sambil mengelus perut.",
+        "register": "casual",
+        "usage_note": "Bibir tidak monyong ke depan seperti 'u' Indonesia, melainkan rileks kompresi vertikal.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "え",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "e",
+        "meaning": "Bunyi vokal dasar 'E'",
+        "example_sentence": {
+          "jp": "えっ、本当ですか？",
+          "romaji": "E', hontou desu ka?",
+          "id": "Eh, benarkah itu?"
+        },
+        "radical_hint": "Menyerupai burung camar yang sedang meluncur terbang di atas ombak pantai.",
+        "register": "casual",
+        "usage_note": "Sering dipakai sebagai seruan terkejut di anime: 'Eee?!'.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "お",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "o",
+        "meaning": "Bunyi vokal dasar 'O'",
+        "example_sentence": {
+          "jp": "おはよう！",
+          "romaji": "Ohayou!",
+          "id": "Selamat pagi!"
+        },
+        "radical_hint": "Huruf 'O' yang melompat dengan tanda titik keringat di sisi kanan atas.",
+        "register": "casual",
+        "usage_note": "Jangan tertukar dengan 'あ' (a); 'お' memiliki titik terpisah di sisi kanan.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "か",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ka",
+        "meaning": "Konsonan K + vokal A (KA)",
+        "example_sentence": {
+          "jp": "かわいい 猫ですね！",
+          "romaji": "Kawaii neko desu ne!",
+          "id": "Kucing yang imut sekali ya!"
+        },
+        "radical_hint": "Pedang katana samurai yang menebas ke bawah dengan tetesan tenaga di kanannya.",
+        "register": "casual",
+        "usage_note": "Di akhir kalimat berfungsi sebagai partikel tanya (?) tanpa tanda tanya formal.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "き",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ki",
+        "meaning": "Konsonan K + vokal I (KI)",
+        "example_sentence": {
+          "jp": "きれいな 花ですね。",
+          "romaji": "Kirei na hana desu ne.",
+          "id": "Bunga yang indah ya."
+        },
+        "radical_hint": "Kunci kuno berlubang dua garis dengan badan melengkung ke bawah.",
+        "register": "neutral",
+        "usage_note": "Dalam font tulisan tangan, lengkungan bawah sering terpisah dari garis vertikal.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "く",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ku",
+        "meaning": "Konsonan K + vokal U (KU)",
+        "example_sentence": {
+          "jp": "車が 来ます。",
+          "romaji": "Kuruma ga kimasu.",
+          "id": "Mobil sedang datang."
+        },
+        "radical_hint": "Paruh burung kokang (burung kukuk) yang terbuka lebar menghadap kiri.",
+        "register": "polite",
+        "usage_note": "Terdiri dari satu goresan tunggal bersudut lancip < 70 derajat.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "け",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ke",
+        "meaning": "Konsonan K + vokal E (KE)",
+        "example_sentence": {
+          "jp": "今朝、走りました。",
+          "romaji": "Kesa, hashirimashita.",
+          "id": "Pagi ini saya berlari."
+        },
+        "radical_hint": "Tong anggur kayu (keg) dengan keran di sisi kanan.",
+        "register": "polite",
+        "usage_note": "Garis kiri melengkung dengan kait, garis kanan berbentuk salib mini.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "こ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ko",
+        "meaning": "Konsonan K + vokal O (KO)",
+        "example_sentence": {
+          "jp": "こんにちは！",
+          "romaji": "Konnichiwa!",
+          "id": "Halo! / Selamat siang!"
+        },
+        "radical_hint": "Dua cacing pipih melengkung sejajar yang saling merayap menyapa.",
+        "register": "polite",
+        "usage_note": "Sapaan 'Konnichiwa' dieja menggunakan 'ko-n-ni-chi-ha' tetapi dibaca 'wa'.",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Manakah huruf Hiragana untuk bunyi vokal 'A'?",
+        "options": [
+          "あ",
+          "い",
+          "う",
+          "お"
+        ],
+        "correct_answer": "あ",
+        "based_on_item": "あ"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Arti dari kosakata anime 'かわいい (Kawaii)' adalah:",
+        "options": [
+          "Lezat",
+          "Lucu / Imut",
+          "Hebat",
+          "Menakutkan"
+        ],
+        "correct_answer": "Lucu / Imut",
+        "based_on_item": "か"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah romanisasi yang benar untuk huruf 'き':",
+        "options": [
+          "ki",
+          "ka",
+          "ku",
+          "ke"
+        ],
+        "correct_answer": "ki",
+        "based_on_item": "き"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Huruf apakah yang diucapkan sebagai 'U'?",
+        "options": [
+          "う",
+          "え",
+          "お",
+          "あ"
+        ],
+        "correct_answer": "う",
+        "based_on_item": "う"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Manakah karakter Hiragana untuk bunyi 'KO'?",
+        "options": [
+          "け",
+          "こ",
+          "く",
+          "か"
+        ],
+        "correct_answer": "こ",
+        "based_on_item": "こ"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Frasa 'おはよう (Ohayou)' diucapkan saat kapan?",
+        "options": [
+          "Malam hari",
+          "Pagi hari",
+          "Siang hari",
+          "Sebelum tidur"
+        ],
+        "correct_answer": "Pagi hari",
+        "based_on_item": "お"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Apakah romaji dari huruf satu goresan 'く'?",
+        "options": [
+          "ku",
+          "he",
+          "ko",
+          "su"
+        ],
+        "correct_answer": "ku",
+        "based_on_item": "く"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan pelafalan 'I'. Manakah huruf yang sesuai?",
+        "options": [
+          "い",
+          "り",
+          "こ",
+          "え"
+        ],
+        "correct_answer": "い",
+        "based_on_item": "い"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Seruan 'うまい！ (Umai!)' sering diucapkan karakter anime ketika:",
+        "options": [
+          "Merasakan makanan sangat lezat",
+          "Merasa kedinginan",
+          "Hendak tidur",
+          "Berpamitan"
+        ],
+        "correct_answer": "Merasakan makanan sangat lezat",
+        "based_on_item": "う"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Lengkapi kata 'ありがと[ ... ]' (Terima kasih) dengan huruf yang hilang:",
+        "options": [
+          "う",
+          "お",
+          "あ",
+          "え"
+        ],
+        "correct_answer": "う",
+        "based_on_item": "う"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_2",
+    "level_name": "Hiragana Dakuon & Handakuon",
+    "phase": "Fase A: Fondasi Kana",
+    "items": [
+      {
+        "type": "KANA",
+        "character": "が",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ga",
+        "meaning": "Bunyi Dakuon: G + A",
+        "example_sentence": {
+          "jp": "がんばって ください！",
+          "romaji": "Ganbatte kudasai!",
+          "id": "Semangat ya! Berjuanglah!"
+        },
+        "radical_hint": "Huruf か ditambah tanda petik ganda (dakuten) di kanan atas mengubah bunyi K menjadi G.",
+        "register": "polite",
+        "usage_note": "Dakuten (゛) menyuarakan pita suara konsonan tak bersuara (K -> G).",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "ざ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "za",
+        "meaning": "Bunyi Dakuon: Z + A",
+        "example_sentence": {
+          "jp": "ざんねんですね。",
+          "romaji": "Zannen desu ne.",
+          "id": "Sayang sekali ya."
+        },
+        "radical_hint": "Huruf さ (sa) ditambah dakuten bergetar menjadi 'za'.",
+        "register": "polite",
+        "usage_note": "Bunyi gesek alveolar bersuara seperti 'Z' pada kata 'Zebra'.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "だ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "da",
+        "meaning": "Bunyi Dakuon: D + A",
+        "example_sentence": {
+          "jp": "だいじょうぶ です！",
+          "romaji": "Daijoubu desu!",
+          "id": "Tidak apa-apa! Semuanya aman!"
+        },
+        "radical_hint": "Huruf た (ta) ditambah dakuten menjadi 'da'.",
+        "register": "polite",
+        "usage_note": "Sering muncul di akhir kalimat kasual anime sebagai kopula penegas: 'Sou da!' (Begitu rupanya!).",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "ば",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ba",
+        "meaning": "Bunyi Dakuon: B + A",
+        "example_sentence": {
+          "jp": "やばい！",
+          "romaji": "Yabai!",
+          "id": "Gawat! / Keren parah!"
+        },
+        "radical_hint": "Huruf は (ha) ditambah dakuten meledak menjadi 'ba'.",
+        "register": "casual",
+        "usage_note": "Kata slang 'Yabai' sangat fleksibel: bisa bermakna 'gawat/bahaya' atau 'luar biasa keren'.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "ぱ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "pa",
+        "meaning": "Bunyi Handakuon: P + A",
+        "example_sentence": {
+          "jp": "かんぱい！",
+          "romaji": "Kanpai!",
+          "id": "Bersulang! (Cheers!)"
+        },
+        "radical_hint": "Huruf は (ha) ditambah lingkaran kecil maru (handakuten) meletup menjadi 'pa'.",
+        "register": "casual",
+        "usage_note": "Handakuten (゜) hanya bisa menempel pada deretan baris H (ha, hi, fu, he, ho -> pa, pi, pu, pe, po).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Tanda apakah yang mengubah bunyi 'K' menjadi 'G' pada Hiragana?",
+        "options": [
+          "Dakuten (゛)",
+          "Handakuten (゜)",
+          "Choonpu (ー)",
+          "Sokuon (っ)"
+        ],
+        "correct_answer": "Dakuten (゛)",
+        "based_on_item": "が"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Arti dari seruan 'だいじょうぶ (Daijoubu)' adalah:",
+        "options": [
+          "Tidak apa-apa / Aman",
+          "Berbahaya",
+          "Sangat pedas",
+          "Tolong"
+        ],
+        "correct_answer": "Tidak apa-apa / Aman",
+        "based_on_item": "だ"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah ejaan romaji yang benar untuk huruf 'ぱ'?",
+        "options": [
+          "pa",
+          "ba",
+          "ha",
+          "da"
+        ],
+        "correct_answer": "pa",
+        "based_on_item": "ぱ"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan ucapan 'Ganbatte'. Huruf awal apakah yang digunakan?",
+        "options": [
+          "が",
+          "か",
+          "だ",
+          "ば"
+        ],
+        "correct_answer": "が",
+        "based_on_item": "が"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Kapan kata 'かんぱい (Kanpai)' lazim diucapkan?",
+        "options": [
+          "Saat bersulang minum bersama",
+          "Saat meminta maaf",
+          "Saat berangkat kerja",
+          "Saat hendak tidur"
+        ],
+        "correct_answer": "Saat bersulang minum bersama",
+        "based_on_item": "ぱ"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Manakah karakter untuk bunyi 'BA'?",
+        "options": [
+          "ば",
+          "ぱ",
+          "だ",
+          "ざ"
+        ],
+        "correct_answer": "ば",
+        "based_on_item": "ば"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Apakah romaji untuk kata 'やばい'?",
+        "options": [
+          "Yabai",
+          "Sugoi",
+          "Kawai",
+          "Itai"
+        ],
+        "correct_answer": "Yabai",
+        "based_on_item": "ば"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Huruf apakah yang dilafalkan sebagai 'ZA'?",
+        "options": [
+          "ざ",
+          "さ",
+          "だ",
+          "が"
+        ],
+        "correct_answer": "ざ",
+        "based_on_item": "ざ"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_3",
+    "level_name": "Youon & Sokuon (Kombinasi & Konsonan Ganda)",
+    "phase": "Fase A: Fondasi Kana",
+    "items": [
+      {
+        "type": "KANA",
+        "character": "きゃ・きゅ・きょ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "kya, kyu, kyo",
+        "meaning": "Youon: Kombinasi konsonan K + ya/yu/yo kecil",
+        "example_sentence": {
+          "jp": "きょうは いい 天気ですね。",
+          "romaji": "Kyou wa ii tenki desu ne.",
+          "id": "Hari ini cuacanya cerah ya."
+        },
+        "radical_hint": "Huruf vokal I (ki) disandingkan dengan ya/yu/yo yang ditulis 1/2 ukuran normal.",
+        "register": "polite",
+        "usage_note": "Dibaca dalam satu hembusan nafas morae tunggal: Kyo (bukan ki-yo).",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "っ (Sokuon)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "konsonan ganda (stop)",
+        "meaning": "Sokuon: Tsu kecil pembuat jeda glottal / konsonan rangkap",
+        "example_sentence": {
+          "jp": "ちょっと 待ってください！",
+          "romaji": "Chotto matte kudasai!",
+          "id": "Tunggu sebentar ya!"
+        },
+        "radical_hint": "Huruf つ (tsu) kecil yang menahan nafas sejenak seperti rem sebelum huruf berikutnya.",
+        "register": "polite",
+        "usage_note": "Menyebabkan konsonan setelahnya diucapkan ganda: k, s, t, p (contoh: matte, chotto).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Fungsi dari huruf 'っ' (tsu kecil) adalah:",
+        "options": [
+          "Memanjangkan vokal",
+          "Menggandakan konsonan setelahnya (jeda)",
+          "Menambah bunyi sengau",
+          "Mengubah nada suara"
+        ],
+        "correct_answer": "Menggandakan konsonan setelahnya (jeda)",
+        "based_on_item": "っ (Sokuon)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Arti dari frasa 'ちょっと まって (Chotto matte)' adalah:",
+        "options": [
+          "Tunggu sebentar",
+          "Ayo lari",
+          "Silakan duduk",
+          "Hati-hati"
+        ],
+        "correct_answer": "Tunggu sebentar",
+        "based_on_item": "っ (Sokuon)"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Bagaimana ejaan romaji untuk kata 'きょう' (hari ini)?",
+        "options": [
+          "Kyou",
+          "Kiyo",
+          "Kayou",
+          "Kou"
+        ],
+        "correct_answer": "Kyou",
+        "based_on_item": "きゃ・きゅ・きょ"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Manakah kata yang menggunakan jeda sokuon konsonan ganda?",
+        "options": [
+          "きって (kitte)",
+          "きて (kite)",
+          "きょう (kyou)",
+          "きのう (kinou)"
+        ],
+        "correct_answer": "きって (kitte)",
+        "based_on_item": "っ (Sokuon)"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Penulisan Youon yang benar untuk bunyi 'Kyo' adalah:",
+        "options": [
+          "きょ (yo kecil)",
+          "きよ (yo besar)",
+          "こよ",
+          "けよ"
+        ],
+        "correct_answer": "きょ (yo kecil)",
+        "based_on_item": "きゃ・きゅ・きょ"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Kata 'やった！ (Yatta!)' yang memiliki sokuon mengekspresikan:",
+        "options": [
+          "Rasa syukur gembira / Berhasil!",
+          "Rasa sedih mendalam",
+          "Rasa lapar",
+          "Rasa mengantuk"
+        ],
+        "correct_answer": "Rasa syukur gembira / Berhasil!",
+        "based_on_item": "っ (Sokuon)"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah romaji untuk kata 'しゃしん' (foto):",
+        "options": [
+          "shashin",
+          "siyashin",
+          "sashin",
+          "shoshin"
+        ],
+        "correct_answer": "shashin",
+        "based_on_item": "きゃ・きゅ・きょ"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan pelafalan 'Matte'. Berapa jeda ketukan yang terdengar?",
+        "options": [
+          "Ada jeda henti 1 ketukan",
+          "Mengalir tanpa henti",
+          "Dua vokal panjang",
+          "Bunyi sengau N"
+        ],
+        "correct_answer": "Ada jeda henti 1 ketukan",
+        "based_on_item": "っ (Sokuon)"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_4",
+    "level_name": "Kosakata Ikonik Anime",
+    "phase": "Fase B: Kosakata & Katakana",
+    "items": [
+      {
+        "type": "VOCAB",
+        "character": "すごい",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "sugoi",
+        "meaning": "Hebat / Luar biasa / Keren!",
+        "example_sentence": {
+          "jp": "わあ、本当に すごいですね！",
+          "romaji": "Waa, hontou ni sugoi desu ne!",
+          "id": "Wah, sungguh hebat luar biasa ya!"
+        },
+        "radical_hint": null,
+        "register": "casual",
+        "usage_note": "Bentuk super casual di anime sering diucapkan 'Sugee!' (すげえ).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "まじで",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "majide",
+        "meaning": "Seriusan? / Beneran nih?!",
+        "example_sentence": {
+          "jp": "えっ、まじで？！",
+          "romaji": "E', maji de?!",
+          "id": "Eh, seriusan kamu?!"
+        },
+        "radical_hint": null,
+        "register": "casual",
+        "usage_note": "Slang anak muda yang sangat populer di anime dan media sosial Jepang.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "いくぞ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ikuzo",
+        "meaning": "Ayo berangkat! / Ayo maju!",
+        "example_sentence": {
+          "jp": "みんな、いくぞ！",
+          "romaji": "Minna, ikuzo!",
+          "id": "Semuanya, ayo kita maju!"
+        },
+        "radical_hint": null,
+        "register": "casual",
+        "usage_note": "Bentuk maskulin bersemangat dari kata kerja 行く (iku).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "やった",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "yatta",
+        "meaning": "Hore! / Berhasil! / Asyik!",
+        "example_sentence": {
+          "jp": "テストに 合格した！やったー！",
+          "romaji": "Tesuto ni goukaku shita! Yattaa!",
+          "id": "Saya lulus ujian! Horeee!"
+        },
+        "radical_hint": null,
+        "register": "casual",
+        "usage_note": "Berasal dari bentuk lampau kata kerja やる (yaru = melakukan).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "meaning_match",
+        "question": "Arti dari kosakata populer 'すごい (Sugoi)' adalah:",
+        "options": [
+          "Hebat / Luar biasa",
+          "Bosan",
+          "Capek",
+          "Menyedihkan"
+        ],
+        "correct_answer": "Hebat / Luar biasa",
+        "based_on_item": "すごい"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah ejaan romaji untuk kata 'まじで'?",
+        "options": [
+          "Majide",
+          "Sugoi",
+          "Yatta",
+          "Ikuzo"
+        ],
+        "correct_answer": "Majide",
+        "based_on_item": "まじで"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Kata seruan apakah yang diucapkan untuk mengajak maju bersama?",
+        "options": [
+          "いくぞ (ikuzo)",
+          "やった (yatta)",
+          "すごい (sugoi)",
+          "まじで (majide)"
+        ],
+        "correct_answer": "いくぞ (ikuzo)",
+        "based_on_item": "いくぞ"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Ketika merasa senang berhasil mencapai sesuatu, karakter anime berseru:",
+        "options": [
+          "やった！",
+          "だめ！",
+          "いたい！",
+          "あぶない！"
+        ],
+        "correct_answer": "やった！",
+        "based_on_item": "やった"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Kata 'まじで？！ (Maji de?!)' paling tepat diterjemahkan sebagai:",
+        "options": [
+          "Beneran nih?!",
+          "Selamat jalan!",
+          "Selamat makan!",
+          "Sampai jumpa!"
+        ],
+        "correct_answer": "Beneran nih?!",
+        "based_on_item": "まじで"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah romaji yang tepat untuk ungkapan 'やったー':",
+        "options": [
+          "Yattaa",
+          "Yabai",
+          "Yamete",
+          "Yokatta"
+        ],
+        "correct_answer": "Yattaa",
+        "based_on_item": "やった"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan pelafalan 'Sugoi'. Manakah tulisan Hiragana yang benar?",
+        "options": [
+          "すごい",
+          "すこい",
+          "すげい",
+          "すさい"
+        ],
+        "correct_answer": "すごい",
+        "based_on_item": "すごい"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Lengkapi kalimat: 'みんな、[ ... ]ぞ！' (Ayo berangkat semuanya!):",
+        "options": [
+          "いく",
+          "みる",
+          "たべる",
+          "ねる"
+        ],
+        "correct_answer": "いく",
+        "based_on_item": "いくぞ"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_5",
+    "level_name": "Katakana Dasar, Chōonpu & Kombinasi Modern",
+    "phase": "Fase B: Kosakata & Katakana",
+    "items": [
+      {
+        "type": "VOCAB",
+        "character": "コーヒー",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "koohii",
+        "meaning": "Kopi (Coffee)",
+        "example_sentence": {
+          "jp": "アイス コーヒーを ください。",
+          "romaji": "Aisu koohii o kudasai.",
+          "id": "Tolong beri saya es kopi."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Mengandung dua garis chōonpu (ー) yang memanjangkan vokal O dan vokal I.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "アニメ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "anime",
+        "meaning": "Animasi khas Jepang",
+        "example_sentence": {
+          "jp": "日本のアニメが 大好きです！",
+          "romaji": "Nihon no anime ga daisuki desu!",
+          "id": "Saya sangat menyukai anime Jepang!"
+        },
+        "radical_hint": null,
+        "register": "casual",
+        "usage_note": "Kependekan dari kata bahasa Inggris 'animation'.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "パン",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "pan",
+        "meaning": "Roti (Bread)",
+        "example_sentence": {
+          "jp": "朝、パンを 食べました。",
+          "romaji": "Asa, pan o tabemashita.",
+          "id": "Pagi tadi saya memakan roti."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Serapan dari bahasa Portugis 'pão' yang masuk ke Jepang pada abad ke-16.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "テレビ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "terebi",
+        "meaning": "Televisi (TV)",
+        "example_sentence": {
+          "jp": "テレビを 見ます。",
+          "romaji": "Terebi o mimasu.",
+          "id": "Saya menonton televisi."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Singkatan khas Jepang dari kata 'television'.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "ー (Chōonpu)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "panjang vokal (-)",
+        "meaning": "Simbol Pemanjang Vokal Katakana",
+        "example_sentence": {
+          "jp": "ケーキ (keeki = kue)",
+          "romaji": "keeki",
+          "id": "Kue tart (Vokal 'e' dipanjangkan 1 ketukan)."
+        },
+        "radical_hint": null,
+        "register": "neutral",
+        "usage_note": "Bila ditulis vertikal, garisnya menjadi garis tegak lurus ke bawah (|).",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "ファ・フィ・フェ・フォ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "fa, fi, fe, fo",
+        "meaning": "Kombinasi Katakana Modern Bunyi F",
+        "example_sentence": {
+          "jp": "アニメの ファン です。",
+          "romaji": "Anime no fan desu.",
+          "id": "Saya adalah penggemar (fan) anime."
+        },
+        "radical_hint": null,
+        "register": "neutral",
+        "usage_note": "Huruf フ (fu) digabungkan huruf vokal kecil ァ, ィ, ェ, ォ.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "ティ・ディ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ti, di",
+        "meaning": "Kombinasi Katakana Modern Bunyi TI / DI",
+        "example_sentence": {
+          "jp": "パーティーに 行きます。",
+          "romaji": "Paatii ni ikimasu.",
+          "id": "Saya pergi ke pesta (party)."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "テ (te) + ィ kecil = Ti. デ (de) + ィ kecil = Di.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "ウィ・ウェ・ウォ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "wi, we, wo",
+        "meaning": "Kombinasi Katakana Modern Bunyi W",
+        "example_sentence": {
+          "jp": "ウィンドウを 開けます。",
+          "romaji": "Windou o akemasu.",
+          "id": "Membuka jendela (window)."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "ウ (u) + vokal kecil menghasilkan transliterasi bunyi W asing.",
+        "needs_review": false
+      },
+      {
+        "type": "KANA",
+        "character": "ジェ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "je",
+        "meaning": "Kombinasi Katakana Modern Bunyi JE",
+        "example_sentence": {
+          "jp": "ジェット コースター に 乗りました。",
+          "romaji": "Jetto koosutaa ni norimashita.",
+          "id": "Saya menaiki jet coaster (roller coaster)."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "ジ (ji) + ェ kecil menghasilkan bunyi 'je' seperti pada 'jacket' atau 'jet'.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "スマホ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "sumaho",
+        "meaning": "Smartphone / Ponsel pintar",
+        "example_sentence": {
+          "jp": "新しい スマホを 買いました。",
+          "romaji": "Atarashii sumaho o kaimashita.",
+          "id": "Saya membeli smartphone baru."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Singkatan dari 'Sumaato-fon' (スマート・フォン).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Tanda garis 'ー' dalam kata 'コーヒー' berfungsi untuk:",
+        "options": [
+          "Memanjangkan vokal suara",
+          "Menggandakan huruf",
+          "Memberi tanda berhenti",
+          "Menjadi tanda petik"
+        ],
+        "correct_answer": "Memanjangkan vokal suara",
+        "based_on_item": "ー (Chōonpu)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Kata serapan Katakana 'パン (Pan)' memiliki arti:",
+        "options": [
+          "Roti",
+          "Wajan",
+          "Pena",
+          "Panci"
+        ],
+        "correct_answer": "Roti",
+        "based_on_item": "パン"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah ejaan romaji untuk kata 'アニメ':",
+        "options": [
+          "anime",
+          "ameba",
+          "aniki",
+          "arima"
+        ],
+        "correct_answer": "anime",
+        "based_on_item": "アニメ"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Manakah kata yang berarti televisi?",
+        "options": [
+          "テレビ (terebi)",
+          "ラジオ (rajio)",
+          "カメラ (kamera)",
+          "ドア (doa)"
+        ],
+        "correct_answer": "テレビ (terebi)",
+        "based_on_item": "テレビ"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Bagaimana kombinasi Katakana modern untuk menulis bunyi 'Fa'?",
+        "options": [
+          "ファ",
+          "フィ",
+          "フェ",
+          "フォ"
+        ],
+        "correct_answer": "ファ",
+        "based_on_item": "ファ・フィ・フェ・フォ"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Kata 'スマホ (Sumaho)' adalah singkatan dari perangkat apa?",
+        "options": [
+          "Smartphone",
+          "Smartwatch",
+          "Smart TV",
+          "Smart speaker"
+        ],
+        "correct_answer": "Smartphone",
+        "based_on_item": "スマホ"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah pembacaan romaji yang benar untuk kata 'パーティー'?",
+        "options": [
+          "paatii",
+          "paty",
+          "patei",
+          "patai"
+        ],
+        "correct_answer": "paatii",
+        "based_on_item": "ティ・ディ"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan pelafalan 'Koohii'. Manakah penulisan Katakana yang tepat?",
+        "options": [
+          "コーヒー",
+          "コヒ",
+          "コオヒイ",
+          "コーヒ"
+        ],
+        "correct_answer": "コーヒー",
+        "based_on_item": "コーヒー"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Dalam kalimat 'アニメの ファン です', kata 'ファン' berarti:",
+        "options": [
+          "Penggemar / Fan",
+          "Kipas angin",
+          "Pemain",
+          "Sutradara"
+        ],
+        "correct_answer": "Penggemar / Fan",
+        "based_on_item": "ファ・フィ・フェ・フォ"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Kombinasi modern 'ジ' + 'ェ kecil' (ジェ) menghasilkan bunyi:",
+        "options": [
+          "Je",
+          "Ji",
+          "Ja",
+          "Jo"
+        ],
+        "correct_answer": "Je",
+        "based_on_item": "ジェ"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_6",
+    "level_name": "Partikel Dasar & Lanjutan",
+    "phase": "Fase C: Kanji & Tata Bahasa",
+    "items": [
+      {
+        "type": "GRAMMAR",
+        "character": "は (wa)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "wa",
+        "meaning": "Partikel Penanda Topik Utama",
+        "example_sentence": {
+          "jp": "わたしは 学生です。",
+          "romaji": "Watashi wa gakusei desu.",
+          "id": "Tentang saya, saya adalah seorang murid."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Ditulis dengan huruf hiragana 'ha' (は), tetapi khusus sebagai partikel dibaca 'wa'.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "が (ga)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ga",
+        "meaning": "Partikel Penanda Subjek Penegas / Informasi Baru",
+        "example_sentence": {
+          "jp": "猫が 好きです。",
+          "romaji": "Neko ga suki desu.",
+          "id": "Saya suka kucing (Kucing adalah subjek yang disukai)."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Digunakan bersama kata sifat suki/kirai, jouzu/heta, dan kata kerja keberadaan arimasu/imasu.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "の (no)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "no",
+        "meaning": "Partikel Kepemilikan & Modifikasi Benda",
+        "example_sentence": {
+          "jp": "わたしの 本です。",
+          "romaji": "Watashi no hon desu.",
+          "id": "Ini adalah buku milik saya."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Rumus: Pemilik + の + Benda (A no B = B milik A). Juga menghubungkan asal kota/negara: 日本の車 (mobil buatan Jepang).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "に (ni)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ni",
+        "meaning": "Partikel Waktu Spesifik & Tujuan Keberadaan",
+        "example_sentence": {
+          "jp": "七時に 起きます。",
+          "romaji": "Shichi-ji ni okimasu.",
+          "id": "Saya bangun tepat pada jam 7."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Menempel pada waktu yang ada angkanya (jam, hari, tanggal). Juga menunjukkan lokasi ada: 部屋にいます (ada di kamar).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "で (de)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "de",
+        "meaning": "Partikel Tempat Aksi & Sarana/Alat",
+        "example_sentence": {
+          "jp": "図書館で 勉強します。",
+          "romaji": "Toshokan de benkyou shimasu.",
+          "id": "Saya belajar di perpustakaan."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Menandai tempat terjadinya suatu aktivitas aktif. Juga menandai alat transportasi: 電車で行きます (pergi dengan kereta).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "へ (e)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "e",
+        "meaning": "Partikel Arah Tujuan Pergerakan",
+        "example_sentence": {
+          "jp": "日本へ 行きたいです。",
+          "romaji": "Nihon e ikitai desu.",
+          "id": "Saya ingin pergi menuju negara Jepang."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Ditulis dengan huruf hiragana 'he' (へ), tetapi dilafalkan murni 'e'. Menekankan arah pergerakan.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "と (to)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "to",
+        "meaning": "Partikel 'Dan' (Penghubung Lengkap) & 'Bersama'",
+        "example_sentence": {
+          "jp": "友達と 映画を 見ました。",
+          "romaji": "Tomodachi to eiga o mimasu.",
+          "id": "Saya menonton film bersama teman."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Hanya menghubungkan kata benda dengan kata benda (A to B = A dan B). Tidak bisa menghubungkan kalimat.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "も (mo)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "mo",
+        "meaning": "Partikel Penanda 'Juga' / 'Pun'",
+        "example_sentence": {
+          "jp": "わたしも アニメが 好きです！",
+          "romaji": "Watashi mo anime ga suki desu!",
+          "id": "Saya juga suka anime!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Menggantikan posisi partikel は (wa) atau が (ga) untuk menyatakan kesamaan.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "から・まで (kara - made)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "kara - made",
+        "meaning": "Dari ... sampai / hingga ...",
+        "example_sentence": {
+          "jp": "九時から 五時まで 働きます。",
+          "romaji": "Ku-ji kara go-ji made hatarakimasu.",
+          "id": "Saya bekerja dari jam 9 sampai jam 5."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bisa digunakan untuk rentang waktu (jam/hari) maupun rentang tempat fisik (Tokyo kara Osaka made).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "ね・よ (ne / yo)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ne / yo",
+        "meaning": "Partikel Akhir: Konfirmasi (ne) & Informasi Baru (yo)",
+        "example_sentence": {
+          "jp": "おいしいですね！ (Enak ya!) / おもしろいですよ！ (Menarik lho!)",
+          "romaji": "Oishii desu ne! / Omoshiroi desu yo!",
+          "id": "Enak ya! (ne) / Menarik lho, kamu harus coba! (yo)"
+        },
+        "radical_hint": null,
+        "register": "casual",
+        "usage_note": "'Ne' untuk meminta persetujuan lawan bicara (~ya kan). 'Yo' untuk memberitahu informasi yang lawan bicara belum tahu (~lho).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "multiple_choice_character",
+        "question": "Lengkapi kalimat topik berikut: 'わたし [ ... ] インドネシア人です' (Saya adalah orang Indonesia):",
+        "options": [
+          "は",
+          "が",
+          "を",
+          "に"
+        ],
+        "correct_answer": "は",
+        "based_on_item": "は (wa)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Partikel 'の (no)' dalam kalimat 'わたしの本' menyatakan hubungan apa?",
+        "options": [
+          "Kepemilikan (Buku milik saya)",
+          "Arah perjalanan",
+          "Waktu terjadinya",
+          "Perbandingan"
+        ],
+        "correct_answer": "Kepemilikan (Buku milik saya)",
+        "based_on_item": "の (no)"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah pelafalan yang benar untuk partikel arah 'へ'?",
+        "options": [
+          "e",
+          "he",
+          "ha",
+          "wa"
+        ],
+        "correct_answer": "e",
+        "based_on_item": "へ (e)"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Partikel apakah yang digunakan untuk menyatakan tempat aksi 'di perpustakaan'?",
+        "options": [
+          "で (de)",
+          "に (ni)",
+          "へ (e)",
+          "を (o)"
+        ],
+        "correct_answer": "で (de)",
+        "based_on_item": "で (de)"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Partikel yang tepat untuk menyatakan kesamaan 'Saya JUGA suka' adalah:",
+        "options": [
+          "も",
+          "は",
+          "と",
+          "の"
+        ],
+        "correct_answer": "も",
+        "based_on_item": "も (mo)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Pasangan partikel 'から ... まで' memiliki makna:",
+        "options": [
+          "Dari ... sampai ...",
+          "Sebelum ... sesudah ...",
+          "Karena ... oleh sebab itu ...",
+          "Antara ... dan ..."
+        ],
+        "correct_answer": "Dari ... sampai ...",
+        "based_on_item": "から・まで (kara - made)"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Lengkapilah kalimat aksi: '友達 [ ... ] 一緒に 映画を 見ます' (Menonton film BERSAMA teman):",
+        "options": [
+          "と",
+          "に",
+          "で",
+          "を"
+        ],
+        "correct_answer": "と",
+        "based_on_item": "と (to)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Partikel penegas akhir kalimat 'よ (yo)' dipakai untuk:",
+        "options": [
+          "Memberi tahu informasi baru yang belum diketahui lawan bicara (~lho)",
+          "Menanyakan jam",
+          "Menolak ajakan",
+          "Meminta izin"
+        ],
+        "correct_answer": "Memberi tahu informasi baru yang belum diketahui lawan bicara (~lho)",
+        "based_on_item": "ね・よ (ne / yo)"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Partikel penunjuk waktu spesifik untuk kalimat '7時に 起きます' adalah:",
+        "options": [
+          "に",
+          "で",
+          "は",
+          "へ"
+        ],
+        "correct_answer": "に",
+        "based_on_item": "に (ni)"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Bila ditulis 'は' sebagai partikel penanda topik, bagaimana bunyi romajinya?",
+        "options": [
+          "wa",
+          "ha",
+          "fa",
+          "ba"
+        ],
+        "correct_answer": "wa",
+        "based_on_item": "は (wa)"
+      }
+    ]
+  },
+  {
     "level_id": "lvl_7",
     "level_name": "Kanji Angka & Waktu",
     "phase": "Fase C: Kanji & Tata Bahasa",
@@ -179,70 +1578,120 @@
       {
         "type": "multiple_choice_character",
         "question": "Pilihlah Kanji yang memiliki arti angka 'Tiga (3)':",
-        "options": ["一", "二", "三", "四"],
+        "options": [
+          "一",
+          "二",
+          "三",
+          "四"
+        ],
         "correct_answer": "三",
         "based_on_item": "三"
       },
       {
         "type": "meaning_match",
         "question": "Apakah arti dari Kanji '時' dalam kalimat '三時 (san-ji)'?",
-        "options": ["Hari", "Bulan", "Jam / Waktu", "Tahun"],
+        "options": [
+          "Hari",
+          "Bulan",
+          "Jam / Waktu",
+          "Tahun"
+        ],
         "correct_answer": "Jam / Waktu",
         "based_on_item": "時"
       },
       {
         "type": "romaji_matcher",
         "question": "Manakah romanisasi yang tepat untuk kata '今月' (bulan ini)?",
-        "options": ["Kongetsu", "Kotoshi", "Kyou", "Konshuu"],
+        "options": [
+          "Kongetsu",
+          "Kotoshi",
+          "Kyou",
+          "Konshuu"
+        ],
         "correct_answer": "Kongetsu",
         "based_on_item": "月"
       },
       {
         "type": "audio_quiz",
         "question": "Dengarkan audio berikut: manakah Kanji yang diucapkan sebagai 'Nichi' atau 'Hi'?",
-        "options": ["日", "月", "年", "分"],
+        "options": [
+          "日",
+          "月",
+          "年",
+          "分"
+        ],
         "correct_answer": "日",
         "based_on_item": "日"
       },
       {
         "type": "multiple_choice_character",
         "question": "Bagaimana cara menulis angka 'Lima (5)' dalam aksara Kanji?",
-        "options": ["三", "四", "五", "六"],
+        "options": [
+          "三",
+          "四",
+          "五",
+          "六"
+        ],
         "correct_answer": "五",
         "based_on_item": "五"
       },
       {
         "type": "meaning_match",
         "question": "Kata '来年 (Rainen)' mengacu pada kurun waktu apa?",
-        "options": ["Tahun lalu", "Tahun ini", "Tahun depan", "Setiap tahun"],
+        "options": [
+          "Tahun lalu",
+          "Tahun ini",
+          "Tahun depan",
+          "Setiap tahun"
+        ],
         "correct_answer": "Tahun depan",
         "based_on_item": "年"
       },
       {
         "type": "romaji_matcher",
         "question": "Pilihlah bacaan romaji yang benar untuk kalimat: '五分 (5 menit)':",
-        "options": ["Go-fun", "Go-ji", "Go-nen", "Go-gatsu"],
+        "options": [
+          "Go-fun",
+          "Go-ji",
+          "Go-nen",
+          "Go-gatsu"
+        ],
         "correct_answer": "Go-fun",
         "based_on_item": "分"
       },
       {
         "type": "audio_quiz",
         "question": "Dengarkan pelafalan 'Futatsu'. Kanji manakah yang merepresentasikan jumlah tersebut?",
-        "options": ["一つ", "二つ", "三つ", "四つ"],
+        "options": [
+          "一つ",
+          "二つ",
+          "三つ",
+          "四つ"
+        ],
         "correct_answer": "二つ",
         "based_on_item": "二"
       },
       {
         "type": "meaning_match",
         "question": "Dalam frasa '日曜日 (Nichiyoubi)', hari apakah yang dimaksud?",
-        "options": ["Hari Senin", "Hari Rabu", "Hari Sabtu", "Hari Minggu"],
+        "options": [
+          "Hari Senin",
+          "Hari Rabu",
+          "Hari Sabtu",
+          "Hari Minggu"
+        ],
         "correct_answer": "Hari Minggu",
         "based_on_item": "日"
       },
       {
         "type": "multiple_choice_character",
         "question": "Manakah Kanji yang tepat untuk mengisi titik-titik berikut: '林檎を [ ... ]つ ください' (Beri saya satu apel)?",
-        "options": ["一", "二", "三", "四"],
+        "options": [
+          "一",
+          "二",
+          "三",
+          "四"
+        ],
         "correct_answer": "一",
         "based_on_item": "一"
       }
@@ -428,70 +1877,120 @@
       {
         "type": "multiple_choice_character",
         "question": "Kanji manakah yang melambangkan arti 'Air'?",
-        "options": ["火", "水", "木", "金"],
+        "options": [
+          "火",
+          "水",
+          "木",
+          "金"
+        ],
         "correct_answer": "水",
         "based_on_item": "水"
       },
       {
         "type": "meaning_match",
         "question": "Apakah arti dari kata 'お金 (okane)' dalam bahasa Indonesia?",
-        "options": ["Emas perhiasan", "Uang", "Waktu luang", "Logam mulia"],
+        "options": [
+          "Emas perhiasan",
+          "Uang",
+          "Waktu luang",
+          "Logam mulia"
+        ],
         "correct_answer": "Uang",
         "based_on_item": "金"
       },
       {
         "type": "romaji_matcher",
         "question": "Pilihlah pembacaan romaji yang tepat untuk nama gunung legendaris '富士山':",
-        "options": ["Fujisan", "Fujiyama", "Fujikawa", "Fujiki"],
+        "options": [
+          "Fujisan",
+          "Fujiyama",
+          "Fujikawa",
+          "Fujiki"
+        ],
         "correct_answer": "Fujisan",
         "based_on_item": "山"
       },
       {
         "type": "audio_quiz",
         "question": "Dengarkan pelafalan 'Hito'. Kanji manakah yang mewakili kata tersebut?",
-        "options": ["人", "大", "小", "木"],
+        "options": [
+          "人",
+          "大",
+          "小",
+          "木"
+        ],
         "correct_answer": "人",
         "based_on_item": "人"
       },
       {
         "type": "multiple_choice_character",
         "question": "Kanji apakah yang memiliki arti berlawanan dengan '大' (Besar)?",
-        "options": ["山", "川", "小", "土"],
+        "options": [
+          "山",
+          "川",
+          "小",
+          "土"
+        ],
         "correct_answer": "小",
         "based_on_item": "小"
       },
       {
         "type": "meaning_match",
         "question": "Hari '火曜日 (Kayoubi)' adalah hari apa dalam kalender mingguan?",
-        "options": ["Hari Senin", "Hari Selasa", "Hari Kamis", "Hari Jumat"],
+        "options": [
+          "Hari Senin",
+          "Hari Selasa",
+          "Hari Kamis",
+          "Hari Jumat"
+        ],
         "correct_answer": "Hari Selasa",
         "based_on_item": "火"
       },
       {
         "type": "romaji_matcher",
         "question": "Bagaimana cara baca romaji untuk kata '川' (sungai)?",
-        "options": ["Kawa", "Yama", "Tsuchi", "Mizu"],
+        "options": [
+          "Kawa",
+          "Yama",
+          "Tsuchi",
+          "Mizu"
+        ],
         "correct_answer": "Kawa",
         "based_on_item": "川"
       },
       {
         "type": "audio_quiz",
         "question": "Dengarkan suara berikut: Kanji manakah yang dilafalkan sebagai 'Moku' atau 'Ki' (Pohon)?",
-        "options": ["木", "金", "土", "日"],
+        "options": [
+          "木",
+          "金",
+          "土",
+          "日"
+        ],
         "correct_answer": "木",
         "based_on_item": "木"
       },
       {
         "type": "meaning_match",
         "question": "Dalam frasa '大好き (daisuki)', kanji '大' menambahkan nuansa makna apa?",
-        "options": ["Sedikit suka", "Sangat / Luar biasa suka", "Pura-pura suka", "Dulu pernah suka"],
+        "options": [
+          "Sedikit suka",
+          "Sangat / Luar biasa suka",
+          "Pura-pura suka",
+          "Dulu pernah suka"
+        ],
         "correct_answer": "Sangat / Luar biasa suka",
         "based_on_item": "大"
       },
       {
         "type": "multiple_choice_character",
         "question": "Pilihlah Kanji yang digunakan untuk menulis hari Sabtu ('Doyoubi'):",
-        "options": ["日", "月", "土", "木"],
+        "options": [
+          "日",
+          "月",
+          "土",
+          "木"
+        ],
         "correct_answer": "土",
         "based_on_item": "土"
       }
@@ -677,72 +2176,1019 @@
       {
         "type": "multiple_choice_character",
         "question": "Lengkapilah kalimat berikut: 'お茶 [ ... ] 飲みます' (Saya minum teh hijau):",
-        "options": ["は", "を", "に", "で"],
+        "options": [
+          "は",
+          "を",
+          "に",
+          "で"
+        ],
         "correct_answer": "を",
         "based_on_item": "を (o / wo)"
       },
       {
         "type": "meaning_match",
         "question": "Apakah arti dari kalimat 'アニメを見ます (Anime o mimasu)'?",
-        "options": ["Saya membuat anime", "Saya membeli anime", "Saya menonton anime", "Saya menggambar anime"],
+        "options": [
+          "Saya membuat anime",
+          "Saya membeli anime",
+          "Saya menonton anime",
+          "Saya menggambar anime"
+        ],
         "correct_answer": "Saya menonton anime",
         "based_on_item": "見ます"
       },
       {
         "type": "romaji_matcher",
         "question": "Manakah bentuk romaji yang benar untuk kalimat ajakan '食べましょう'?",
-        "options": ["Tabemashou", "Tabemashita", "Tabemasen", "Tabemasu"],
+        "options": [
+          "Tabemashou",
+          "Tabemashita",
+          "Tabemasen",
+          "Tabemasu"
+        ],
         "correct_answer": "Tabemashou",
         "based_on_item": "〜ましょう"
       },
       {
         "type": "audio_quiz",
         "question": "Dengarkan pelafalan kata kerja ini. Manakah kata kerja yang diucapkan?",
-        "options": ["食べます", "飲みます", "行きます", "買います"],
+        "options": [
+          "食べます",
+          "飲みます",
+          "行きます",
+          "買います"
+        ],
         "correct_answer": "行きます",
         "based_on_item": "行きます"
       },
       {
         "type": "meaning_match",
         "question": "Jika 'Ikimasu' artinya 'pergi', apakah arti dari 'Ikimashita'?",
-        "options": ["Tidak akan pergi", "Ayo pergi", "Sudah pergi / Telah berangkat", "Ingin pergi"],
+        "options": [
+          "Tidak akan pergi",
+          "Ayo pergi",
+          "Sudah pergi / Telah berangkat",
+          "Ingin pergi"
+        ],
         "correct_answer": "Sudah pergi / Telah berangkat",
         "based_on_item": "〜ました"
       },
       {
         "type": "multiple_choice_character",
         "question": "Bagaimana bentuk negatif sopan untuk kata '食べます' (Saya tidak makan)?",
-        "options": ["食べました", "食べません", "食べましょう", "食べたい"],
+        "options": [
+          "食べました",
+          "食べません",
+          "食べましょう",
+          "食べたい"
+        ],
         "correct_answer": "食べません",
         "based_on_item": "〜ません"
       },
       {
         "type": "romaji_matcher",
         "question": "Pilihlah romanisasi yang tepat untuk kata kerja '買います':",
-        "options": ["Kaimasu", "Kikimasu", "Kakimasu", "Kaerimasu"],
+        "options": [
+          "Kaimasu",
+          "Kikimasu",
+          "Kakimasu",
+          "Kaerimasu"
+        ],
         "correct_answer": "Kaimasu",
         "based_on_item": "買います"
       },
       {
         "type": "audio_quiz",
         "question": "Dengarkan audio: Manakah kata yang berarti mendengarkan musik atau suara?",
-        "options": ["見ます", "聞きます", "行きます", "飲みます"],
+        "options": [
+          "見ます",
+          "聞きます",
+          "行きます",
+          "飲みます"
+        ],
         "correct_answer": "聞きます",
         "based_on_item": "聞きます"
       },
       {
         "type": "meaning_match",
         "question": "Apa arti dari seruan populer di anime 'いくぞ！ (Ikuzo!)' yang berakar dari kata '行きます'?",
-        "options": ["Ayo makan!", "Ayo berangkat / Ayo maju!", "Tunggu sebentar!", "Jangan pergi!"],
+        "options": [
+          "Ayo makan!",
+          "Ayo berangkat / Ayo maju!",
+          "Tunggu sebentar!",
+          "Jangan pergi!"
+        ],
         "correct_answer": "Ayo berangkat / Ayo maju!",
         "based_on_item": "行きます"
       },
       {
         "type": "multiple_choice_character",
         "question": "Manakah kata kerja yang tepat untuk melengkapi: 'コンビニで パンを [ ... ]ました' (Saya membeli roti di minimarket)?",
-        "options": ["買", "行", "見", "聞"],
+        "options": [
+          "買",
+          "行",
+          "見",
+          "聞"
+        ],
         "correct_answer": "買",
         "based_on_item": "買います"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_10",
+    "level_name": "Perkenalan Diri (Jikoshoukai), Register & Kata Sifat",
+    "phase": "Fase D: Percakapan & Listening",
+    "items": [
+      {
+        "type": "VOCAB",
+        "character": "はじめまして",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "hajimemashite",
+        "meaning": "Senang berkenalan dengan Anda (Salam pembuka)",
+        "example_sentence": {
+          "jp": "はじめまして、ラドです。",
+          "romaji": "Hajimemashite, Rado desu.",
+          "id": "Senang berkenalan dengan Anda, nama saya Rado."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Hanya diucapkan satu kali seumur hidup saat pertama kali bertemu seseorang.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "よろしくお願いします",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "yoroshiku onegaishimasu",
+        "meaning": "Mohon bantuannya / Senang bekerja sama dengan Anda",
+        "example_sentence": {
+          "jp": "どうぞ よろしく お願いします。",
+          "romaji": "Douzo yoroshiku onegaishimasu.",
+          "id": "Mohon bantuannya ya (Salam penutup jikoshoukai)."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kasual di anime: 'Yoroshiku!' (よろしく!). Ungkapan krusial etika Jepang.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "わたしは [Nama] です",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "watashi wa [nama] desu",
+        "meaning": "Pola Dasar Memperkenalkan Diri: Nama saya adalah...",
+        "example_sentence": {
+          "jp": "わたしは インドネシアから 来ました。",
+          "romaji": "Watashi wa Indoneshia kara kimashita.",
+          "id": "Saya berasal dari Indonesia."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Jangan menempelkan suffix kehormatan '-san' pada nama diri sendiri.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "Register Formal (Desu/Masu) vs Casual (Plain)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "formal vs casual",
+        "meaning": "Perbedaan Nada Bahasa: Sopan Sehari-hari vs Akrab/Anime",
+        "example_sentence": {
+          "jp": "Sopan: 食べます (tabemasu) / Kasual: 食べる (taberu)",
+          "romaji": "Tabemasu vs Taberu",
+          "id": "Desu/Masu dipakai untuk orang baru & rekan kerja. Plain form dipakai untuk sahabat sebaya & anime."
+        },
+        "radical_hint": null,
+        "register": "neutral",
+        "usage_note": "Di anime, karakter sering berbicara casual (da, zo, ze). Namun di dunia nyata, desu/masu wajib untuk sopan.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "いい・よい",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ii / yoi",
+        "meaning": "Bagus / Baik (i-adjective)",
+        "example_sentence": {
+          "jp": "とても いい 天気ですね。",
+          "romaji": "Totemo ii tenki desu ne.",
+          "id": "Cuacanya sangat bagus ya."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk negatifnya tidak beraturan dari 'yoi': よくない (yokunai = tidak bagus).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "おいしい",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "oishii",
+        "meaning": "Enak / Lezat (i-adjective)",
+        "example_sentence": {
+          "jp": "この ラーメンは とても おいしいです！",
+          "romaji": "Kono raamen wa totemo oishii desu!",
+          "id": "Ramen ini rasanya sangat lezat!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk negatif: おいしくない (oishikunai = tidak enak). Bentuk lampau: おいしかった (oishikatta).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "好きな",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "suki-na",
+        "meaning": "Suka / Favorit (na-adjective)",
+        "example_sentence": {
+          "jp": "好きな アニメは 何ですか？",
+          "romaji": "Suki na anime wa nan desu ka?",
+          "id": "Apa anime favorit yang kamu sukai?"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bila menerangkan kata benda di depannya, wajib ditambahkan partikel 'na' (suki na ~).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "上手な",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "jouzu-na",
+        "meaning": "Pandai / Mahir (na-adjective)",
+        "example_sentence": {
+          "jp": "日本語が とても 上手ですね！",
+          "romaji": "Nihongo ga totemo jouzu desu ne!",
+          "id": "Bahasa Jepang Anda sangat mahir dan pandai ya!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Pujian yang sangat sering didengar pembelajar bahasa Jepang. Jawaban sopannya: 'Iie, mada mada desu' (Belum kok, masih belajar).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜くない (Negatif i-Adjective)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-kunai",
+        "meaning": "Pola Negatif Kata Sifat-i: Tidak [Sifat]",
+        "example_sentence": {
+          "jp": "今日は 暑くないです。",
+          "romaji": "Kyou wa atsukunai desu.",
+          "id": "Hari ini tidak panas."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Buang akhiran huruf 'i' terakhir, lalu ganti dengan '-kunai' (contoh: takai -> takakunai = tidak mahal).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜じゃない (Negatif na-Adjective)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-janai / -dewa arimasen",
+        "meaning": "Pola Negatif Kata Sifat-na: Tidak [Sifat]",
+        "example_sentence": {
+          "jp": "暇じゃないです。忙しいです。",
+          "romaji": "Hima janai desu. Isogashii desu.",
+          "id": "Saya tidak senggang. Saya sedang sibuk."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Tambahkan 'janai desu' (sopan standar) atau 'dewa arimasen' (lebih formal).",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "meaning_match",
+        "question": "Ungkapan pembuka saat pertama kali berkenalan adalah:",
+        "options": [
+          "はじめまして (Hajimemashite)",
+          "さようなら (Sayounara)",
+          "ごちそうさま (Gochisousama)",
+          "ただいま (Tadaima)"
+        ],
+        "correct_answer": "はじめまして (Hajimemashite)",
+        "based_on_item": "はじめまして"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Salam penutup perkenalan 'Mohon bantuannya' dalam bahasa Jepang adalah:",
+        "options": [
+          "よろしくお願いします",
+          "おやすみなさい",
+          "いただきます",
+          "いってきます"
+        ],
+        "correct_answer": "よろしくお願いします",
+        "based_on_item": "よろしくお願いします"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Bagaimana cara mengubah kata sifat 'おいしい' (enak) menjadi bentuk negatif (tidak enak)?",
+        "options": [
+          "おいしくない",
+          "おいしいじゃない",
+          "おいしくありませんでした",
+          "おいしなかった"
+        ],
+        "correct_answer": "おいしくない",
+        "based_on_item": "〜くない (Negatif i-Adjective)"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah romaji untuk kata sifat kepandaian '上手な':",
+        "options": [
+          "jouzu na",
+          "heta na",
+          "kirei na",
+          "suki na"
+        ],
+        "correct_answer": "jouzu na",
+        "based_on_item": "上手な"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Ungkapan manakah yang menyatakan 'Saya suka'?",
+        "options": [
+          "好きです (Suki desu)",
+          "嫌いです (Kirai desu)",
+          "上手です (Jouzu desu)",
+          "下手です (Heta desu)"
+        ],
+        "correct_answer": "好きです (Suki desu)",
+        "based_on_item": "好きな"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Bila dipuji '日本語が上手ですね', jawaban sopan merendah yang tepat adalah:",
+        "options": [
+          "いいえ、まだまだです",
+          "はい、天才です",
+          "どういたしまして",
+          "ありがとうバイバイ"
+        ],
+        "correct_answer": "いいえ、まだまだです",
+        "based_on_item": "上手な"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Bentuk negatif dari kata sifat 'いい' (bagus) yang tepat adalah:",
+        "options": [
+          "よくない (yokunai)",
+          "いくない (ikunai)",
+          "いいじゃない",
+          "いかった"
+        ],
+        "correct_answer": "よくない (yokunai)",
+        "based_on_item": "いい・よい"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Apakah romaji untuk ungkapan salam penutup 'よろしく'?",
+        "options": [
+          "yoroshiku",
+          "yowatari",
+          "yakedo",
+          "yohodo"
+        ],
+        "correct_answer": "yoroshiku",
+        "based_on_item": "よろしくお願いします"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan ucapan: 'Hajimemashite'. Kapan ungkapan ini diucapkan?",
+        "options": [
+          "Pertama kali berkenalan",
+          "Saat hendak pulang",
+          "Setelah selesai makan",
+          "Ketika meminta maaf"
+        ],
+        "correct_answer": "Pertama kali berkenalan",
+        "based_on_item": "はじめまして"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Bila menerangkan kata benda: 'アニメ' dengan sifat '好き', bentuk sambungnya adalah:",
+        "options": [
+          "好きな アニメ",
+          "好きのアニメ",
+          "好きいアニメ",
+          "好きでアニメ"
+        ],
+        "correct_answer": "好きな アニメ",
+        "based_on_item": "好きな"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_11",
+    "level_name": "Situasi Konbini, Counter Dasar & Bentuk -te",
+    "phase": "Fase D: Percakapan & Listening",
+    "items": [
+      {
+        "type": "GRAMMAR",
+        "character": "〜てください",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-te kudasai",
+        "meaning": "Pola Permohonan Sopan: Tolong lakukan...",
+        "example_sentence": {
+          "jp": "温めて ください。",
+          "romaji": "Atatamete kudasai.",
+          "id": "Tolong hangatkan (makanan bento di konbini)."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk kata kerja -te ditambah 'kudasai' untuk meminta bantuan secara sopan.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜ないでください",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-naide kudasai",
+        "meaning": "Pola Larangan Sopan: Tolong jangan lakukan...",
+        "example_sentence": {
+          "jp": "ここで 写真を 撮らないで ください。",
+          "romaji": "Koko de shashin o toranaide kudasai.",
+          "id": "Tolong jangan mengambil foto di sini."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Kata kerja bentuk negatif -nai ditambah 'de kudasai'.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜ている",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-te iru / -te imasu",
+        "meaning": "Pola Aksi Sedang Berlangsung / Kondisi Terkini",
+        "example_sentence": {
+          "jp": "今、日本語を 勉強して います。",
+          "romaji": "Ima, Nihongo o benkyou shite imasu.",
+          "id": "Sekarang, saya sedang belajar bahasa Jepang."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Padanan bentuk '-ing' dalam bahasa Inggris untuk aksi yang sedang aktif terjadi saat ini.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "これをください",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "kore o kudasai",
+        "meaning": "Tolong berikan yang ini (Saat memesan / membeli)",
+        "example_sentence": {
+          "jp": "すみません、これを ください。",
+          "romaji": "Sumimasen, kore o kudasai.",
+          "id": "Permisi, tolong saya mau beli yang ini."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Kalimat kunci transaksi belanja di Jepang sambil menunjuk barang yang diinginkan.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "いくらですか",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ikura desu ka",
+        "meaning": "Berapa harganya?",
+        "example_sentence": {
+          "jp": "この おにぎりは いくらですか？",
+          "romaji": "Kono onigiri wa ikura desu ka?",
+          "id": "Nasi kepal onigiri ini berapa harganya ya?"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Digunakan khusus menanyakan harga nominal uang barang atau jasa.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "Counter 人 (nin / ri)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "hitori, futari, san-nin",
+        "meaning": "Satuan Penghitung Orang (Manusia)",
+        "example_sentence": {
+          "jp": "二人は 友達です。",
+          "romaji": "Futari wa tomodachi desu.",
+          "id": "Dua orang itu adalah sahabat."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Perhatian bentuk irregular: 1 orang = 一人 (hitori), 2 orang = 二人 (futari). Mulai 3 orang teratur: 三人 (san-nin), 四人 (yo-nin).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "Counter 個 (ko)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ikko, ni-ko, san-ko",
+        "meaning": "Satuan Penghitung Benda Kecil & Bulat",
+        "example_sentence": {
+          "jp": "りんごを 二個 買いました。",
+          "romaji": "Ringo o ni-ko kaimashita.",
+          "id": "Saya membeli dua buah apel."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Dipakai untuk buah apel/jeruk, bola, telur, kue kecil, dan benda bulat compact lainnya.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "Counter 枚 (mai)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ichi-mai, ni-mai",
+        "meaning": "Satuan Penghitung Benda Tipis & Lembaran",
+        "example_sentence": {
+          "jp": "切符を 一枚 ください。",
+          "romaji": "Kippu o ichi-mai kudasai.",
+          "id": "Tolong beri saya satu lembar tiket."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Dipakai untuk kertas, tiket kereta, foto, kemeja/kaos, piring, dan pizza.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "Counter 本 (hon / pon / bon)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ip-pon, ni-hon, sam-bon",
+        "meaning": "Satuan Penghitung Benda Panjang & Silindris",
+        "example_sentence": {
+          "jp": "お茶を 一本 買いました。",
+          "romaji": "Ocha o ip-pon kaimashita.",
+          "id": "Saya membeli satu botol teh hijau."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Dipakai untuk botol minuman, payung, pena/pensil, pohon, dan pisang. Perhatikan euphony: 1本 (ippon), 3本 (sambon).",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "Counter 冊 (satsu)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "is-satsu, ni-satsu",
+        "meaning": "Satuan Penghitung Buku & Jilidan Manga",
+        "example_sentence": {
+          "jp": "漫画を 二冊 読みました。",
+          "romaji": "Manga o ni-satsu yomimashita.",
+          "id": "Saya membaca dua jilid buku komik manga."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Dipakai khusus untuk buku berketebalan jilid: kamus, buku tulis, majalah, dan komik tankobon.",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "meaning_match",
+        "question": "Saat berbelanja, kalimat 'これをください' berarti:",
+        "options": [
+          "Tolong berikan yang ini / Saya beli yang ini",
+          "Berapa harganya?",
+          "Di mana kasirnya?",
+          "Saya mau pulang"
+        ],
+        "correct_answer": "Tolong berikan yang ini / Saya beli yang ini",
+        "based_on_item": "これをください"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Bagaimana cara membaca hitungan 'Dua orang' yang tidak beraturan?",
+        "options": [
+          "二人 (futari)",
+          "二個 (niko)",
+          "二本 (nihon)",
+          "二枚 (nimai)"
+        ],
+        "correct_answer": "二人 (futari)",
+        "based_on_item": "Counter 人 (nin / ri)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Pertanyaan 'いくらですか (Ikura desu ka)' menanyakan tentang:",
+        "options": [
+          "Harga barang",
+          "Jam berapa sekarang",
+          "Siapa nama penjual",
+          "Kapan toko tutup"
+        ],
+        "correct_answer": "Harga barang",
+        "based_on_item": "いくらですか"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah penghitung counter untuk benda tipis lembaran (kertas/tiket)?",
+        "options": [
+          "枚 (mai)",
+          "本 (hon)",
+          "冊 (satsu)",
+          "個 (ko)"
+        ],
+        "correct_answer": "枚 (mai)",
+        "based_on_item": "Counter 枚 (mai)"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Pola permohonan sopan 'Tolong tunggu' yang tepat adalah:",
+        "options": [
+          "待って ください",
+          "待たないで ください",
+          "待って います",
+          "待つ です"
+        ],
+        "correct_answer": "待って ください",
+        "based_on_item": "〜てください"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Berapa botol minuman yang dibeli dalam 'お茶を一本 (Ocha o ippon)'?",
+        "options": [
+          "1 botol",
+          "2 botol",
+          "3 botol",
+          "4 botol"
+        ],
+        "correct_answer": "1 botol",
+        "based_on_item": "Counter 本 (hon / pon / bon)"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Pola '〜ないでください' menyatakan ungkapan apa?",
+        "options": [
+          "Larangan sopan (Tolong jangan lakukan)",
+          "Permohonan segera",
+          "Pemberitahuan harga",
+          "Ajakan gembira"
+        ],
+        "correct_answer": "Larangan sopan (Tolong jangan lakukan)",
+        "based_on_item": "〜ないでください"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Manakah satuan counter untuk menghitung 2 jilid komik manga '二冊'?",
+        "options": [
+          "nisatsu",
+          "nihon",
+          "nimai",
+          "niko"
+        ],
+        "correct_answer": "nisatsu",
+        "based_on_item": "Counter 冊 (satsu)"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Kalimat yang menyatakan aksi sedang berlangsung 'Sekarang sedang belajar' adalah:",
+        "options": [
+          "勉強して います",
+          "勉強して ください",
+          "勉強しません",
+          "勉強しました"
+        ],
+        "correct_answer": "勉強して います",
+        "based_on_item": "〜ている"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan ucapan 'Hitori'. Jumlah orang berapakah yang dimaksud?",
+        "options": [
+          "1 orang",
+          "2 orang",
+          "3 orang",
+          "4 orang"
+        ],
+        "correct_answer": "1 orang",
+        "based_on_item": "Counter 人 (nin / ri)"
+      }
+    ]
+  },
+  {
+    "level_id": "lvl_12",
+    "level_name": "Evaluasi Akhir JLPT N5 & Listening Komprehensif",
+    "phase": "Fase D: Percakapan & Listening",
+    "items": [
+      {
+        "type": "VOCAB",
+        "character": "わかります",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "wakarimasu",
+        "meaning": "Mengerti / Paham (Bentuk Sopan)",
+        "example_sentence": {
+          "jp": "はい、よく 分かりました！",
+          "romaji": "Hai, yoku wakarimashita!",
+          "id": "Ya, saya sudah sangat mengerti dan paham!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk negatif: 分かりません (wakarimasen = saya tidak mengerti).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "がんばって",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "ganbatte",
+        "meaning": "Semangat! / Lakukan yang terbaik!",
+        "example_sentence": {
+          "jp": "テスト、がんばって ね！",
+          "romaji": "Tesuto, ganbatte ne!",
+          "id": "Semangat ya untuk ujiannya!"
+        },
+        "radical_hint": null,
+        "register": "casual",
+        "usage_note": "Ungkapan penyemangat khas Jepang paling populer di seluruh anime dan keseharian.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "すみません",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "sumimasen",
+        "meaning": "Permisi / Maaf / Terima kasih atas bantuannya",
+        "example_sentence": {
+          "jp": "すみません、駅は どこですか？",
+          "romaji": "Sumimasen, eki wa doko desu ka?",
+          "id": "Permisi, stasiun kereta ada di sebelah mana ya?"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Kata serbaguna 3 fungsi: memanggil pelayan restoran, meminta maaf ringan, dan berterima kasih.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "どういたしまして",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "douitashimashite",
+        "meaning": "Sama-sama / Terima kasih kembali",
+        "example_sentence": {
+          "jp": "「ありがとう！」「いいえ、どういたしまして。」",
+          "romaji": "Arigatou! - Iie, douitashimashite.",
+          "id": "Terima kasih! - Tidak apa-apa, sama-sama."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Jawaban sopan resmi saat seseorang mengucapkan 'arigatou gozaimasu'.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜から (Alasan: Karena...)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-kara",
+        "meaning": "Penanda Alasan & Sebab: Karena...",
+        "example_sentence": {
+          "jp": "時間が ありませんから、急ぎましょう。",
+          "romaji": "Jikan ga arimasen kara, isogimashou.",
+          "id": "Karena tidak ada waktu lagi, ayo kita bergegas."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Diletakkan tepat di akhir klausa alasan. Kalimat akibat ditulis setelahnya.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "どこ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "doko",
+        "meaning": "Di mana? (Kata Tanya Tempat)",
+        "example_sentence": {
+          "jp": "トイレは どこですか？",
+          "romaji": "Toire wa doko desu ka?",
+          "id": "Toilet berada di mana ya?"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk sopan formal: どちら (dochira).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "だれ",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "dare",
+        "meaning": "Siapa? (Kata Tanya Orang)",
+        "example_sentence": {
+          "jp": "あの人は だれですか？",
+          "romaji": "Ano hito wa dare desu ka?",
+          "id": "Orang itu siapa ya?"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Bentuk sopan formal: どなた (donata).",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "なん・なに",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "nan / nani",
+        "meaning": "Apa? (Kata Tanya Benda)",
+        "example_sentence": {
+          "jp": "これは 何ですか？",
+          "romaji": "Kore wa nan desu ka?",
+          "id": "Benda ini apa ya?"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Dibaca 'nan' sebelum partikel d/t/n atau counter (nan-ji, nan-nin). Dibaca 'nani' sebelum partikel o atau ga.",
+        "needs_review": false
+      },
+      {
+        "type": "GRAMMAR",
+        "character": "〜てくださいました (Menerima Kebaikan)",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "-te kudasaimashita",
+        "meaning": "Telah berbaik hati melakukan sesuatu untuk saya",
+        "example_sentence": {
+          "jp": "先生が 教えて くださいました。",
+          "romaji": "Sensei ga oshiete kudasaimashita.",
+          "id": "Guru telah dengan baik hati mengajari saya."
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Ekspresi rasa terima kasih atas bantuan tulus yang diterima dari orang lain.",
+        "needs_review": false
+      },
+      {
+        "type": "VOCAB",
+        "character": "おめでとう",
+        "reading_on": null,
+        "reading_kun": null,
+        "romaji": "omedetou",
+        "meaning": "Selamat! (Congratulations!)",
+        "example_sentence": {
+          "jp": "合格 おめでとう ございます！",
+          "romaji": "Goukaku omedetou gozaimasu!",
+          "id": "Selamat atas kelulusan Anda!"
+        },
+        "radical_hint": null,
+        "register": "polite",
+        "usage_note": "Ditambah 'gozaimasu' untuk ucapan selamat yang sopan dan resmi.",
+        "needs_review": false
+      }
+    ],
+    "quiz_pool": [
+      {
+        "type": "meaning_match",
+        "question": "Arti dari ungkapan serbaguna 'すみません (Sumimasen)' adalah:",
+        "options": [
+          "Permisi / Maaf / Terima kasih",
+          "Selamat tinggal",
+          "Selamat datang",
+          "Sampai besok"
+        ],
+        "correct_answer": "Permisi / Maaf / Terima kasih",
+        "based_on_item": "すみません"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Kata tanya yang tepat untuk menanyakan lokasi tempat 'Di mana?' adalah:",
+        "options": [
+          "どこ (doko)",
+          "だれ (dare)",
+          "なに (nani)",
+          "いつ (itsu)"
+        ],
+        "correct_answer": "どこ (doko)",
+        "based_on_item": "どこ"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Bagaimana cara menjawab ucapan 'ありがとう' secara sopan?",
+        "options": [
+          "どういたしまして (Douitashimashite)",
+          "いただきます (Itadakimasu)",
+          "おやすみ (Oyasumi)",
+          "ただいま (Tadaima)"
+        ],
+        "correct_answer": "どういたしまして (Douitashimashite)",
+        "based_on_item": "どういたしまして"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Pilihlah romaji yang tepat untuk ungkapan selamat 'おめでとう':",
+        "options": [
+          "omedetou",
+          "ohayou",
+          "okaeri",
+          "omoshiroi"
+        ],
+        "correct_answer": "omedetou",
+        "based_on_item": "おめでとう"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Ketika seseorang tidak memahami suatu penjelasan, dia berkata:",
+        "options": [
+          "分かりません (Wakarimasen)",
+          "分かりました (Wakarimashita)",
+          "行きます (Ikimasu)",
+          "見ます (Mimasu)"
+        ],
+        "correct_answer": "分かりません (Wakarimasen)",
+        "based_on_item": "わかります"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan audio: Kata tanya apakah yang berarti 'Siapa'?",
+        "options": [
+          "だれ (dare)",
+          "なに (nani)",
+          "どこ (doko)",
+          "どれ (dore)"
+        ],
+        "correct_answer": "だれ (dare)",
+        "based_on_item": "だれ"
+      },
+      {
+        "type": "meaning_match",
+        "question": "Partikel 'から' dalam kalimat '時間がないから急ぎましょう' berfungsi sebagai:",
+        "options": [
+          "Penjelas alasan (karena tidak ada waktu)",
+          "Penunjuk arah tujuan",
+          "Penunjuk objek",
+          "Kepemilikan"
+        ],
+        "correct_answer": "Penjelas alasan (karena tidak ada waktu)",
+        "based_on_item": "〜から (Alasan: Karena...)"
+      },
+      {
+        "type": "multiple_choice_character",
+        "question": "Ungkapan penyemangat paling tepat sebelum teman menempuh tes adalah:",
+        "options": [
+          "がんばって！",
+          "やめて！",
+          "いたい！",
+          "あぶない！"
+        ],
+        "correct_answer": "がんばって！",
+        "based_on_item": "がんばって"
+      },
+      {
+        "type": "romaji_matcher",
+        "question": "Apakah romaji untuk pertanyaan menanyakan benda '何ですか'?",
+        "options": [
+          "Nan desu ka",
+          "Doko desu ka",
+          "Dare desu ka",
+          "Itsu desu ka"
+        ],
+        "correct_answer": "Nan desu ka",
+        "based_on_item": "なん・なに"
+      },
+      {
+        "type": "audio_quiz",
+        "question": "Dengarkan ucapan: 'Goukaku omedetou gozaimasu!'. Makna ucapan tersebut adalah:",
+        "options": [
+          "Selamat atas kelulusan Anda!",
+          "Selamat pagi semuanya!",
+          "Selamat makan malam!",
+          "Hati-hati di jalan!"
+        ],
+        "correct_answer": "Selamat atas kelulusan Anda!",
+        "based_on_item": "おめでとう"
       }
     ]
   }

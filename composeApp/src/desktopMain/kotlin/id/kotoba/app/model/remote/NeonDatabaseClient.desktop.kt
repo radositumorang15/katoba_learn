@@ -1,5 +1,6 @@
 package id.kotoba.app.model.remote
 
+import id.kotoba.app.model.QuizQuestion
 import id.kotoba.app.model.UserProgress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -131,5 +132,41 @@ actual class NeonDatabaseClient actual constructor() {
         val query = "UPDATE users_profile SET total_xp = $1, coins = $2, current_streak = $3, updated_at = CURRENT_TIMESTAMP WHERE id = $4;"
         val response = executeSql(query, listOf(totalXp, coins, streak, userId))
         response != null
+    }
+
+    actual suspend fun loadQuizQuestions(levelId: String): List<QuizQuestion> = withContext(Dispatchers.IO) {
+        val query = "SELECT id, level_id, type, question, options, correct_answer, based_on_item FROM quiz_questions WHERE level_id = $1 ORDER BY id;"
+        val response = executeSql(query, listOf(levelId)) ?: return@withContext emptyList()
+
+        try {
+            val root = json.parseToJsonElement(response).jsonObject
+            val rows = root["rows"]?.jsonArray ?: return@withContext emptyList()
+            rows.mapNotNull { element ->
+                val row = element.jsonObject
+                val id = row["id"]?.jsonPrimitive?.content ?: return@mapNotNull null
+                val lvlId = row["level_id"]?.jsonPrimitive?.content ?: levelId
+                val question = row["question"]?.jsonPrimitive?.content ?: ""
+                val optionsArray = row["options"]?.jsonArray ?: return@mapNotNull null
+                val options = optionsArray.map { it.jsonPrimitive.content }
+                val correctAnswer = row["correct_answer"]?.jsonPrimitive?.content ?: ""
+                val correctIndex = options.indexOf(correctAnswer).coerceAtLeast(0)
+                val basedOn = row["based_on_item"]?.jsonPrimitive?.content ?: correctAnswer
+
+                QuizQuestion(
+                    id = id,
+                    levelId = lvlId,
+                    questionText = question,
+                    audioPrompt = basedOn,
+                    visualCharacter = basedOn,
+                    options = options,
+                    correctOptionIndex = correctIndex,
+                    explanation = "Jawaban yang benar: $correctAnswer",
+                    animeContext = "JLPT N5 Core Practice"
+                )
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
+        }
     }
 }

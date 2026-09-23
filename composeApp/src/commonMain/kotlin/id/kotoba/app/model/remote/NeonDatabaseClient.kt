@@ -1,5 +1,6 @@
 package id.kotoba.app.model.remote
 
+import id.kotoba.app.model.QuizQuestion
 import id.kotoba.app.model.UserProgress
 import kotlinx.serialization.Serializable
 
@@ -28,4 +29,8 @@ expect class NeonDatabaseClient() {
         coins: Int,
         streak: Int
     ): Boolean
+
+    suspend fun loadQuizQuestions(
+        levelId: String
+    ): List<QuizQuestion>
 }

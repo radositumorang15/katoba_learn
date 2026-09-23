@@ -934,7 +934,7 @@ object KanaRepository {
         )
     )
 
-    val quizBank: Map<String, List<QuizQuestion>> = mapOf(
+    val quizBank: MutableMap<String, List<QuizQuestion>> = mutableMapOf(
         "lvl_1" to listOf(
             QuizQuestion(
                 id = "q1_1",
@@ -1367,4 +1367,10 @@ object KanaRepository {
             )
         )
     )
+
+    fun setQuestionsForLevel(levelId: String, questions: List<QuizQuestion>) {
+        if (questions.isNotEmpty()) {
+            quizBank[levelId] = questions
+        }
+    }
 }

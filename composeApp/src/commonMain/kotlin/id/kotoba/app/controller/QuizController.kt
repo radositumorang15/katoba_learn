@@ -2,6 +2,7 @@ package id.kotoba.app.controller
 
 import id.kotoba.app.model.Level
 import id.kotoba.app.model.QuizQuestion
+import id.kotoba.app.model.remote.NeonDatabaseClient
 import id.kotoba.app.model.repository.AuthRepository
 import id.kotoba.app.model.repository.KanaRepository
 import id.kotoba.app.model.repository.ProgressRepository
@@ -13,8 +14,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import id.kotoba.app.model.repository.GeminiRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 data class QuizResult(
     val totalQuestions: Int,
@@ -35,8 +38,28 @@ class QuizController(
     private val scope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 ) {
     val level: Level? = progressRepo.getLevelById(levelId)
-    val questions: List<QuizQuestion> = KanaRepository.quizBank[levelId]
-        ?: KanaRepository.quizBank["lvl_1"] ?: emptyList()
+
+    private val _questions = MutableStateFlow<List<QuizQuestion>>(
+        KanaRepository.quizBank[levelId] ?: KanaRepository.quizBank["lvl_1"] ?: emptyList()
+    )
+    val questions: List<QuizQuestion> get() = _questions.value
+
+    init {
+        scope.launch {
+            try {
+                val dbClient = NeonDatabaseClient()
+                val remoteQuestions = withContext(Dispatchers.IO) {
+                    dbClient.loadQuizQuestions(levelId)
+                }
+                if (remoteQuestions.isNotEmpty()) {
+                    _questions.value = remoteQuestions
+                    KanaRepository.setQuestionsForLevel(levelId, remoteQuestions)
+                }
+            } catch (_: Throwable) {
+                // Silently fallback to KanaRepository.quizBank
+            }
+        }
+    }
 
     private val _currentIndex = MutableStateFlow(0)
     val currentIndex: StateFlow<Int> = _currentIndex.asStateFlow()

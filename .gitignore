@@ -10,3 +10,4 @@
 .env.*
 *.hprof
 .vscode/
+scratch/
